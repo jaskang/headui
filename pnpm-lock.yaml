@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@floating-ui/react':
-        specifier: ^0.27.1
-        version: 0.27.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^0.27.2
+        version: 0.27.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@headlessui/react':
         specifier: ^2.2.0
         version: 2.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -22,8 +22,8 @@ importers:
         version: 19.0.0(react@19.0.0)
     devDependencies:
       '@jaskang/config':
-        specifier: ^2.0.5
-        version: 2.0.5(eslint@9.17.0(jiti@2.4.1))(prettier@3.4.2)(typescript@5.7.2)
+        specifier: ^2.1.0
+        version: 2.1.0(eslint@9.17.0(jiti@2.4.1))(prettier@3.4.2)(typescript@5.7.2)
       '@tailwindcss/vite':
         specifier: 4.0.0-beta.7
         version: 4.0.0-beta.7(vite@6.0.3(jiti@2.4.1)(lightningcss@1.28.2))
@@ -268,8 +268,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@floating-ui/react@0.27.1':
-    resolution: {integrity: sha512-/Ekg7W22DLGGmqP4vO/LQ6SqOrqIlx1h1PqTcRleVEuRZ0NdBDjtYMhehZqWxjSA13AKA1XCkr7QYz5Z7n9Hag==}
+  '@floating-ui/react@0.27.2':
+    resolution: {integrity: sha512-k/yP6a9K9QwhLfIu87iUZxCH6XN5z5j/VUHHq0dEnbZYY2Y9jz68E/LXFtK8dkiaYltS2WYohnyKC0VcwVneVg==}
     peerDependencies:
       react: '>=17.0.0'
       react-dom: '>=17.0.0'
@@ -304,8 +304,8 @@ packages:
     resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
 
-  '@jaskang/config@2.0.5':
-    resolution: {integrity: sha512-EMDL3XdAwqIzIF+Zkautczs0/vFc1n3lspujDm1ZGhg4vWJNvi0KhEtHLQDza3yy8CpcJ3lQE0lGFZCZqNxugw==}
+  '@jaskang/config@2.1.0':
+    resolution: {integrity: sha512-x8WbXDPS9cPLgPim3ANrGVJSEaAuCPop5q5h5nk4714FqCTvxOapUqnjhRlg+zS8p/FametCNTUdprUXIRlM1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
 
   '@napi-rs/wasm-runtime@0.2.5':
@@ -2014,7 +2014,7 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
       tabbable: 6.2.0
 
-  '@floating-ui/react@0.27.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@floating-ui/react@0.27.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@floating-ui/react-dom': 2.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@floating-ui/utils': 0.2.8
@@ -2046,7 +2046,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.1': {}
 
-  '@jaskang/config@2.0.5(eslint@9.17.0(jiti@2.4.1))(prettier@3.4.2)(typescript@5.7.2)':
+  '@jaskang/config@2.1.0(eslint@9.17.0(jiti@2.4.1))(prettier@3.4.2)(typescript@5.7.2)':
     dependencies:
       '@eslint/js': 9.17.0
       eslint-config-flat-gitignore: 0.3.0(eslint@9.17.0(jiti@2.4.1))
