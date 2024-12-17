@@ -1,0 +1,9 @@
+@theme {
+  --headui-primary: blue;
+  --headui-success: green;
+  --headui-warning: yellow;
+  --headui-danger: red;
+
+  --color-primary: theme(--color-blue-500);
+  --color-primary-soft: theme(--color-blue-600);
+}

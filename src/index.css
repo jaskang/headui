@@ -1,12 +1,4 @@
 @import 'tailwindcss';
 @variant dark (&:where(.dark, .dark *));
-
-/* 'primary' | 'success' | 'warning' | 'danger' */
-
-@theme {
-  --color-primary: theme(--color-blue-600);
-  --color-primary-2: theme(--color-blue-500);
-
-  --color-primary-soft: theme(--color-blue-100);
-  --color-primary-soft-2: theme(--color-blue-50);
-}
+@import './components/index.css';
+@plugin './components/plugin.ts';

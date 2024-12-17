@@ -14,6 +14,9 @@ importers:
       '@headlessui/react':
         specifier: ^2.2.0
         version: 2.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      kotl:
+        specifier: ^2.1.4
+        version: 2.1.4
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -1329,6 +1332,9 @@ packages:
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
+
+  kotl@2.1.4:
+    resolution: {integrity: sha512-HB8w/N2G6sm6mLzpFJ5Y+q7F7pg/yzZqOZIpxkZo4Jh2Jq2Oj97vAgZ/h5D4wLhV0LYAtCtTd7Aw8YeaBhjiIw==}
 
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
@@ -3166,6 +3172,10 @@ snapshots:
   keyv@4.5.4:
     dependencies:
       json-buffer: 3.0.1
+
+  kotl@2.1.4:
+    dependencies:
+      clsx: 2.1.1
 
   levn@0.4.1:
     dependencies:

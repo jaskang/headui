@@ -12,6 +12,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.27.2",
     "@headlessui/react": "^2.2.0",
+    "kotl": "^2.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
