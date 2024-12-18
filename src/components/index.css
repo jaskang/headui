@@ -4,6 +4,5 @@
   --headui-warning: yellow;
   --headui-danger: red;
 
-  --color-primary: theme(--color-blue-500);
-  --color-primary-soft: theme(--color-blue-600);
+  --headui-gray: stone;
 }
