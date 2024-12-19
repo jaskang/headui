@@ -3,7 +3,7 @@ import { clsx } from 'kotl'
 import { createVariantClass } from '../internal-style'
 
 type ButtonProps = Omit<ComponentProps<'button'>, 'disabled'> & {
-  variant?: 'solid' | 'soft' | 'outline' | 'text' | 'pure' | 'default'
+  variant?: 'default' | 'solid' | 'soft' | 'outline' | 'text' | 'pure'
   color?: 'primary' | 'success' | 'warning' | 'danger'
   size?: 'sm' | 'md' | 'lg'
   pill?: boolean
