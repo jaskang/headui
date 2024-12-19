@@ -13,10 +13,18 @@ type ButtonProps = Omit<ComponentProps<'button'>, 'disabled'> & {
   disabled?: boolean
 }
 
+// Dependencies: pnpm install lucide-react
+
 function style(props: Pick<ButtonProps, 'variant' | 'color' | 'size' | 'pill' | 'square' | 'block'>) {
   const { variant = 'default', color, size, pill, square, block } = props
+
   return clsx([
-    'inline-flex cursor-pointer appearance-none border items-center justify-center whitespace-nowrap text-center font-medium outline-none transition-[color,background-color,text-decoration-color] focus:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+    `inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors cursor-pointer 
+    outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary-500/70 
+    disabled:pointer-events-none disabled:opacity-50
+    [&_svg]:pointer-events-none
+    [&_svg]:shrink-0 
+    shadow-sm shadow-black/5 h-9 px-4 py-2`,
     pill ? 'rounded-full' : 'rounded-md',
     block && 'block',
     createVariantClass(variant, ''),
