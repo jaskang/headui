@@ -72,22 +72,23 @@
   @apply bg-white border border-natural-200 not-disabled:hover:bg-natural-50;
 }
 @utility variant-solid {
-  --hvt-color: var(--color-white);
-  --hvt-bg: var(--color-primary-500);
-  @apply text-(--hvt-color) bg-(--hvt-bg) border-transparent;
+  @apply text-white bg-(--color-variant-600) border border-transparent hover:bg-(--color-variant-500);
 }
 @utility variant-soft {
   --hvt-color: var(--color-primary-500);
   --hvt-bg: var(--color-primary-100);
-  @apply text-(--hvt-color) bg-(--hvt-bg) border-transparent;
+  --hvt-bg-2: var(--color-primary-200, --hvt-bg);
+  @apply text-(--color-variant-500) bg-(--color-variant-100) border border-transparent hover:bg-(--color-variant-200);
 }
 @utility variant-outline {
   --hvt-color: var(--color-primary-500);
   --hvt-bg: var(--color-white);
-  @apply text-(--hvt-color) bg-(--hvt-bg) border-(--hvt-color);
+  --hvt-bg-2: var(--color-primary-50);
+  @apply text-(--hvt-color) bg-(--hvt-bg) border border-(--hvt-color) hover:bg-(--hvt-bg-2);
 }
 @utility variant-text {
   --hvt-color: var(--color-primary-500);
   --hvt-bg: var(--color-white);
-  @apply text-(--hvt-color) bg-(--hvt-bg) border-transparent;
+  --hvt-bg-2: var(--color-primary-100);
+  @apply text-(--hvt-color) bg-transparent border border-transparent hover:bg-(--hvt-bg-2);
 }

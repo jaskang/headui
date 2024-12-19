@@ -18,6 +18,7 @@ function App() {
         <Button variant="solid">count is {count}</Button>
         <Button variant="soft">count is {count}</Button>
         <Button variant="outline">count is {count}</Button>
+        <Button variant="text">count is {count}</Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
