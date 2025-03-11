@@ -3,5 +3,6 @@
   "references.preferredLocation": "peek",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
-  }
+  },
+  "cSpell.words": ["jaskang"]
 }

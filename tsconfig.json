@@ -1,5 +1,5 @@
 {
-  "extends": "@jaskang/tsconfig/vue",
+  "extends": "@jaskang/config/tsconfig/vue.json",
   "compilerOptions": {
     "baseUrl": ".",
     "jsxImportSource": "vue",

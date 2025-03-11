@@ -1,5 +1,4 @@
-@import 'tailwindcss';
-/* @import './tailwind.css'; */
+@import './tailwind.css';
 @import '../../../../src/style.css';
 @import './code.css';
 @import './prose.css';

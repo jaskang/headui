@@ -1,3 +1,5 @@
-import config from '@jaskang/eslint-config'
+import { eslint } from '@jaskang/config'
 
-export default config()
+export default eslint({
+  vue: true,
+})
