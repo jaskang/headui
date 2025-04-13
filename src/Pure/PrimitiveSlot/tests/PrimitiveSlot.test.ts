@@ -1,15 +1,15 @@
 import { defineComponent, ref } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vitest'
-import ForwardSlot from '../index'
+import {PrimitiveSlot} from '../index'
 
-describe('ForwardSlot', () => {
+describe('PrimitiveSlot', () => {
   test('slot ref element', async () => {
     const slotRef = ref()
     const wrapper = mount(
       defineComponent({
-        template: '<ForwardSlot ref="slotRef" class="text-green"><span class="bg-red">test</span></ForwardSlot>',
-        components: { ForwardSlot },
+        template: '<PrimitiveSlot ref="slotRef" class="text-green"><span class="bg-red">test</span></PrimitiveSlot>',
+        components: { PrimitiveSlot },
         setup() {
           return { slotRef }
         },

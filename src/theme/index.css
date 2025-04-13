@@ -1,65 +1,19 @@
-/* @import './colors.css'; */
+
 
 @theme {
-  /* --tw-ring-color: var(--color-line);
-  --tw-ring-shadow: 0 0 #0000;
-  --tw-inset-ring-color: initial;
-  --tw-inset-ring-shadow: 0 0 #0000; */
-  /* --tw-ring-offset-color: var(--color-background); */
-
-  --color-line: var(--color-gray-200);
-  --color-accent: var(--color-gray-100);
-
-  --color-background: var(--color-white);
-  --color-foreground: var(--color-gray-700);
-
-  --color-mute: var(--color-gray-400);
-  --color-mute-foreground: var(--color-gray-400);
-
-  --color-input-border: var(--color-gray-300);
-  --color-input-background: var(--color-white);
-  --color-input-background-hover: var(--color-gray-100);
-  --color-input-accent: var(--color-gray-200);
-
-  --color-primary: var(--color-indigo-500);
-  --color-primary-subtle: var(--color-indigo-50);
-  --color-primary-subtle-hover: var(--color-indigo-100);
-  --color-primary-bg-hover: var(--color-indigo-500);
-  --color-primary-border: var(--color-indigo-600);
-  --color-primary-solid: var(--color-indigo-600);
-  --color-primary-solid-hover: var(--color-indigo-500);
-  --color-primary-text: var(--color-indigo-700);
-  --color-primary-text-contrast: var(--color-indigo-800);
-
-  --color-success: var(--color-green-500);
-  --color-success-subtle: var(--color-green-50);
-  --color-success-subtle-hover: var(--color-green-100);
-  --color-success-bg-hover: var(--color-green-500);
-  --color-success-border: var(--color-green-600);
-  --color-success-solid: var(--color-green-600);
-  --color-success-solid-hover: var(--color-green-500);
-  --color-success-text: var(--color-green-700);
-  --color-success-text-contrast: var(--color-green-800);
-
-  --color-warning: var(--color-amber-500);
-  --color-warning-subtle: var(--color-amber-50);
-  --color-warning-subtle-hover: var(--color-amber-100);
-  --color-warning-bg-hover: var(--color-amber-500);
-  --color-warning-border: var(--color-amber-600);
-  --color-warning-solid: var(--color-amber-600);
-  --color-warning-solid-hover: var(--color-amber-500);
-  --color-warning-text: var(--color-amber-700);
-  --color-warning-text-contrast: var(--color-amber-800);
-
-  --color-danger: var(--color-red-500);
-  --color-danger-subtle: var(--color-red-50);
-  --color-danger-subtle-hover: var(--color-red-100);
-  --color-danger-bg-hover: var(--color-red-500);
-  --color-danger-border: var(--color-red-600);
-  --color-danger-solid: var(--color-red-600);
-  --color-danger-solid-hover: var(--color-red-500);
-  --color-danger-text: var(--color-red-700);
-  --color-danger-text-contrast: var(--color-red-800);
+  --radius: 0.3rem;
+  --background: var(--color-white);
+  --foreground: var(--color-slate-700);
+  --primary: var(--color-sky-600);
+  --primary-foreground: var(--color-sky-50);
+  --secondary: var(--color-slate-50);
+  --secondary-foreground: var(--color-slate-700);
+  --muted: var(--color-slate-100);
+  --muted-foreground: var(--color-slate-700);
+  --destructive: var(--color-red-600);
+  --border: var(--color-slate-200);
+  --input: var(--color-slate-300);
+  --ring: var(--color-sky-600);
 }
 
 :where(html) {

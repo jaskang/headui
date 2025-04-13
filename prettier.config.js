@@ -1,7 +1,7 @@
-import { configs } from '@jaskang/config'
+import { prettier } from '@jaskang/config'
 
 export default {
-  ...configs.prettier,
+  ...prettier(),
   plugins: ['prettier-plugin-tailwindcss'],
   tailwindFunctions: ['tw'],
 }
