@@ -19,87 +19,79 @@ export default createPlugin(({ matchUtilities, addUtilities, theme }) => {
       return key.replace(/-500$/, '')
     })
 
-  addUtilities({
-    '.style-default': {
-      backgroundColor: `var(--color-white)`,
-      color: `var(--color-${headui.gray}-700)`,
-      border: `1px solid var(--color-${headui.gray}-200)`,
-      '&:hover:not(:disabled)': {
-        backgroundColor: `var(--color-${headui.gray}-50)`,
-      },
-    },
-  })
-  // console.log(colorKeys)
-  matchUtilities(
-    {
-      'style-solid': value => {
-        return isGray(value)
-          ? {
-              backgroundColor: `var(--color-${value}-950)`,
-              color: `var(--color-white)`,
-              '&:hover:not(:disabled)': {
-                backgroundColor: `var(--color-${value}-800)`,
-              },
-            }
-          : {
-              backgroundColor: `var(--color-${value}-600)`,
-              color: `var(--color-${value}-50)`,
-              '&:hover:not(:disabled)': {
-                backgroundColor: `var(--color-${value}-500)`,
-              },
-            }
-      },
-      'style-soft': value => {
-        return isGray(value)
-          ? {
-              backgroundColor: `var(--color-${value}-100)`,
-              color: `var(--color-${value}-700)`,
-            }
-          : {
-              backgroundColor: `var(--color-${value}-50)`,
-              color: `var(--color-${value}-500)`,
-              '&:hover:not(:disabled)': {
-                backgroundColor: `var(--color-${value}-100)`,
-              },
-            }
-      },
-      'style-outline': value => {
-        return isGray(value)
-          ? {
-              border: `1px solid ${`var(--color-${value}-500)`}`,
-              backgroundColor: 'var(--color-white)',
-              color: `var(--color-${value}-00)`,
-              '&:hover:not(:disabled)': {
-                backgroundColor: `var(--color-${value}-50)`,
-              },
-            }
-          : {
-              border: `1px solid ${`var(--color-${value}-500)`}`,
-              backgroundColor: 'var(--color-white)',
-              color: `var(--color-${value}-500)`,
-              '&:hover:not(:disabled)': {
-                backgroundColor: `var(--color-${value}-100)`,
-              },
-            }
-      },
-      'style-text': value => {
-        return isGray(value)
-          ? {
-              backgroundColor: 'transparent',
-              color: `var(--color-${value}-700)`,
-            }
-          : {
-              backgroundColor: 'transparent',
-              color: `var(--color-${value}-500)`,
-            }
-      },
-    },
-    {
-      values: colorKeys.reduce((acc, key) => {
-        acc[key] = key
-        return acc
-      }, {}),
-      type: ['color'],
-    }
-  )
+  // addUtilities({
+  //   '.style-default': {
+  //     backgroundColor: `var(--color-white)`,
+  //     color: `var(--color-${headui.gray}-700)`,
+  //     border: `1px solid var(--color-${headui.gray}-200)`,
+  //     '&:hover:not(:disabled)': {
+  //       backgroundColor: `var(--color-${headui.gray}-50)`,
+  //     },
+  //   },
+  // })
+  // // console.log(colorKeys)
+  // matchUtilities(
+  //   {
+  //     'style-solid': value => {
+  //       return {
+  //             backgroundColor: `var(--color-${value}-600)`,
+  //             color: `var(--color-${value}-50)`,
+  //             '&:hover:not(:disabled)': {
+  //               backgroundColor: `var(--color-${value}-500)`,
+  //             },
+  //           }
+  //     },
+  //     'style-soft': value => {
+  //       return isGray(value)
+  //         ? {
+  //             backgroundColor: `var(--color-${value}-100)`,
+  //             color: `var(--color-${value}-700)`,
+  //           }
+  //         : {
+  //             backgroundColor: `var(--color-${value}-50)`,
+  //             color: `var(--color-${value}-500)`,
+  //             '&:hover:not(:disabled)': {
+  //               backgroundColor: `var(--color-${value}-100)`,
+  //             },
+  //           }
+  //     },
+  //     'style-outline': value => {
+  //       return isGray(value)
+  //         ? {
+  //             border: `1px solid ${`var(--color-${value}-500)`}`,
+  //             backgroundColor: 'var(--color-white)',
+  //             color: `var(--color-${value}-00)`,
+  //             '&:hover:not(:disabled)': {
+  //               backgroundColor: `var(--color-${value}-50)`,
+  //             },
+  //           }
+  //         : {
+  //             border: `1px solid ${`var(--color-${value}-500)`}`,
+  //             backgroundColor: 'var(--color-white)',
+  //             color: `var(--color-${value}-500)`,
+  //             '&:hover:not(:disabled)': {
+  //               backgroundColor: `var(--color-${value}-100)`,
+  //             },
+  //           }
+  //     },
+  //     'style-text': value => {
+  //       return isGray(value)
+  //         ? {
+  //             backgroundColor: 'transparent',
+  //             color: `var(--color-${value}-700)`,
+  //           }
+  //         : {
+  //             backgroundColor: 'transparent',
+  //             color: `var(--color-${value}-500)`,
+  //           }
+  //     },
+  //   },
+  //   {
+  //     values: colorKeys.reduce((acc, key) => {
+  //       acc[key] = key
+  //       return acc
+  //     }, {}),
+  //     type: ['color'],
+  //   }
+  // )
 })

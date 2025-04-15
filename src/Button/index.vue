@@ -35,34 +35,34 @@ const props = defineProps({
         default: `style-default shadow-sm`,
         outline: `border-2 shadow-sm ${
           {
-            primary: 'style-outline-primary',
-            success: 'style-outline-success',
-            warning: 'style-outline-warning',
-            danger: 'style-outline-danger',
+            primary: 'style-outline',
+            success: 'style-outline',
+            warning: 'style-outline',
+            danger: 'style-outline',
           }[props.color]
         }`,
         solid: `shadow-sm ${
           {
-            primary: 'style-solid-primary',
-            success: 'style-solid-success',
-            warning: 'style-solid-warning',
-            danger: 'style-solid-danger',
+            primary: 'style-solid',
+            success: 'style-solid',
+            warning: 'style-solid',
+            danger: 'style-solid',
           }[props.color]
         }`,
         soft: `shadow-sm ${
           {
-            primary: 'style-soft-primary',
-            success: 'style-soft-success',
-            warning: 'style-soft-warning',
-            danger: 'style-soft-danger',
+            primary: 'style-soft',
+            success: 'style-soft',
+            warning: 'style-soft',
+            danger: 'style-soft',
           }[props.color || 'primary']
         }`,
         text: `${
           {
-            primary: 'style-text-primary',
-            success: 'style-text-success',
-            warning: 'style-text-warning',
-            danger: 'style-text-danger',
+            primary: 'style-text',
+            success: 'style-text',
+            warning: 'style-text',
+            danger: 'style-text',
           }[props.color || 'primary']
         }`,
       }[props.variant],

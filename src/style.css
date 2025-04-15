@@ -60,3 +60,28 @@
   background-color: var(--color-background);
   color: var(--color-foreground);
 }
+
+@utility scrollbar-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+@utility style-vars {
+  --sc-subtle-light: var(--color-primary-50);
+  --sc-subtle: var(--color-primary-100);
+  --sc-border: var(--color-primary-200);
+  --sc-base: var(--color-primary-600);
+  --sc-base-light: var(--color-primary-500);
+  --sc-text: var(--color-primary-700);
+}
+@layer components {
+  .style-solid {
+    @apply style-vars border-[var(--sc-base)] bg-[var(--sc-base)] text-white hover:not-disabled:bg-[var(--sc-base-light)];
+  }
+  .style-soft {
+    @apply style-vars border-[var(--sc-subtle)] bg-[var(--sc-subtle)] text-[var(--sc-base)] hover:not-disabled:bg-[var(--sc-subtle-light)];
+  }
+  .style-outline {
+    @apply style-vars border-1 border-[--sc-500] bg-white text-[--sc-500] hover:not-disabled:bg-[--sc-50];
+  }
+}
