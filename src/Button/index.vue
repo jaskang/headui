@@ -28,48 +28,48 @@ const props = defineProps({
 <template>
   <button
     type="button"
-    class="focus-visible:outline-primary-solid inline-flex cursor-pointer appearance-none items-center justify-center whitespace-nowrap text-center font-medium outline-none transition-[color,background-color,text-decoration-color] focus:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+    class="focus-visible:outline-primary-solid inline-flex cursor-pointer appearance-none items-center justify-center text-center font-medium whitespace-nowrap transition-[color,background-color,text-decoration-color] outline-none focus:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
     :class="[
       {
         pure: '',
-        default: `border-input-border text-foreground bg-input-background enabled:hover:bg-input-background-hover border shadow-sm`,
+        default: `style-default shadow-sm`,
         outline: `border-2 shadow-sm ${
           {
-            primary: 'enabled:hover:bg-primary-subtle border-primary-border bg-background text-primary-text',
-            success: 'enabled:hover:bg-success-subtle border-success-border bg-background text-success-text',
-            warning: 'enabled:hover:bg-warning-subtle border-warning-border bg-background text-warning-text',
-            danger: 'enabled:hover:bg-danger-subtle border-danger-border bg-background text-danger-text',
+            primary: 'style-outline-primary',
+            success: 'style-outline-success',
+            warning: 'style-outline-warning',
+            danger: 'style-outline-danger',
           }[props.color]
         }`,
         solid: `shadow-sm ${
           {
-            primary: 'bg-primary-solid enabled:hover:bg-primary-solid-hover text-white',
-            success: 'bg-success-solid enabled:hover:bg-success-solid-hover text-white',
-            warning: 'bg-warning-solid enabled:hover:bg-warning-solid-hover text-white',
-            danger: 'bg-danger-solid enabled:hover:bg-danger-solid-hover text-white',
+            primary: 'style-solid-primary',
+            success: 'style-solid-success',
+            warning: 'style-solid-warning',
+            danger: 'style-solid-danger',
           }[props.color]
         }`,
         soft: `shadow-sm ${
           {
-            primary: 'bg-primary-subtle enabled:hover:bg-primary-subtle-hover text-primary-text',
-            success: 'bg-success-subtle enabled:hover:bg-success-subtle-hover text-success-text',
-            warning: 'bg-warning-subtle enabled:hover:bg-warning-subtle-hover text-warning-text',
-            danger: 'bg-danger-subtle enabled:hover:bg-danger-subtle-hover text-danger-text',
+            primary: 'style-soft-primary',
+            success: 'style-soft-success',
+            warning: 'style-soft-warning',
+            danger: 'style-soft-danger',
           }[props.color || 'primary']
         }`,
         text: `${
           {
-            primary: 'enabled:hover:bg-primary-bg-subtle text-primary-text',
-            success: 'enabled:hover:bg-success-bg-subtle text-success-text',
-            warning: 'enabled:hover:bg-warning-bg-subtle text-warning-text',
-            danger: 'enabled:hover:bg-danger-bg-subtle text-danger-text',
+            primary: 'style-text-primary',
+            success: 'style-text-success',
+            warning: 'style-text-warning',
+            danger: 'style-text-danger',
           }[props.color || 'primary']
         }`,
       }[props.variant],
       {
-        sm: `h-7 text-xs ${props.square ? 'w-7' : 'py-1 px-2'}`,
-        md: `h-9 text-sm ${props.square ? 'w-9' : 'py-1.5 px-3'}`,
-        lg: `h-11 text-base ${props.square ? 'w-11' : 'py-2 px-4'}`,
+        sm: `h-7 text-xs ${props.square ? 'w-7' : 'px-2 py-1'}`,
+        md: `h-9 text-sm ${props.square ? 'w-9' : 'px-3 py-1.5'}`,
+        lg: `h-11 text-base ${props.square ? 'w-11' : 'px-4 py-2'}`,
       }[props.size],
       props.pill ? 'rounded-full' : 'rounded-md',
       !props.square && props.block ? 'w-full' : '',
