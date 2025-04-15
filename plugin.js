@@ -35,14 +35,17 @@ export default createPlugin(({ matchUtilities, addUtilities, theme }) => {
       'style-solid': value => {
         return isGray(value)
           ? {
-              backgroundColor: `var(--color-${value}-200)`,
-              color: `var(--color-${value}-700)`,
+              backgroundColor: `var(--color-${value}-950)`,
+              color: `var(--color-white)`,
+              '&:hover:not(:disabled)': {
+                backgroundColor: `var(--color-${value}-800)`,
+              },
             }
           : {
-              backgroundColor: `var(--color-${value}-500)`,
+              backgroundColor: `var(--color-${value}-600)`,
               color: `var(--color-${value}-50)`,
               '&:hover:not(:disabled)': {
-                backgroundColor: `var(--color-${value}-600)`,
+                backgroundColor: `var(--color-${value}-500)`,
               },
             }
       },
@@ -53,8 +56,11 @@ export default createPlugin(({ matchUtilities, addUtilities, theme }) => {
               color: `var(--color-${value}-700)`,
             }
           : {
-              backgroundColor: `var(--color-${value}-100)`,
-              color: `var(--color-${value}-600)`,
+              backgroundColor: `var(--color-${value}-50)`,
+              color: `var(--color-${value}-500)`,
+              '&:hover:not(:disabled)': {
+                backgroundColor: `var(--color-${value}-100)`,
+              },
             }
       },
       'style-outline': value => {
@@ -63,7 +69,7 @@ export default createPlugin(({ matchUtilities, addUtilities, theme }) => {
               border: `1px solid ${`var(--color-${value}-500)`}`,
               backgroundColor: 'var(--color-white)',
               color: `var(--color-${value}-00)`,
-              '&:enabled:hover': {
+              '&:hover:not(:disabled)': {
                 backgroundColor: `var(--color-${value}-50)`,
               },
             }
@@ -71,7 +77,7 @@ export default createPlugin(({ matchUtilities, addUtilities, theme }) => {
               border: `1px solid ${`var(--color-${value}-500)`}`,
               backgroundColor: 'var(--color-white)',
               color: `var(--color-${value}-500)`,
-              '&:enabled:hover': {
+              '&:hover:not(:disabled)': {
                 backgroundColor: `var(--color-${value}-100)`,
               },
             }
