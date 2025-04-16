@@ -31,41 +31,25 @@ const props = defineProps({
     class="focus-visible:outline-primary-solid inline-flex cursor-pointer appearance-none items-center justify-center text-center font-medium whitespace-nowrap transition-[color,background-color,text-decoration-color] outline-none focus:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
     :class="[
       {
-        pure: '',
         default: `style-default shadow-sm`,
-        outline: `style-outline shadow-sm ${
-          {
-            primary: 'style-color-primary',
-            success: 'style-color-success',
-            warning: 'style-color-warning',
-            danger: 'style-color-danger',
-          }[props.color]
-        }`,
-        solid: `style-solid shadow-sm ${
-          {
-            primary: 'style-color-primary',
-            success: 'style-color-success',
-            warning: 'style-color-warning',
-            danger: 'style-color-danger',
-          }[props.color]
-        }`,
-        soft: `style-soft shadow-sm ${
-          {
-            primary: 'style-color-primary',
-            success: 'style-color-success',
-            warning: 'style-color-warning',
-            danger: 'style-color-danger',
-          }[props.color || 'primary']
-        }`,
-        text: `style-text ${
-          {
-            primary: 'style-color-primary',
-            success: 'style-color-success',
-            warning: 'style-color-warning',
-            danger: 'style-color-danger',
-          }[props.color || 'primary']
-        }`,
+        outline: `style-outline shadow-sm`,
+        solid: `style-solid shadow-sm`,
+        soft: `style-soft shadow-sm`,
+        text: `style-text`,
+        pure: '',
       }[props.variant],
+      {
+        primary: 'style-color-primary',
+        success: 'style-color-success',
+        warning: 'style-color-warning',
+        danger: 'style-color-danger',
+        none: '',
+      }[props.variant === 'default' ? 'none' : props.color],
+      {
+        sm: 'text-sm',
+        md: 'text-base',
+        lg: 'text-lg',
+      }[props.size],
       {
         sm: `h-7 text-xs ${props.square ? 'w-7' : 'px-2 py-1'}`,
         md: `h-9 text-sm ${props.square ? 'w-9' : 'px-3 py-1.5'}`,

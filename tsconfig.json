@@ -5,7 +5,8 @@
     "jsxImportSource": "vue",
     "types": ["vite/client"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "tailv": ["./src/index.ts"]
     }
   },
   "include": ["./env.d.ts", "./site/.vitepress/**/*", "./site/components/**/*", "./src/**/*"],

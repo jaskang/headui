@@ -10,8 +10,8 @@ export default createPlugin(({ matchUtilities, addUtilities, theme }) => {
   /**
    * @type { primary: string, success: string, warning: string, danger: string, gray: string }
    */
-  const headui = theme('headui')
-  console.log('headui', headui)
+  // const headui = theme('headui')
+  // console.log('headui', headui)
   const flattenedColors = flattenColorPalette(colors)
   const colorKeys = Object.keys(flattenedColors)
     .filter(key => key.endsWith('500'))
@@ -23,11 +23,11 @@ export default createPlugin(({ matchUtilities, addUtilities, theme }) => {
     {
       'style-color': value => {
         return {
-          '--sc-subtle-hover': `var(--color-${value}-50)`,
-          '--sc-subtle': `var(--color-${value}-100)`,
+          '--sc-subtle': `var(--color-${value}-50)`,
+          '--sc-subtle-hover': `var(--color-${value}-100)`,
           '--sc-border': `var(--color-${value}-200)`,
-          '--sc-base-hover': `var(--color-${value}-500)`,
           '--sc-base': `var(--color-${value}-600)`,
+          '--sc-base-hover': `var(--color-${value}-500)`,
           '--sc-text': `var(--color-${value}-700)`,
         }
       },

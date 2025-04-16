@@ -25,9 +25,9 @@ const props = defineProps({
   <div class="space-y-1 p-1 text-sm">
     <template v-for="(item, i) in props.items">
       <div v-if="isDividerItem(item)" class="bg-line -mx-1 my-1 h-px" :key="item.type + i"></div>
-      <div v-else-if="isGroupItem(item)" class="border-line -mx-1 my-1 border-t border-b p-1" :key="item.label">
+      <div v-else-if="isGroupItem(item)" class="-mx-1 my-1 border-t border-b border-gray-200 p-1" :key="item.label">
         <slot name="group" :item="item">
-          <div class="text-mute-foreground py-1 px-2 font-medium">{{ item.label }}</div>
+          <div class="text-mute-foreground px-2 py-1 font-medium">{{ item.label }}</div>
         </slot>
         <div class="mt-1 space-y-1">
           <ListBoxItem

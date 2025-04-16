@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { InboxIcon } from '@heroicons/vue/24/outline'
-import { Button, Radio, RadioGroup, Switch } from '@/index'
+import { Button, Radio, RadioGroup, Switch } from '../../../src'
 defineOptions({ name: 'ButtonBooth' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ default?(_: {}): any }>()
@@ -23,8 +23,8 @@ const loading = ref(false)
 const disabled = ref(false)
 </script>
 <template>
-  <div class="border-line flex w-full flex-col rounded-md border md:flex-row-reverse">
-    <div class="border-line flex-1 space-y-4 p-6 md:border-l">
+  <div class="flex w-full flex-col rounded-md border border-gray-200 md:flex-row-reverse">
+    <div class="flex-1 space-y-4 border-gray-200 p-6 md:border-l">
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">variant:</div>
         <RadioGroup v-model:value="variant" class="grid flex-1 grid-cols-3 gap-2 py-2">

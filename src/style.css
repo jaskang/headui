@@ -7,6 +7,9 @@
   --headui-danger: red;
   --headui-gray: slate;
 
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-gray-700);
+
   --color-primary-50: var(--color-indigo-50);
   --color-primary-100: var(--color-indigo-100);
   --color-primary-200: var(--color-indigo-200);
@@ -61,21 +64,17 @@
   color: var(--color-foreground);
 }
 
-@utility scrollbar-hidden {
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
 @utility style-vars {
+  --sc-subtle: var(--color-gray-50);
   --sc-subtle-hover: var(--color-gray-100);
-  --sc-subtle: var(--color-gray-200);
   --sc-border: var(--color-gray-200);
-  --sc-base-hover: var(--color-gray-800);
   --sc-base: var(--color-gray-900);
+  --sc-base-hover: var(--color-gray-800);
   --sc-text: var(--color-gray-700);
 }
 @layer components {
   .style-default {
+    @apply style-vars border border-[var(--sc-border)] bg-white text-[var(--sc-text)] hover:not-disabled:bg-[var(--sc-subtle)];
   }
   .style-solid {
     @apply style-vars bg-[var(--sc-base)] text-white hover:not-disabled:bg-[var(--sc-base-hover)];
@@ -84,7 +83,7 @@
     @apply style-vars bg-[var(--sc-subtle)] text-[var(--sc-text)] hover:not-disabled:bg-[var(--sc-subtle-hover)];
   }
   .style-outline {
-    @apply style-vars border-1 border-[var(--sc-base)] bg-white text-[var(--sc-text)] hover:not-disabled:bg-[var(--sc-subtle-hover)];
+    @apply style-vars border border-[var(--sc-base)] bg-white text-[var(--sc-text)] hover:not-disabled:bg-[var(--sc-subtle)];
   }
   .style-text {
     @apply style-vars bg-white text-[var(--sc-base)] hover:not-disabled:text-[var(--sc-text)];

@@ -8,7 +8,7 @@ const { isDark } = useDataByTheme()
 </script>
 
 <template>
-  <div class="dark:bg-default-950/95 sticky top-0 z-40 w-full flex-none border-b bg-white/95 lg:z-50">
+  <div class="dark:bg-default-950/95 sticky top-0 z-40 w-full flex-none border-b border-gray-200 bg-white/95 lg:z-50">
     <div class="max-w-8xl mx-auto">
       <div class="mx-4 py-4 lg:mx-0 lg:px-8">
         <div class="relative flex items-center">
@@ -20,14 +20,14 @@ const { isDark } = useDataByTheme()
               <a
                 v-for="item in items"
                 :href="item.link"
-                class="text-sm font-semibold leading-6"
+                class="text-sm leading-6 font-semibold"
                 :class="[current === item.link ? 'text-primary-500' : 'text-default-900']"
               >
                 {{ item.title }}
               </a>
             </div>
 
-            <div class="ml-6 flex items-center border-l pl-6">
+            <div class="ml-6 flex items-center border-l border-gray-200 pl-6">
               <Switch v-model:value="isDark">
                 <template #open>
                   <svg viewBox="0 0 24 24" fill="none" class="h-3 w-3">

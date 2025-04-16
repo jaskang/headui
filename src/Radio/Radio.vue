@@ -38,9 +38,7 @@ const clickHandler = () => {
     >
       <span
         class="block h-4 w-4 rounded-full border transition-all"
-        :class="[
-          checked ? 'border-primary bg-primary text-white' : 'border-input-border bg-input-background text-transparent',
-        ]"
+        :class="[checked ? 'border-primary bg-primary-500 text-white' : 'border-gray-200 bg-white text-transparent']"
       >
         <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <circle cx="8" cy="8" r="3" />
