@@ -33,36 +33,36 @@ const props = defineProps({
       {
         pure: '',
         default: `style-default shadow-sm`,
-        outline: `border-2 shadow-sm ${
+        outline: `style-outline shadow-sm ${
           {
-            primary: 'style-outline',
-            success: 'style-outline',
-            warning: 'style-outline',
-            danger: 'style-outline',
+            primary: 'style-color-primary',
+            success: 'style-color-success',
+            warning: 'style-color-warning',
+            danger: 'style-color-danger',
           }[props.color]
         }`,
-        solid: `shadow-sm ${
+        solid: `style-solid shadow-sm ${
           {
-            primary: 'style-solid',
-            success: 'style-solid',
-            warning: 'style-solid',
-            danger: 'style-solid',
+            primary: 'style-color-primary',
+            success: 'style-color-success',
+            warning: 'style-color-warning',
+            danger: 'style-color-danger',
           }[props.color]
         }`,
-        soft: `shadow-sm ${
+        soft: `style-soft shadow-sm ${
           {
-            primary: 'style-soft',
-            success: 'style-soft',
-            warning: 'style-soft',
-            danger: 'style-soft',
+            primary: 'style-color-primary',
+            success: 'style-color-success',
+            warning: 'style-color-warning',
+            danger: 'style-color-danger',
           }[props.color || 'primary']
         }`,
-        text: `${
+        text: `style-text ${
           {
-            primary: 'style-text',
-            success: 'style-text',
-            warning: 'style-text',
-            danger: 'style-text',
+            primary: 'style-color-primary',
+            success: 'style-color-success',
+            warning: 'style-color-warning',
+            danger: 'style-color-danger',
           }[props.color || 'primary']
         }`,
       }[props.variant],
