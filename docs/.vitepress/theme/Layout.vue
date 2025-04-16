@@ -47,17 +47,21 @@ watchEffect(
         '--color-primary-900': `var(--color-${primary.value}-900)`,
         '--color-primary-950': `var(--color-${primary.value}-950)`,
 
-        '--color-gray-50': `var(--color-${gray.value}-50)`,
-        '--color-gray-100': `var(--color-${gray.value}-100)`,
-        '--color-gray-200': `var(--color-${gray.value}-200)`,
-        '--color-gray-300': `var(--color-${gray.value}-300)`,
-        '--color-gray-400': `var(--color-${gray.value}-400)`,
-        '--color-gray-500': `var(--color-${gray.value}-500)`,
-        '--color-gray-600': `var(--color-${gray.value}-600)`,
-        '--color-gray-700': `var(--color-${gray.value}-700)`,
-        '--color-gray-800': `var(--color-${gray.value}-800)`,
-        '--color-gray-900': `var(--color-${gray.value}-900)`,
-        '--color-gray-950': `var(--color-${gray.value}-950)`,
+        ...(gray.value === 'gray'
+          ? {}
+          : {
+              '--color-gray-50': `var(--color-${gray.value}-50)`,
+              '--color-gray-100': `var(--color-${gray.value}-100)`,
+              '--color-gray-200': `var(--color-${gray.value}-200)`,
+              '--color-gray-300': `var(--color-${gray.value}-300)`,
+              '--color-gray-400': `var(--color-${gray.value}-400)`,
+              '--color-gray-500': `var(--color-${gray.value}-500)`,
+              '--color-gray-600': `var(--color-${gray.value}-600)`,
+              '--color-gray-700': `var(--color-${gray.value}-700)`,
+              '--color-gray-800': `var(--color-${gray.value}-800)`,
+              '--color-gray-900': `var(--color-${gray.value}-900)`,
+              '--color-gray-950': `var(--color-${gray.value}-950)`,
+            }),
       }
       const dark = {
         '--color-foreground': `var(--color-${gray.value}-700)`,
@@ -75,17 +79,21 @@ watchEffect(
         '--color-primary-900': `var(--color-${primary.value}-900)`,
         '--color-primary-950': `var(--color-${primary.value}-950)`,
 
-        '--color-gray-50': `var(--color-${gray.value}-50)`,
-        '--color-gray-100': `var(--color-${gray.value}-100)`,
-        '--color-gray-200': `var(--color-${gray.value}-200)`,
-        '--color-gray-300': `var(--color-${gray.value}-300)`,
-        '--color-gray-400': `var(--color-${gray.value}-400)`,
-        '--color-gray-500': `var(--color-${gray.value}-500)`,
-        '--color-gray-600': `var(--color-${gray.value}-600)`,
-        '--color-gray-700': `var(--color-${gray.value}-700)`,
-        '--color-gray-800': `var(--color-${gray.value}-800)`,
-        '--color-gray-900': `var(--color-${gray.value}-900)`,
-        '--color-gray-950': `var(--color-${gray.value}-950)`,
+        ...(gray.value === 'gray'
+          ? {}
+          : {
+              '--color-gray-50': `var(--color-${gray.value}-50)`,
+              '--color-gray-100': `var(--color-${gray.value}-100)`,
+              '--color-gray-200': `var(--color-${gray.value}-200)`,
+              '--color-gray-300': `var(--color-${gray.value}-300)`,
+              '--color-gray-400': `var(--color-${gray.value}-400)`,
+              '--color-gray-500': `var(--color-${gray.value}-500)`,
+              '--color-gray-600': `var(--color-${gray.value}-600)`,
+              '--color-gray-700': `var(--color-${gray.value}-700)`,
+              '--color-gray-800': `var(--color-${gray.value}-800)`,
+              '--color-gray-900': `var(--color-${gray.value}-900)`,
+              '--color-gray-950': `var(--color-${gray.value}-950)`,
+            }),
       }
       const themeVars: Record<string, string> = isDark.value ? dark : light
       Object.keys(themeVars).forEach(key => {

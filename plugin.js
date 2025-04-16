@@ -22,14 +22,16 @@ export default createPlugin(({ matchUtilities, addUtilities, theme }) => {
   matchUtilities(
     {
       'style-color': value => {
-        return {
-          '--sc-subtle': `var(--color-${value}-50)`,
-          '--sc-subtle-hover': `var(--color-${value}-100)`,
-          '--sc-border': `var(--color-${value}-200)`,
-          '--sc-base': `var(--color-${value}-600)`,
-          '--sc-base-hover': `var(--color-${value}-500)`,
-          '--sc-text': `var(--color-${value}-700)`,
-        }
+        return isGray(value)
+          ? {}
+          : {
+              '--sc-subtle': `var(--color-${value}-50)`,
+              '--sc-subtle-hover': `var(--color-${value}-100)`,
+              '--sc-border': `var(--color-${value}-200)`,
+              '--sc-base': `var(--color-${value}-500)`,
+              '--sc-base-hover': `var(--color-${value}-600)`,
+              '--sc-text': `var(--color-${value}-600)`,
+            }
       },
     },
     {
