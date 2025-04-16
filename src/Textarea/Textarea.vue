@@ -56,10 +56,10 @@ const onInput = (e: Event) => {
       noBorder ? 'border-transparent dark:border-transparent' : 'focus:ring-1',
       !noBorder &&
         {
-          normal: 'border-input-border focus:border-primary focus:ring-primary',
-          success: 'border-success focus:border-success focus:ring-success',
-          warning: 'border-warning focus:border-warning focus:ring-warning',
-          danger: 'border-danger focus:border-danger focus:ring-danger',
+          normal: 'focus:border-primary focus:ring-primary-500 border-gray-200',
+          success: 'border-success-500 focus:border-success-500 focus:ring-success-500',
+          warning: 'border-warning-500 focus:border-warning-500 focus:ring-warning-500',
+          danger: 'border-danger-500 focus:border-danger-500 focus:ring-danger-500',
         }[props.status],
     ]"
     :style="{

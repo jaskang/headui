@@ -36,16 +36,16 @@ const label = computed(() => currItem.value?.label || '')
   <Listbox :model-value="modelValue" @update:model-value="setModelValue">
     <div class="relative" v-bind="$attrs">
       <ListboxButton
-        class="border-input-border focus:border-primary focus:ring-primary bg-input-background flex h-9 w-full cursor-pointer items-center gap-1 rounded-md border px-1 text-left text-sm shadow-sm outline-none focus:z-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+        class="focus:border-primary focus:ring-primary-500 flex h-9 w-full cursor-pointer items-center gap-1 rounded-md border border-gray-200 bg-white px-1 text-left text-sm shadow-sm outline-none focus:z-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
         :disabled
       >
-        <div class="flex flex-1 items-center overflow-hidden text-nowrap pl-2">
+        <div class="flex flex-1 items-center overflow-hidden pl-2 text-nowrap">
           <slot v-if="label" name="label" :selected="false" :item="currItem" :placeholder>
-            <span class="w-full text-ellipsis text-nowrap">
+            <span class="w-full text-nowrap text-ellipsis">
               {{ label }}
             </span>
           </slot>
-          <span v-else class="text-mute-foreground">
+          <span v-else class="text-gray-400">
             {{ placeholder }}
           </span>
         </div>
@@ -57,7 +57,7 @@ const label = computed(() => currItem.value?.label || '')
         leave-to-class="opacity-0"
       >
         <ListboxOptions
-          class="bg-background ring-line absolute z-[999] mt-1 max-h-60 w-full space-y-1 overflow-auto rounded-md p-1 text-sm ring-1 shadow-lg focus:outline-none"
+          class="bg-background ring-line absolute z-[999] mt-1 max-h-60 w-full space-y-1 overflow-auto rounded-md p-1 text-sm shadow-lg ring-1 focus:outline-none"
         >
           <ListboxOption
             v-for="item in options"
@@ -71,9 +71,9 @@ const label = computed(() => currItem.value?.label || '')
               class="relative flex min-h-9 w-full cursor-pointer items-center gap-1 overflow-hidden rounded transition-colors"
               :class="[disabled ? 'pointer-events-none opacity-50' : '', active ? 'bg-input-background-hover' : '']"
             >
-              <div class="flex flex-1 items-center overflow-hidden text-nowrap pl-2">
+              <div class="flex flex-1 items-center overflow-hidden pl-2 text-nowrap">
                 <slot name="label" :selected="selected" :item="item">
-                  <span class="w-full text-ellipsis text-nowrap" :class="[selected ? 'font-medium' : '']">
+                  <span class="w-full text-nowrap text-ellipsis" :class="[selected ? 'font-medium' : '']">
                     {{ item.label }}
                   </span>
                 </slot>
@@ -88,7 +88,7 @@ const label = computed(() => currItem.value?.label || '')
   <!-- <Popover trigger="click" placement="bottom-start" ref="popoverRef" size-mode="min-width" @change="v => (focused = v)">
     <button
       ref="buttonRef"
-      class="border-input-border focus:border-primary focus:ring-primary bg-input-background flex h-9 cursor-pointer items-center gap-1 rounded-md border px-1 text-left text-sm shadow-sm outline-none focus:z-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+      class="border-gray-200 focus:border-primary focus:ring-primary bg-input-background flex h-9 cursor-pointer items-center gap-1 rounded-md border px-1 text-left text-sm shadow-sm outline-none focus:z-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
       v-bind="$attrs"
       :disabled
     >

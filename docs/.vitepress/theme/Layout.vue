@@ -17,74 +17,75 @@ watchEffect(
   () => {
     if (isBrowser()) {
       const light = {
-        '--tui-default': `var(--${gray.value}-300)`,
-        '--tui-default-50': `var(--${gray.value}-50)`,
-        '--tui-default-100': `var(--${gray.value}-100)`,
-        '--tui-default-200': `var(--${gray.value}-200)`,
-        '--tui-default-300': `var(--${gray.value}-300)`,
-        '--tui-default-400': `var(--${gray.value}-400)`,
-        '--tui-default-500': `var(--${gray.value}-500)`,
-        '--tui-default-600': `var(--${gray.value}-600)`,
-        '--tui-default-700': `var(--${gray.value}-700)`,
-        '--tui-default-800': `var(--${gray.value}-800)`,
-        '--tui-default-900': `var(--${gray.value}-900)`,
-        '--tui-default-950': `var(--${gray.value}-950)`,
-        '--tui-default-foreground': `var(--${gray.value}-700)`,
-        '--tui-default-background': `var(--white)`,
+        // --color-background: var(--color-white);
+        // --color-foreground: var(--color-gray-700);
 
-        '--tui-primary': `var(--${primary.value}-500)`,
-        '--tui-primary-50': `var(--${primary.value}-50)`,
-        '--tui-primary-100': `var(--${primary.value}-100)`,
-        '--tui-primary-200': `var(--${primary.value}-200)`,
-        '--tui-primary-300': `var(--${primary.value}-300)`,
-        '--tui-primary-400': `var(--${primary.value}-400)`,
-        '--tui-primary-500': `var(--${primary.value}-500)`,
-        '--tui-primary-600': `var(--${primary.value}-600)`,
-        '--tui-primary-700': `var(--${primary.value}-700)`,
-        '--tui-primary-800': `var(--${primary.value}-800)`,
-        '--tui-primary-900': `var(--${primary.value}-900)`,
-        '--tui-primary-950': `var(--${primary.value}-950)`,
-        '--tui-primary-foreground': `var(--white)`,
+        // --color-primary-50: var(--color-indigo-50);
+        // --color-primary-100: var(--color-indigo-100);
+        // --color-primary-200: var(--color-indigo-200);
+        // --color-primary-300: var(--color-indigo-300);
+        // --color-primary-400: var(--color-indigo-400);
+        // --color-primary-500: var(--color-indigo-500);
+        // --color-primary-600: var(--color-indigo-600);
+        // --color-primary-700: var(--color-indigo-700);
+        // --color-primary-800: var(--color-indigo-800);
+        // --color-primary-900: var(--color-indigo-900);
+        // --color-primary-950: var(--color-indigo-950);
 
-        '--tui-background': `var(--tui-default-background)`,
-        '--tui-foreground': `var(--tui-default-foreground)`,
-        '--tui-border': `var(--${gray.value}-200)`,
-        '--tw-ring-color': `var(--tui-border)`,
+        '--color-foreground': `var(--color-${gray.value}-700)`,
+        '--color-background': `var(--color-white)`,
+
+        '--color-primary-50': `var(--color-${primary.value}-50)`,
+        '--color-primary-100': `var(--color-${primary.value}-100)`,
+        '--color-primary-200': `var(--color-${primary.value}-200)`,
+        '--color-primary-300': `var(--color-${primary.value}-300)`,
+        '--color-primary-400': `var(--color-${primary.value}-400)`,
+        '--color-primary-500': `var(--color-${primary.value}-500)`,
+        '--color-primary-600': `var(--color-${primary.value}-600)`,
+        '--color-primary-700': `var(--color-${primary.value}-700)`,
+        '--color-primary-800': `var(--color-${primary.value}-800)`,
+        '--color-primary-900': `var(--color-${primary.value}-900)`,
+        '--color-primary-950': `var(--color-${primary.value}-950)`,
+
+        '--color-gray-50': `var(--color-${gray.value}-50)`,
+        '--color-gray-100': `var(--color-${gray.value}-100)`,
+        '--color-gray-200': `var(--color-${gray.value}-200)`,
+        '--color-gray-300': `var(--color-${gray.value}-300)`,
+        '--color-gray-400': `var(--color-${gray.value}-400)`,
+        '--color-gray-500': `var(--color-${gray.value}-500)`,
+        '--color-gray-600': `var(--color-${gray.value}-600)`,
+        '--color-gray-700': `var(--color-${gray.value}-700)`,
+        '--color-gray-800': `var(--color-${gray.value}-800)`,
+        '--color-gray-900': `var(--color-${gray.value}-900)`,
+        '--color-gray-950': `var(--color-${gray.value}-950)`,
       }
       const dark = {
-        '--tui-default': `var(--${gray.value}-700)`,
-        '--tui-default-50': `var(--${gray.value}-900)`,
-        '--tui-default-100': `var(--${gray.value}-800)`,
-        '--tui-default-200': `var(--${gray.value}-700)`,
-        '--tui-default-300': `var(--${gray.value}-600)`,
-        '--tui-default-400': `var(--${gray.value}-500)`,
-        '--tui-default-500': `var(--${gray.value}-400)`,
-        '--tui-default-600': `var(--${gray.value}-300)`,
-        '--tui-default-700': `var(--${gray.value}-200)`,
-        '--tui-default-800': `var(--${gray.value}-100)`,
-        '--tui-default-900': `var(--${gray.value}-50)`,
-        '--tui-default-950': `var(--white)`,
-        '--tui-default-foreground': `var(--${gray.value}-400)`,
-        '--tui-default-background': `var(--${gray.value}-950)`,
+        '--color-foreground': `var(--color-${gray.value}-700)`,
+        '--color-background': `var(--color-white)`,
 
-        '--tui-primary': `var(--${primary.value}-500)`,
-        '--tui-primary-50': `var(--${primary.value}-950)`,
-        '--tui-primary-100': `var(--${primary.value}-900)`,
-        '--tui-primary-200': `var(--${primary.value}-800)`,
-        '--tui-primary-300': `var(--${primary.value}-700)`,
-        '--tui-primary-400': `var(--${primary.value}-600)`,
-        '--tui-primary-500': `var(--${primary.value}-500)`,
-        '--tui-primary-600': `var(--${primary.value}-400)`,
-        '--tui-primary-700': `var(--${primary.value}-300)`,
-        '--tui-primary-800': `var(--${primary.value}-200)`,
-        '--tui-primary-900': `var(--${primary.value}-100)`,
-        '--tui-primary-950': `var(--${primary.value}-50)`,
-        '--tui-primary-foreground': `var(--white)`,
+        '--color-primary-50': `var(--color-${primary.value}-50)`,
+        '--color-primary-100': `var(--color-${primary.value}-100)`,
+        '--color-primary-200': `var(--color-${primary.value}-200)`,
+        '--color-primary-300': `var(--color-${primary.value}-300)`,
+        '--color-primary-400': `var(--color-${primary.value}-400)`,
+        '--color-primary-500': `var(--color-${primary.value}-500)`,
+        '--color-primary-600': `var(--color-${primary.value}-600)`,
+        '--color-primary-700': `var(--color-${primary.value}-700)`,
+        '--color-primary-800': `var(--color-${primary.value}-800)`,
+        '--color-primary-900': `var(--color-${primary.value}-900)`,
+        '--color-primary-950': `var(--color-${primary.value}-950)`,
 
-        '--tui-background': `var(--tui-default-background)`,
-        '--tui-foreground': `var(--tui-default-foreground)`,
-        '--tui-border': `var(--${gray.value}-700)`,
-        '--tw-ring-color': `var(--tui-border)`,
+        '--color-gray-50': `var(--color-${gray.value}-50)`,
+        '--color-gray-100': `var(--color-${gray.value}-100)`,
+        '--color-gray-200': `var(--color-${gray.value}-200)`,
+        '--color-gray-300': `var(--color-${gray.value}-300)`,
+        '--color-gray-400': `var(--color-${gray.value}-400)`,
+        '--color-gray-500': `var(--color-${gray.value}-500)`,
+        '--color-gray-600': `var(--color-${gray.value}-600)`,
+        '--color-gray-700': `var(--color-${gray.value}-700)`,
+        '--color-gray-800': `var(--color-${gray.value}-800)`,
+        '--color-gray-900': `var(--color-${gray.value}-900)`,
+        '--color-gray-950': `var(--color-${gray.value}-950)`,
       }
       const themeVars: Record<string, string> = isDark.value ? dark : light
       Object.keys(themeVars).forEach(key => {
