@@ -141,7 +141,7 @@ defineExpose({
     >
       <div
         ref="thumbXEl"
-        :class="[thumbClass, 'h-[6px] w-[--thumb-width]']"
+        :class="[thumbClass, 'h-[6px] w-[var(--thumb-width)]']"
         :style="{
           transform: `translate3d(${offsetX}px, 0px, 0px)`,
         }"
@@ -155,7 +155,7 @@ defineExpose({
     >
       <div
         ref="thumbYEl"
-        :class="[thumbClass, 'h-[--thumb-height] w-[6px]']"
+        :class="[thumbClass, 'h-[var(--thumb-height)] w-[6px]']"
         :style="{
           transform: `translate3d(0px, ${offsetY}px, 0px)`,
         }"
