@@ -57,7 +57,7 @@ const label = computed(() => currItem.value?.label || '')
         leave-to-class="opacity-0"
       >
         <ListboxOptions
-          class="bg-background ring-line absolute z-[999] mt-1 max-h-60 w-full space-y-1 overflow-auto rounded-md p-1 text-sm shadow-lg ring-1 focus:outline-none"
+          class="bg-background absolute z-[999] mt-1 max-h-60 w-full space-y-1 overflow-auto rounded-md p-1 text-sm shadow-lg ring-1 ring-gray-200 focus:outline-none"
         >
           <ListboxOption
             v-for="item in options"
@@ -105,7 +105,7 @@ const label = computed(() => currItem.value?.label || '')
       <ChevronDownIcon class="mr-1 h-4 w-4 shrink-0"></ChevronDownIcon>
     </button>
     <template #content>
-      <ScrollArea class="ring-line flex max-h-80 flex-col rounded text-sm ring-1 shadow-md" mode="y">
+      <ScrollArea class="ring-gray-200 flex max-h-80 flex-col rounded text-sm ring-1 shadow-md" mode="y">
         <ListBox :items="options" index-key="value" style="" @click="selectHandler">
           <template #item="{ item }">
             <div class="flex min-h-9 w-full items-center gap-1">

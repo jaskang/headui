@@ -17,11 +17,11 @@ defineProps({
   <div
     :data-disabled="item.disabled"
     @click="emit('click', item)"
-    class="hover:bg-input-background-hover relative w-full cursor-pointer items-center overflow-hidden rounded text-sm transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+    class="relative w-full cursor-pointer items-center overflow-hidden rounded text-sm transition-colors hover:bg-gray-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
   >
     <slot :item="item">
-      <div class="flex w-full items-center py-1.5 px-2">
-        <span class="flex-1 overflow-hidden text-ellipsis text-nowrap">
+      <div class="flex w-full items-center px-2 py-1.5">
+        <span class="flex-1 overflow-hidden text-nowrap text-ellipsis">
           {{ item.label }}
         </span>
       </div>

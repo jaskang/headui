@@ -17,20 +17,6 @@ watchEffect(
   () => {
     if (isBrowser()) {
       const light = {
-        // --color-background: var(--color-white);
-        // --color-foreground: var(--color-gray-700);
-
-        // --color-primary-50: var(--color-indigo-50);
-        // --color-primary-100: var(--color-indigo-100);
-        // --color-primary-200: var(--color-indigo-200);
-        // --color-primary-300: var(--color-indigo-300);
-        // --color-primary-400: var(--color-indigo-400);
-        // --color-primary-500: var(--color-indigo-500);
-        // --color-primary-600: var(--color-indigo-600);
-        // --color-primary-700: var(--color-indigo-700);
-        // --color-primary-800: var(--color-indigo-800);
-        // --color-primary-900: var(--color-indigo-900);
-        // --color-primary-950: var(--color-indigo-950);
 
         '--color-foreground': `var(--color-${gray.value}-700)`,
         '--color-background': `var(--color-white)`,

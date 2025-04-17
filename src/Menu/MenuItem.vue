@@ -20,8 +20,8 @@ const elRef = ref<HTMLElement>()
     :href="item.link"
     :target="item.target"
     :class="[
-      'group inline-flex h-9 items-center justify-start whitespace-nowrap rounded-md px-3 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50',
-      current === item.key ? 'bg-primary text-white' : 'text-default hover:bg-input-background-hover',
+      'group inline-flex h-9 items-center justify-start rounded-md px-3 text-sm font-medium whitespace-nowrap transition-colors disabled:pointer-events-none disabled:opacity-50',
+      current === item.key ? 'bg-primary-500 text-white' : 'text-default hover:bg-gray-100',
       item.disabled ? '' : 'cursor-pointer',
     ]"
   >
@@ -49,7 +49,7 @@ const elRef = ref<HTMLElement>()
     :reference="elRef"
   >
     <template #content>
-      <div class="z-popover ring-line ring-opacity-50 bg-background rounded ring-1 shadow-md">
+      <div class="z-popover ring-opacity-50 bg-background rounded shadow-md ring-1 ring-gray-200">
         <Menu :items="item.children"></Menu>
       </div>
     </template>

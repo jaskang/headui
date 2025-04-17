@@ -90,7 +90,7 @@ useResizeObserver(contentEl, entries => {
 })
 
 const thumbClass =
-  'relative flex-1 transition-opacity cursor-pointer rounded-[10px] bg-default-900/30 opacity-0 group-hover:opacity-100 before:absolute before:top-1/2 before:left-1/2 before:h-full  before:w-full before:min-h-[44px] before:min-w-[44px] before:-translate-x-1/2 before:-translate-y-1/2 before:content-[""] hover:bg-default-900/50'
+  'relative flex-1 transition-opacity cursor-pointer rounded-[10px] bg-gray-900/30 opacity-0 group-hover:opacity-100 before:absolute before:top-1/2 before:left-1/2 before:h-full  before:w-full before:min-h-[44px] before:min-w-[44px] before:-translate-x-1/2 before:-translate-y-1/2 before:content-[""] hover:bg-gray-900/50'
 
 defineExpose({
   viewportEl,
@@ -136,7 +136,7 @@ defineExpose({
 
     <div
       ref="scrollbarXEl"
-      class="absolute bottom-0 left-0 right-0 flex touch-none select-none flex-col overflow-hidden py-[2px]"
+      class="absolute right-0 bottom-0 left-0 flex touch-none flex-col overflow-hidden py-[2px] select-none"
       :class="[showX ? 'block' : 'hidden']"
     >
       <div
@@ -150,7 +150,7 @@ defineExpose({
 
     <div
       ref="scrollbarYEl"
-      class="absolute bottom-0 right-0 top-0 flex touch-none select-none overflow-hidden px-[2px]"
+      class="absolute top-0 right-0 bottom-0 flex touch-none overflow-hidden px-[2px] select-none"
       :class="[showY ? 'block' : 'hidden']"
     >
       <div
