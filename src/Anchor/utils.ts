@@ -18,13 +18,6 @@ export function flattenItems(items: IAnchorItem[]) {
   return flatList
 }
 
-// 找到 current 在 items 中的位置，每个 item 占 1rem ，有 children 需要递归展开
-export const getAnchorOffset = (items: IAnchorItem[], id: string = '') => {
-  if (!id) return -1
-  const fullItems = flattenItems(items)
-  return fullItems.findIndex(item => item.id === id)
-}
-
 export function useAnchor(
   headers: Ref<IAnchorItem[]>,
   options: { offset?: number; defaultValue?: string; container?: Ref<HTMLElement | undefined> } = {}

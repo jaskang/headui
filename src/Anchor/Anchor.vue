@@ -2,51 +2,73 @@
 import { computed, type PropType } from 'vue'
 import { IndentList } from '../Base'
 import type { IAnchorItem } from './types'
-import { getAnchorOffset } from './utils'
 
 defineOptions({ name: 'Anchor' })
-const emit = defineEmits<{ change: [item: IAnchorItem, deep: number] }>()
+const emit = defineEmits<{ change: [index: number[]] }>()
 const props = defineProps({
-  current: String,
+  current: {
+    type: Array as PropType<number[]>,
+  },
   items: {
     type: Array as PropType<IAnchorItem[]>,
     default: () => [],
   },
+  parent: {
+    type: Array as PropType<number[]>,
+    default: () => [],
+  },
 })
 
-const selectHandler = (item: IAnchorItem, deep: number) => {
-  emit('change', item, deep)
+const selectHandler = (item: IAnchorItem, index: number) => {
+  emit('change', [...props.parent, index])
 }
 
-const inkOffset = computed(() => {
-  const offset = getAnchorOffset(props.items, props.current)
-  return offset >= 0 ? `calc(${offset} * 1.75rem)` : ''
-})
+const itemHref = (item: IAnchorItem) => {
+  if (item.link) {
+    return item.link
+  }
+  if (item.id) {
+    return `#${item.id}`
+  }
+  return '#'
+}
+const paddingLeft = (deep: number) => {
+  return ['pl-4', 'pl-8', 'pl-12', 'pl-16'][deep] || 'pl-10'
+}
+const isActive = (index: number) => {
+  if (props.current && props.current.length - props.parent.length === 1) {
+    return props.current[props.parent.length] === index
+  }
+  return false
+}
 </script>
 <template>
-  <div class="relative">
-    <IndentList class="border-l-2 border-gray-200 text-sm leading-6" :items :current>
-      <template #item="{ item, deep }">
-        <div
-          class="group cursor-pointer py-1"
-          :style="{ paddingLeft: deep + 1 + 'rem' }"
-          @click="selectHandler(item, deep)"
-        >
-          <a
-            class="hover:text-foreground-dark data-[active=true]:text-primary block text-sm no-underline data-[active=true]:font-medium"
-            :data-active="current === item.id"
-            :href="item.link"
-            :target="item.target"
-          >
-            {{ item.title || item.id }}
-          </a>
-        </div>
-      </template>
-    </IndentList>
-    <div
-      v-if="inkOffset"
-      class="bg-primary absolute top-1 left-0 h-5 w-[2px] translate-y-[var(--ink-offset)] rounded-sm transition-all"
-      :style="{ '--ink-offset': inkOffset }"
-    ></div>
-  </div>
+  <ul class="flex flex-col gap-2 border-l border-gray-200 dark:border-gray-700">
+    <li
+      class="-ml-px flex flex-col items-start gap-2"
+      v-for="(item, index) in items"
+      :key="[...parent, index].join('-')"
+    >
+      <a
+        :class="[
+          'inline-block border-l border-transparent text-sm/6 text-gray-600',
+          'hover:border-gray-950 hover:text-gray-950',
+          'aria-selected:border-gray-950 aria-selected:text-gray-950',
+          paddingLeft(parent.length),
+        ]"
+        :aria-selected="isActive(index)"
+        type="button"
+        :href="itemHref(item)"
+        @click="selectHandler(item, index)"
+      >
+        {{ item.title }}
+      </a>
+      <Anchor
+        v-if="item.children && item.children.length > 0"
+        :items="item.children"
+        :current="current"
+        :parent="[...parent, index]"
+      />
+    </li>
+  </ul>
 </template>

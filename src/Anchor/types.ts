@@ -4,14 +4,16 @@ export type IAnchorItem = {
    */
   title: string
   /**
-   * 链接对应的 id
+   * The slug of the header
+   *
+   * Typically the `id` attr of the header anchor
    */
   id: string
   /**
    * 锚点链接
    * 通常使用 `#${id}` 作为锚点
    */
-  link: string
+  link?: string
   /**
    * 该属性指定在何处显示链接的资源
    */
