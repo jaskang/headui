@@ -8,6 +8,7 @@ const emit = defineEmits<{ change: [index: number[]] }>()
 const props = defineProps({
   current: {
     type: Array as PropType<number[]>,
+    default: () => [],
   },
   items: {
     type: Array as PropType<IAnchorItem[]>,

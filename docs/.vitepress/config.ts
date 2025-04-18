@@ -38,32 +38,44 @@ export default defineConfigWithTheme<ThemeConfig>({
       { title: 'Components', link: '/components/button', activeMatch: '/components/' },
     ],
 
-    sidebar: {
-      基础: [
-        { title: 'Button', link: '/components/button' },
-        { title: 'Anchor', link: '/components/anchor' },
-        { title: 'ScrollArea', link: '/components/scroll-area' },
-      ],
-      表单: [
-        { title: 'Checkbox', link: '/components/checkbox' },
-        { title: 'Radio', link: '/components/radio' },
-        { title: 'Input', link: '/components/input' },
-        { title: 'Textarea', link: '/components/textarea' },
-        { title: 'Select', link: '/components/select' },
-        { title: 'Switch', link: '/components/switch' },
-      ],
-      展示: [
-        { title: 'Menu', link: '/components/menu' },
-        { title: 'Tab', link: '/components/tab' },
-        { title: 'Avatar', link: '/components/avatar' },
-        { title: 'Badge', link: '/components/badge' },
-        { title: 'ListBox', link: '/components/list-box' },
-      ],
-      反馈: [
-        { title: 'Popover', link: '/components/popover' },
-        { title: 'Tooltip', link: '/components/tooltip' },
-      ],
-    },
+    sidebar: [
+      {
+        text: '基础',
+        items: [
+          { title: 'Button', link: '/components/button' },
+          { title: 'Anchor', link: '/components/anchor' },
+          { title: 'ScrollArea', link: '/components/scroll-area' },
+        ],
+      },
+      {
+        text: '表单',
+        items: [
+          { title: 'Checkbox', link: '/components/checkbox' },
+          { title: 'Radio', link: '/components/radio' },
+          { title: 'Input', link: '/components/input' },
+          { title: 'Textarea', link: '/components/textarea' },
+          { title: 'Select', link: '/components/select' },
+          { title: 'Switch', link: '/components/switch' },
+        ],
+      },
+      {
+        text: '展示',
+        items: [
+          { title: 'Menu', link: '/components/menu' },
+          { title: 'Tab', link: '/components/tab' },
+          { title: 'Avatar', link: '/components/avatar' },
+          { title: 'Badge', link: '/components/badge' },
+          { title: 'ListBox', link: '/components/list-box' },
+        ],
+      },
+      {
+        text: '反馈',
+        items: [
+          { title: 'Popover', link: '/components/popover' },
+          { title: 'Tooltip', link: '/components/tooltip' },
+        ],
+      },
+    ],
   },
   vite: {
     plugins: [jsx(), demo(), tailwindcss()],

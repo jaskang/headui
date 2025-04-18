@@ -3,12 +3,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsxImportSource": "vue",
+    "allowJs": true,
     "types": ["vite/client"],
     "paths": {
       "@/*": ["./src/*"],
       "tailv": ["./src/index.ts"]
     }
   },
-  "include": ["./env.d.ts", "./site/.vitepress/**/*", "./site/components/**/*", "./src/**/*"],
+  "include": ["./env.d.ts", "./docs/.vitepress/**/*", "./docs/components/**/*", "./src/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
