@@ -2,9 +2,10 @@
 import { useRoute } from 'vitepress'
 import { computed, provide, useSlots, watch } from 'vue'
 import { useData } from 'vitepress'
-import { useSidebar, useCloseSidebarOnEscape } from 'vitepress/dist/client/theme-default/composables/sidebar'
-import Header from './components/Header.vue'
-import Sidebar from './components/Sidebar.vue'
+import { useSidebar, useCloseSidebarOnEscape } from './composables/defaultTheme'
+import VPHeader from './components/VPHeader.vue'
+import VPSidebar from './components/VPSidebar.vue'
+import VPContent from './components/VPContent.vue'
 const { isOpen: isSidebarOpen, open: openSidebar, close: closeSidebar } = useSidebar()
 
 const route = useRoute()
@@ -18,7 +19,7 @@ const { frontmatter } = useData()
 <template>
   <div v-if="frontmatter.layout !== false" class="isolate" :class="frontmatter.pageClass">
     <div class="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10">
-      <Header />
+      <VPHeader />
       <!-- <MobileNav header={<Header />} breadcrumb={breadcrumb}>
           <DocsSidebar />
         </MobileNav> -->
@@ -31,7 +32,7 @@ const { frontmatter } = useData()
           <div
             class="sticky top-14.25 bottom-0 left-0 h-full max-h-[calc(100dvh-(var(--spacing)*14.25))] w-2xs overflow-y-auto p-6"
           >
-            <Sidebar />
+            <VPSidebar />
           </div>
         </div>
       </div>
@@ -42,7 +43,9 @@ const { frontmatter } = useData()
       ></div>
 
       <!-- {/* Main content area */} -->
-      <div class="relative row-start-1 grid grid-cols-subgrid lg:col-start-3">{children}</div>
+      <div class="relative row-start-1 grid grid-cols-subgrid lg:col-start-3">
+        <VPContent />
+      </div>
 
       <!-- {/* Candy cane */} -->
       <div

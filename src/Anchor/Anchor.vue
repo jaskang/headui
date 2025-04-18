@@ -53,8 +53,8 @@ const isActive = (index: number) => {
       <a
         :class="[
           'inline-block border-l border-transparent text-sm/6 text-gray-600',
-          'hover:border-gray-950 hover:text-gray-950',
-          'aria-selected:border-gray-950 aria-selected:text-gray-950',
+          'hover:text-primary-500 hover:border-primary-500',
+          'aria-selected:text-primary-500 aria-selected:border-primary-500 aria-selected:font-semibold',
           paddingLeft(parent.length),
         ]"
         :aria-selected="isActive(index)"

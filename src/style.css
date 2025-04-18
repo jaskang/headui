@@ -1,6 +1,10 @@
 @plugin '../plugin.js';
 
 @theme {
+  --default-font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
   --headui-primary: indigo;
   --headui-success: green;
   --headui-warning: amber;
@@ -98,6 +102,6 @@
     @apply style-vars border border-[var(--sc-base)] bg-white text-[var(--sc-text)] hover:not-disabled:bg-[var(--sc-subtle)];
   }
   .style-text {
-    @apply style-vars bg-white text-[var(--sc-base)] hover:not-disabled:text-[var(--sc-text)];
+    @apply style-vars bg-transparent text-[var(--sc-base)] hover:not-disabled:text-[var(--sc-text)];
   }
 }
