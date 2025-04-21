@@ -1,6 +1,7 @@
 import { computed, ref } from 'vue'
+import { defineStore } from 'pinia'
 
-export function useTheme() {
+export const useThemeStore = defineStore('theme', () => {
   const primary = ref('blue')
   const gray = ref('gray')
 
@@ -43,4 +44,4 @@ export function useTheme() {
     gray,
     themeVars,
   }
-}
+})

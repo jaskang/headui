@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vitepress'
 import { computed, provide, useSlots, watch } from 'vue'
+import { useThemeStore } from './composables/theme'
 import { useData } from 'vitepress'
 import { useSidebar, useCloseSidebarOnEscape } from './composables/defaultTheme'
 import VPHeader from './components/VPHeader.vue'
@@ -14,10 +15,11 @@ watch(() => route.path, closeSidebar)
 useCloseSidebarOnEscape(isSidebarOpen, closeSidebar)
 
 const { frontmatter } = useData()
+const theme = useThemeStore()
 </script>
 
 <template>
-  <div v-if="frontmatter.layout !== false" class="isolate" :class="frontmatter.pageClass">
+  <div :style="theme.themeVars" v-if="frontmatter.layout !== false" class="isolate" :class="frontmatter.pageClass">
     <div class="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10">
       <VPHeader />
       <!-- <MobileNav header={<Header />} breadcrumb={breadcrumb}>

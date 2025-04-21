@@ -4,9 +4,14 @@ import { plugin } from 'tailv'
 import type { Theme } from 'vitepress'
 import DemoWrapper from './components/DemoWrapper.vue'
 import Layout from './Layout.vue'
+import { createPinia } from 'pinia'
+
+const pinia = createPinia()
+
 export default {
   Layout: Layout,
   enhanceApp(ctx) {
+    ctx.app.use(pinia)
     ctx.app.component('DemoWrapper', DemoWrapper)
     // @ts-ignore
     ctx.app.use(plugin)

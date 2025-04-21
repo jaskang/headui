@@ -1,3 +1,3 @@
-import { useSidebar, useCloseSidebarOnEscape } from 'vitepress/dist/client/theme-default/composables/sidebar'
-import { isActive } from 'vitepress/dist/client/shared.js'
-export { useSidebar, useCloseSidebarOnEscape, isActive }
+export { useCloseSidebarOnEscape, useSidebar } from 'vitepress/dist/client/theme-default/composables/sidebar'
+export { usePrevNext } from 'vitepress/dist/client/theme-default/composables/prev-next'
+export { isActive } from 'vitepress/dist/client/shared'

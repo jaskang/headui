@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-import { Switch } from 'tailv'
+import { ref } from 'vue'
+import { useThemeStore } from '../composables/theme'
+import { Select } from 'tailv'
+import { storeToRefs } from 'pinia'
+const store = useThemeStore()
+const { primary } = storeToRefs(store)
 </script>
 
 <template>
@@ -10,6 +15,29 @@ import { Switch } from 'tailv'
           <a class="shrink-0" aria-label="Home" href="/"> Head UI </a>
         </div>
         <div class="flex items-center gap-6 max-md:hidden">
+          <Select
+            class="shadow-none!"
+            v-model:value="primary"
+            :options="[
+              { value: 'red', label: 'red' },
+              { value: 'orange', label: 'orange' },
+              { value: 'amber', label: 'amber' },
+              { value: 'yellow', label: 'yellow' },
+              { value: 'lime', label: 'lime' },
+              { value: 'green', label: 'green' },
+              { value: 'emerald', label: 'emerald' },
+              { value: 'teal', label: 'teal' },
+              { value: 'cyan', label: 'cyan' },
+              { value: 'sky', label: 'sky' },
+              { value: 'blue', label: 'blue' },
+              { value: 'indigo', label: 'indigo' },
+              { value: 'violet', label: 'violet' },
+              { value: 'purple', label: 'purple' },
+              { value: 'fuchsia', label: 'fuchsia' },
+              { value: 'pink', label: 'pink' },
+              { value: 'rose', label: 'rose' },
+            ]"
+          />
           <a class="text-sm/6 text-gray-950 dark:text-white" href="/docs">Docs</a>
           <a class="text-sm/6 text-gray-950 dark:text-white" href="/blog">Blog</a>
           <a class="text-sm/6 text-gray-950 dark:text-white" href="/showcase">Showcase</a>

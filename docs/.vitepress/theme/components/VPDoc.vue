@@ -3,12 +3,14 @@ import { useData, useRoute } from 'vitepress'
 import { computed } from 'vue'
 import VPToc from './VPToc.vue'
 import VPDocFooter from './VPDocFooter.vue'
-import { useSidebar } from '../composables/defaultTheme'
+import { useSidebar, usePrevNext } from '../composables/defaultTheme'
 
 const { theme } = useData()
 
 const route = useRoute()
 const { hasSidebar, hasAside, leftAside } = useSidebar()
+
+const control = usePrevNext()
 
 const pageName = computed(() => route.path.replace(/[./]+/g, '_').replace(/_html$/, ''))
 </script>
@@ -25,6 +27,30 @@ const pageName = computed(() => route.path.replace(/[./]+/g, '_').replace(/_html
         class="vp-doc prose prose-sm dark:prose-invert max-w-none"
         :class="[pageName, theme.externalLinkIcon && 'external-link-icon-enabled']"
       />
+      <footer class="mt-16 text-sm leading-6">
+        <div class="flex items-center justify-between gap-2 text-gray-700 dark:text-gray-200">
+          <a class="group flex items-center gap-2 hover:text-gray-900 dark:hover:text-white" :href="control.prev?.link">
+            <svg viewBox="0 0 16 16" fill="currentColor" class="size-4">
+              <path
+                fill-rule="evenodd"
+                d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.47 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.75.75 0 0 1 1.06 0Z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span>Prev page</span>
+          </a>
+          <a class="group flex items-center gap-2 hover:text-gray-900 dark:hover:text-white" :href="control.next?.link">
+            <span>Next page</span>
+            <svg viewBox="0 0 16 16" fill="currentColor" class="size-4">
+              <path
+                fill-rule="evenodd"
+                d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </footer>
     </div>
     <div class="max-xl:hidden">
       <div class="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24">
