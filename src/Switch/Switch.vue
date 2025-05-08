@@ -2,24 +2,23 @@
 import { useModelValue } from '@/use/useModelValue'
 
 defineOptions({ name: 'Switch' })
+
+const model = defineModel<boolean>('value', { default: undefined })
 const emit = defineEmits<{ 'update:value': [boolean]; change: [boolean] }>()
 
 const slots = defineSlots<{ default?(_: {}): any; open?(_: {}): any; close?(_: {}): any }>()
 
 const props = defineProps({
-  value: { type: Boolean, default: undefined },
   name: String,
   disabled: Boolean,
 })
 
-const [value, setValue] = useModelValue<boolean>(props, {
-  onChange: val => {
-    emit('change', val)
-  },
+const value = useModelValue(model, {
+  emits: ['change'],
 })
 
 const clickHandler = () => {
-  setValue(!value.value)
+  value.value = !value.value
 }
 </script>
 <template>

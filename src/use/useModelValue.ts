@@ -1,35 +1,39 @@
-import { computed, ref, type UnwrapRef, getCurrentInstance } from 'vue'
+import { isUndefined } from 'kotl'
+import { computed, ref, type UnwrapRef, getCurrentInstance, type ModelRef } from 'vue'
 
 export interface UseModelValueOptions<T> {
   defaultValue?: T
-  defaultValuePropName?: string
-  valuePropName?: string
-  trigger?: string
+  emits?: string | string[]
   onChange?: (val: T) => void
 }
 
-export function useModelValue<T>(props: Record<string, any>, options: UseModelValueOptions<T> = {}) {
-  const { defaultValue, defaultValuePropName = 'defaultValue', valuePropName = 'value', onChange } = options
-  const trigger = options.trigger || `update:${valuePropName}`
-
+export function useModelValue<T>(model: ModelRef<T>, options: UseModelValueOptions<T> = {}) {
+  const innerValue = ref(model.value ?? options.defaultValue)
   const ctx = getCurrentInstance()
-  const isControlled = computed(() => props[valuePropName] !== undefined)
-
-  const initialValue = ref(isControlled.value ? props[valuePropName] : props[defaultValuePropName] || defaultValue)
-
-  const state = computed<T>(() => (isControlled.value ? props[valuePropName] : initialValue.value))
-
-  return [
-    state,
-    function (val: unknown) {
-      initialValue.value = val as UnwrapRef<T>
-      ctx?.emit(trigger, val)
-      onChange?.(val as T)
-      // if (isControlled.value) {
-      // } else {
-      //   ctx?.emit(trigger, value)
-      //   onChange?.(value as T)
-      // }
+  const value = computed({
+    get: () => {
+      if (isUndefined(model.value)) {
+        console.log('get innerValue', innerValue.value)
+        return innerValue.value
+      }
+      console.log('get model.value', model.value)
+      return model.value
     },
-  ] as const
+    set: (val: T) => {
+      model.value = val
+      innerValue.value = val
+      if (options.emits) {
+        if (Array.isArray(options.emits)) {
+          options.emits.forEach(emit => {
+            ctx?.emit(emit, val)
+          })
+        } else {
+          ctx?.emit(options.emits, val)
+        }
+      }
+      options.onChange?.(val)
+    },
+  })
+
+  return value
 }

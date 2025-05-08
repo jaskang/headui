@@ -4,8 +4,9 @@ import { useModelValue } from '@/use/useModelValue'
 import { RadioGroupInjectKey } from './types'
 
 defineOptions({ name: 'Radio' })
+const model = defineModel<boolean>('checked', { default: undefined })
 const emit = defineEmits<{ 'update:checked': [boolean]; change: [boolean] }>()
-const props = defineProps({
+const { value, name, disabled } = defineProps({
   value: { type: null, required: true },
   name: String,
   disabled: Boolean,
@@ -14,18 +15,18 @@ const props = defineProps({
 
 const group = inject(RadioGroupInjectKey, null)
 
-const [modelChecked, setModelChecked] = useModelValue(props, {
-  defaultValue: group ? group.value.value === props.value : false,
-  valuePropName: 'checked',
+const innerChecked = useModelValue(model, {
+  defaultValue: group ? group.value.value === value : false,
+  emits: 'change',
   onChange: (val: boolean) => {
-    emit('change', val)
-    group?.select(props.value)
+    group?.select(val)
   },
 })
-const checked = computed(() => (group ? group.value.value === props.value : modelChecked.value))
+const checked = computed(() => (group ? group.value.value === value : innerChecked.value))
 
 const clickHandler = () => {
-  setModelChecked(true)
+  if (disabled) return
+  innerChecked.value = !checked.value
 }
 </script>
 <template>
@@ -42,8 +43,8 @@ const clickHandler = () => {
       class="peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-full border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
     >
       <span v-if="checked" data-state="checked" class="flex items-center justify-center text-current transition-none">
-        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="8" cy="8" r="3" />
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="5"></circle>
         </svg>
       </span>
     </button>

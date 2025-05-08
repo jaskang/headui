@@ -4,15 +4,27 @@
 
 ```vue demo
 <script setup>
+import { ref } from 'vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
+
+const val = ref('val')
+const change = () => {
+  val.value = val.value + val.value
+}
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <Input class="w-full" placeholder="搜索">
+    <Input :value="val" class="" placeholder="搜索">
       <template #prefix>
         <MagnifyingGlassIcon class="ml-3 h-4 w-4" />
       </template>
     </Input>
+    <Input class="" placeholder="搜索">
+      <template #prefix>
+        <MagnifyingGlassIcon class="ml-3 h-4 w-4" />
+      </template>
+    </Input>
+    <button @click="change">change</button>
   </div>
 </template>
 ```
@@ -68,7 +80,7 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
       <Input />
       <Input />
     </SpaceCompact>
-    <SpaceCompact class="w-full ">
+    <SpaceCompact class="w-full">
       <Input />
       <Select
         placeholder="请选择"

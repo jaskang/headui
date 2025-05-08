@@ -2,37 +2,31 @@
 import { computed, inject } from 'vue'
 import { useModelValue } from '@/use/useModelValue'
 import { CheckboxGroupInjectKey } from './types'
+import type { InputValue } from '@/utils/theme'
 
 defineOptions({ name: 'Checkbox' })
-const emit = defineEmits<{ 'update:checked': [boolean]; change: [boolean] }>()
-const props = defineProps({
-  value: { type: null, required: true },
-  name: String,
-  disabled: Boolean,
-  checked: { type: Boolean, default: undefined },
-})
 
+const emit = defineEmits<{ change: [value: boolean] }>()
+const props = defineProps<{
+  value: InputValue
+  name?: string
+  disabled?: boolean
+}>()
 const group = inject(CheckboxGroupInjectKey, null)
 
-const [modelChecked, setModelChecked] = useModelValue(props, {
-  defaultValue: group ? group.value.value.includes(props.value) : false,
-  valuePropName: 'checked',
-  onChange: (val: boolean) => {
-    emit('change', val)
-    if (group) {
-      if (val) {
-        group.add(props.value)
-      } else {
-        group.remove(props.value)
-      }
-    }
+const innerChecked = defineModel<boolean>('checked', {
+  default: false,
+  set(v) {
+    emit('change', v)
+    group?.update(props.value, v)
   },
 })
-const checked = computed(() => (group ? group.value.value.includes(props.value) : modelChecked.value))
+
+const checked = computed(() => (group ? group.value.value.includes(props.value) : innerChecked.value))
 
 const clickHandler = () => {
   if (props.disabled) return
-  setModelChecked(!checked.value)
+  innerChecked.value = !checked.value
 }
 </script>
 <template>

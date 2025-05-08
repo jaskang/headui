@@ -10,9 +10,10 @@ const emit = defineEmits<{
   focus: [FocusEvent]
   blur: [FocusEvent]
 }>()
+const model = defineModel<string | number>('value', { required: false, default: undefined })
+console.log('model', model)
 const slots = defineSlots<{ prefix?: (_: {}) => any; suffix?: (_: {}) => any }>()
 const props = defineProps({
-  value: [String, Number],
   status: { type: String as PropType<'normal' | 'success' | 'warning' | 'danger'>, default: 'normal' },
   prefix: String,
   suffix: String,
@@ -22,15 +23,11 @@ const props = defineProps({
   allowClear: Boolean,
 })
 
-const [modelValue, setModelValue] = useModelValue(props, {
-  onChange: (v: string) => {
-    emit('change', v)
-  },
+const value = useModelValue(model, {
+  emits: ['change'],
 })
 
 const onInput = (e: Event) => {
-  const el = e.currentTarget as HTMLInputElement
-  setModelValue(el.value)
   emit('input', e)
 }
 
@@ -68,7 +65,7 @@ defineExpose({
       }"
       style="box-shadow: none"
       type="text"
-      :value="modelValue"
+      v-model="value"
       :readonly="readonly"
       :disabled="disabled"
       :placeholder="placeholder"

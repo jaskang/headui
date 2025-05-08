@@ -2,30 +2,30 @@
 import { type PropType, provide } from 'vue'
 import { useModelValue } from '@/use/useModelValue'
 import { CheckboxGroupInjectKey } from './types'
+import { type InputValue } from '@/utils/theme'
 
 defineOptions({ name: 'CheckboxGroup' })
-const props = defineProps({ name: String, value: Array as PropType<unknown[]>, disabled: Boolean })
-const emit = defineEmits<{ 'update:value': [unknown[]]; change: [unknown[]] }>()
+const model = defineModel<InputValue[]>('value', { default: undefined })
+const emit = defineEmits<{ change: [InputValue[]] }>()
+const props = defineProps({ name: String, disabled: Boolean })
 
-const [modelValue, setModelValue] = useModelValue<unknown[]>(props, {
-  defaultValue: [],
-  onChange: (val: unknown[]) => {
-    emit('change', val)
-  },
+const value = useModelValue(model, {
+  emits: ['change'],
 })
 provide(CheckboxGroupInjectKey, {
-  value: modelValue,
-  add: (val: unknown) => {
-    if (modelValue.value.indexOf(val) === -1) {
-      setModelValue([...modelValue.value, val])
-    }
-  },
-  remove: (val: unknown) => {
-    const index = modelValue.value.indexOf(val)
-    if (index !== -1) {
-      const r = [...modelValue.value]
-      r.splice(index, 1)
-      setModelValue(r)
+  value: value,
+  update: (val: InputValue, checked: boolean) => {
+    if (checked) {
+      if (value.value.indexOf(val) === -1) {
+        value.value = [...value.value, val]
+      }
+    } else {
+      const index = value.value.indexOf(val)
+      if (index !== -1) {
+        const r = [...value.value]
+        r.splice(index, 1)
+        value.value = r
+      }
     }
   },
 })

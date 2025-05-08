@@ -2,14 +2,14 @@
 import { provide, toRef, type PropType } from 'vue'
 import { RadioGroupInjectKey } from './types'
 import { useModelValue } from '@/use/useModelValue'
-import { size } from '@floating-ui/vue'
+import { type InputValue } from '@/utils/theme'
 
 defineOptions({ name: 'RadioGroup' })
-const emit = defineEmits<{ 'update:value': [unknown]; change: [unknown] }>()
+const model = defineModel<InputValue>('value', { default: undefined })
+const emit = defineEmits<{ change: [InputValue] }>()
 
 const props = defineProps({
   name: String,
-  value: null,
   disabled: Boolean,
   size: {
     type: String as PropType<'sm' | 'md' | 'lg'>,
@@ -17,17 +17,15 @@ const props = defineProps({
   },
 })
 
-const [modelValue, setModelValue] = useModelValue<unknown>(props, {
-  onChange: val => {
-    emit('change', val)
-  },
+const value = useModelValue(model, {
+  emits: ['change'],
 })
 
 provide(RadioGroupInjectKey, {
   size: toRef(props, 'size'),
-  value: modelValue,
-  select: (val: unknown) => {
-    setModelValue(val)
+  value: value,
+  select: (val: InputValue) => {
+    value.value = val
   },
 })
 </script>
