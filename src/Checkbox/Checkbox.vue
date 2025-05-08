@@ -41,18 +41,25 @@ const clickHandler = () => {
     @click="clickHandler"
   >
     <button
-      class="focus-visible:ring-primary-500 focus-visible:ring-offset-background relative block cursor-[inherit] appearance-none rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+      type="button"
+      role="checkbox"
+      :aria-checked="checked"
+      :data-state="checked ? 'checked' : 'unchecked'"
+      :value="checked ? 'on' : 'off'"
+      class="peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
     >
-      <span
-        class="block h-4 w-4 rounded border transition-colors"
-        :class="[
-          checked ? 'border-primary-500 bg-primary-500 text-white' : 'border-gray-200 bg-white text-transparent',
-        ]"
-      >
-        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"
-          />
+      <span v-if="checked" data-state="checked" class="flex items-center justify-center text-current transition-none">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M20 6 9 17l-5-5" />
         </svg>
       </span>
     </button>

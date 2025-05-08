@@ -44,7 +44,7 @@ const isActive = (index: number) => {
 }
 </script>
 <template>
-  <ul class="flex flex-col gap-2 border-l border-gray-200 dark:border-gray-700">
+  <ul class="border-border flex flex-col gap-2 border-l">
     <li
       class="-ml-px flex flex-col items-start gap-2"
       v-for="(item, index) in items"
@@ -52,9 +52,9 @@ const isActive = (index: number) => {
     >
       <a
         :class="[
-          'inline-block border-l border-transparent text-sm/6 text-gray-600',
-          'hover:text-primary-500 hover:border-primary-500',
-          'aria-selected:text-primary-500 aria-selected:border-primary-500 aria-selected:font-semibold',
+          'text-foreground inline-block border-l border-transparent text-sm/6',
+          'hover:text-primary hover:border-primary',
+          'aria-selected:text-primary aria-selected:border-primary aria-selected:font-semibold',
           paddingLeft(parent.length),
         ]"
         :aria-selected="isActive(index)"

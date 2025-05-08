@@ -16,86 +16,17 @@ hello: world
 
 Button 组件支持五种风格，通过 `variant` 属性设置。
 
-分别为: `solid` | `outline` | `soft` | `text` | `default`, 默认为 `default`
+分别为: `primary` | `secondary` | `destructive` | `outline` | `ghost` | `link`
 
 ```vue demo title=默认样式
 <template>
   <div class="flex flex-wrap gap-2">
     <TButton>default</TButton>
-    <TButton variant="solid">primary</TButton>
-    <TButton variant="outline">primary</TButton>
-    <TButton variant="soft">soft</TButton>
-    <TButton variant="text">text</TButton>
-  </div>
-</template>
-```
-
-## 颜色
-
-样式 `primary` | `success` | `warning` | `danger`, 四种颜色可选
-
-```vue demo title=默认样式
-<template>
-  <div class="flex flex-col gap-4">
-    <div class="flex items-center gap-4">
-      <span class="w-16 shrink-0 text-right font-medium">solid:</span>
-      <div class="grid flex-1 grid-cols-5 gap-4">
-        <TButton variant="solid" color="primary">primary</TButton>
-        <TButton variant="solid" color="success">success</TButton>
-        <TButton variant="solid" color="warning">warning</TButton>
-        <TButton variant="solid" color="danger">danger</TButton>
-      </div>
-    </div>
-    <div class="flex items-center gap-4">
-      <span class="w-16 shrink-0 text-right font-medium">outline:</span>
-      <div class="grid flex-1 grid-cols-5 gap-4">
-        <TButton variant="outline" color="primary">primary</TButton>
-        <TButton variant="outline" color="success">success</TButton>
-        <TButton variant="outline" color="warning">warning</TButton>
-        <TButton variant="outline" color="danger">danger</TButton>
-      </div>
-    </div>
-    <div class="flex items-center gap-4">
-      <span class="w-16 text-right font-medium">soft:</span>
-      <div class="grid flex-1 grid-cols-5 gap-4">
-        <TButton variant="soft" color="primary">primary</TButton>
-        <TButton variant="soft" color="success">success</TButton>
-        <TButton variant="soft" color="warning">warning</TButton>
-        <TButton variant="soft" color="danger">danger</TButton>
-      </div>
-    </div>
-    <div class="flex items-center gap-4">
-      <span class="w-16 text-right font-medium">text:</span>
-      <div class="grid flex-1 grid-cols-5 gap-4">
-        <TButton variant="text" color="primary">primary</TButton>
-        <TButton variant="text" color="success">success</TButton>
-        <TButton variant="text" color="warning">warning</TButton>
-        <TButton variant="text" color="danger">danger</TButton>
-      </div>
-    </div>
-  </div>
-</template>
-```
-
-### outline
-
-```vue demo title=默认样式
-<template>
-  <div class="flex flex-wrap gap-2">
-    <TButton variant="outline">button</TButton>
-  </div>
-</template>
-```
-
-### text Variant
-
-```vue demo
-<template>
-  <div class="flex flex-wrap gap-2">
-    <TButton variant="text">button</TButton>
-    <TButton variant="text" color="success">success</TButton>
-    <TButton variant="text" color="warning">warning</TButton>
-    <TButton variant="text" color="danger">danger</TButton>
+    <TButton variant="secondary">secondary</TButton>
+    <TButton variant="destructive">destructive</TButton>
+    <TButton variant="outline">outline</TButton>
+    <TButton variant="ghost">ghost</TButton>
+    <TButton variant="link">link</TButton>
   </div>
 </template>
 ```
@@ -106,7 +37,8 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 <template>
   <div class="flex flex-wrap gap-2">
     <TButton pill>button</TButton>
-    <TButton variant="solid" color="primary" pill>Primary</TButton>
+    <TButton variant="outline" pill>outline</TButton>
+    <TButton variant="secondary" pill>secondary</TButton>
   </div>
 </template>
 ```
@@ -116,9 +48,9 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="flex items-center gap-2">
-    <TButton square size="sm">D</TButton>
     <TButton square>D</TButton>
-    <TButton square size="lg">D</TButton>
+    <TButton variant="outline" square>D</TButton>
+    <TButton variant="secondary" square>D</TButton>
   </div>
 </template>
 ```
@@ -128,7 +60,7 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="space-y-2">
-    <TButton variant="solid" color="primary" size="lg" block>block button</TButton>
+    <TButton block>block button</TButton>
   </div>
 </template>
 ```
@@ -138,9 +70,9 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="flex flex-wrap items-center gap-2">
-    <TButton variant="solid" color="primary" size="sm">size: sm</TButton>
-    <TButton variant="solid" color="primary" size="md">size: md</TButton>
-    <TButton variant="solid" color="primary" size="lg">size: lg</TButton>
+    <TButton size="sm">size: sm</TButton>
+    <TButton size="md">size: md</TButton>
+    <TButton size="lg">size: lg</TButton>
   </div>
 </template>
 ```
@@ -150,9 +82,12 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <TButton disabled>button</TButton>
-    <TButton variant="solid" color="primary" disabled>Primary</TButton>
-    <TButton variant="solid" color="danger" disabled>danger</TButton>
+    <TButton disabled>primary</TButton>
+    <TButton variant="secondary" disabled>secondary</TButton>
+    <TButton variant="destructive" disabled>destructive</TButton>
+    <TButton variant="outline" disabled>outline</TButton>
+    <TButton variant="ghost" disabled>ghost</TButton>
+    <TButton variant="link" disabled>link</TButton>
   </div>
 </template>
 ```
@@ -162,9 +97,9 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <TButton loading>button</TButton>
-    <TButton variant="solid" color="primary" loading>Primary</TButton>
-    <TButton variant="solid" color="lime" loading>Primary</TButton>
+    <TButton loading>primary</TButton>
+    <TButton variant="outline" loading>outline</TButton>
+    <TButton variant="secondary" loading>secondary</TButton>
   </div>
 </template>
 ```
@@ -178,16 +113,16 @@ import { PaperAirplaneIcon, InboxIcon, TrashIcon, ArchiveBoxIcon, CircleStackIco
 <template>
   <div class="flex items-center gap-2">
     <TButton square>
-      <TrashIcon class="h-4 w-4" />
-    </TButton>
-    <TButton square variant="soft">
-      <TrashIcon class="h-4 w-4" />
-    </TButton>
-    <TButton square variant="text">
-      <TrashIcon class="h-4 w-4" />
+      <TrashIcon />
     </TButton>
     <TButton square variant="outline">
-      <TrashIcon class="h-4 w-4" />
+      <TrashIcon />
+    </TButton>
+    <TButton square variant="secondary">
+      <TrashIcon />
+    </TButton>
+    <TButton square variant="destructive">
+      <TrashIcon />
     </TButton>
   </div>
 </template>

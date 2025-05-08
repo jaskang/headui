@@ -7,11 +7,7 @@ const emit = defineEmits<{ click: [Event] }>()
 const slots = defineSlots<{ default?(_: {}): any; icon?(_: {}): any }>()
 const props = defineProps({
   variant: {
-    type: String as PropType<'solid' | 'soft' | 'outline' | 'text' | 'pure' | 'default'>,
-    default: 'default',
-  },
-  color: {
-    type: String as PropType<'primary' | 'success' | 'warning' | 'danger'>,
+    type: String as PropType<'primary' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'>,
     default: 'primary',
   },
   size: {
@@ -28,32 +24,26 @@ const props = defineProps({
 <template>
   <button
     type="button"
-    class="focus-visible:outline-primary-solid inline-flex cursor-pointer appearance-none items-center justify-center text-center font-medium whitespace-nowrap transition-[color,background-color,text-decoration-color] outline-none focus:z-10 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
     :class="[
+      'inline-flex shrink-0 items-center justify-center font-medium whitespace-nowrap transition-all outline-none',
+      '[&_svg]:nosize:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+      'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+      'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+      'disabled:pointer-events-none disabled:opacity-50',
       {
-        default: `style-default shadow-sm`,
-        outline: `style-outline shadow-sm`,
-        solid: `style-solid shadow-sm`,
-        soft: `style-soft shadow-sm`,
-        text: `style-text`,
-        pure: '',
+        primary: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-xs',
+        destructive:
+          'bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white shadow-xs',
+        outline:
+          'bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 border shadow-xs',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-xs',
+        ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+        link: 'text-primary underline-offset-4 hover:underline',
       }[props.variant],
       {
-        primary: 'style-color-primary',
-        success: 'style-color-success',
-        warning: 'style-color-warning',
-        danger: 'style-color-danger',
-        none: '',
-      }[props.variant === 'default' ? 'none' : props.color],
-      {
-        sm: 'text-sm',
-        md: 'text-base',
-        lg: 'text-lg',
-      }[props.size],
-      {
-        sm: `h-7 text-xs ${props.square ? 'w-7' : 'px-2 py-1'}`,
-        md: `h-9 text-sm ${props.square ? 'w-9' : 'px-3 py-1.5'}`,
-        lg: `h-11 text-base ${props.square ? 'w-11' : 'px-4 py-2'}`,
+        sm: `h-7 text-xs ${props.square ? 'w-7' : 'gap-1.5 px-3 has-[>svg]:px-2.5'}`,
+        md: `h-9 text-sm ${props.square ? 'w-9' : 'gap-2 px-4 has-[>svg]:px-3'}`,
+        lg: `h-11 text-base ${props.square ? 'w-11' : 'gap-2 px-6 has-[>svg]:px-4'}`,
       }[props.size],
       props.pill ? 'rounded-full' : 'rounded-md',
       !props.square && props.block ? 'w-full' : '',
@@ -62,10 +52,8 @@ const props = defineProps({
     @click="emit('click', $event)"
   >
     <template v-if="loading || slots.icon">
-      <span class="[:where(&_>_*)]:h-[1em] [:where(&_>_*)]:w-[1em]" :class="slots.default && !square ? 'mr-1.5' : ''">
-        <Loading v-if="loading" class="animate-spin" />
-        <slot v-else name="icon" />
-      </span>
+      <Loading v-if="loading" class="animate-spin" />
+      <slot v-else name="icon" />
     </template>
     <!-- 一比一样式 loading 时不展示内容 -->
     <slot v-if="!square || !loading"></slot>
