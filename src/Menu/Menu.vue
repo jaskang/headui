@@ -3,7 +3,7 @@ import { type PropType } from 'vue'
 import MenuItem from './MenuItem.vue'
 import { isDividerItem, isRawItem, isTitleItem, type MenuItemRawType, type MenuItemType } from './types'
 
-defineOptions({ name: 'Menu' })
+defineOptions({ name: 'HMenu' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ default?(_: {}): any }>()
 const props = defineProps({

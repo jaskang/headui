@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, type PropType, ref, toRef } from 'vue'
-import { useModelValue } from '../../use/useModelValue'
 import { type PopperPlacement, type PopperTrigger, type PopperVirtualElement, usePopper } from './core'
 import ElSlot from './ElSlot.vue'
 
-defineOptions({ name: 'Popper' })
+defineOptions({ name: 'HPopper' })
 
 const props = defineProps({
   open: { type: Boolean, default: undefined },
@@ -21,26 +20,27 @@ const props = defineProps({
   },
 })
 const emit = defineEmits<{ 'update:open': [open: boolean]; change: [open: boolean] }>()
-
+const model = defineModel<boolean>('open', {
+  default: false,
+  set: v => emit('change', v),
+})
 const isCustomReference = ref(!!props.reference)
 const slotReference = ref<Element>()
 const reference = computed(() => (isCustomReference.value ? props.reference : slotReference.value))
 const floating = ref<HTMLElement>()
 const floatingArrow = ref<HTMLElement>()
 
-const [open, setOpen] = useModelValue<boolean>(props, {
-  valuePropName: 'open',
-  onChange: v => emit('change', v),
-})
 const { floatingStyles, arrowStyle } = usePopper({
-  open,
+  open: model,
   reference,
   floating,
   floatingArrow,
   placement: toRef(props, 'placement'),
   trigger: computed(() => (Array.isArray(props.trigger) ? props.trigger : [props.trigger])),
   sizeMode: toRef(props, 'sizeMode'),
-  onChange: (val, e) => setOpen(val),
+  onChange: (val, e) => {
+    model.value = val
+  },
 })
 
 const onloadHandler = (el: Element) => {
@@ -48,8 +48,10 @@ const onloadHandler = (el: Element) => {
 }
 
 defineExpose({
-  open,
-  toggle: () => setOpen(!open.value),
+  open: model,
+  toggle: () => {
+    model.value = !model.value
+  },
 })
 </script>
 <template>

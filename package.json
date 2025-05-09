@@ -46,7 +46,7 @@
     "@changesets/cli": "^2.29.2",
     "@ctrl/tinycolor": "^4.1.0",
     "@heroicons/vue": "^2.2.0",
-    "@jaskang/config": "^2.4.0",
+    "@jaskang/config": "^2.5.3",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.4",
     "@types/jsdom": "^21.1.7",

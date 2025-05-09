@@ -9,10 +9,10 @@ const picked = ref('A')
 <template>
   <div>
     picked: {{ picked }}
-    <RadioGroup class="mt-2 flex gap-4" v-model:value="picked">
-      <Radio value="A">A</Radio>
-      <Radio value="B">B</Radio>
-    </RadioGroup>
+    <HRadioGroup class="mt-2 flex gap-4" v-model:value="picked">
+      <HRadio value="A">A</HRadio>
+      <HRadio value="B">B</HRadio>
+    </HRadioGroup>
   </div>
 </template>
 ```
@@ -22,8 +22,8 @@ const picked = ref('A')
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Radio value="A">checkbox</Radio>
-    <Radio value="B" checked>checkbox</Radio>
+    <HRadio value="A">checkbox</HRadio>
+    <HRadio value="B" checked>checkbox</HRadio>
   </div>
 </template>
 ```
@@ -33,20 +33,20 @@ const picked = ref('A')
 ```vue demo
 <template>
   <div class="flex flex-col gap-4">
-    <RadioGroup class="flex gap-4">
-      <RadioCard value="A" class="flex flex-col">
+    <HRadioGroup class="flex gap-4">
+      <HRadioCard value="A" class="flex flex-col">
         <span class="font-semibold">8-core CPU</span>
         <span>32 GB RAM</span>
-      </RadioCard>
-      <RadioCard value="B" class="flex flex-col">
+      </HRadioCard>
+      <HRadioCard value="B" class="flex flex-col">
         <span class="font-semibold">6-core CPU</span>
         <span>24 GB RAM</span>
-      </RadioCard>
-      <RadioCard value="C" class="flex flex-col">
+      </HRadioCard>
+      <HRadioCard value="C" class="flex flex-col">
         <span class="font-semibold">4-core CPU</span>
         <span>16 GB RAM</span>
-      </RadioCard>
-    </RadioGroup>
+      </HRadioCard>
+    </HRadioGroup>
   </div>
 </template>
 ```
@@ -56,16 +56,16 @@ const picked = ref('A')
 ```vue demo
 <template>
   <div class="flex flex-col gap-4">
-    <RadioGroup class="flex gap-4" size="sm">
-      <RadioCard value="A">value A</RadioCard>
-      <RadioCard value="B">value B</RadioCard>
-      <RadioCard value="C">value B</RadioCard>
-    </RadioGroup>
-    <RadioGroup class="flex gap-4" size="lg">
-      <RadioCard value="A">value A</RadioCard>
-      <RadioCard value="B">value B</RadioCard>
-      <RadioCard value="C">value B</RadioCard>
-    </RadioGroup>
+    <HRadioGroup class="flex gap-4" size="sm">
+      <HRadioCard value="A">value A</HRadioCard>
+      <HRadioCard value="B">value B</HRadioCard>
+      <HRadioCard value="C">value B</HRadioCard>
+    </HRadioGroup>
+    <HRadioGroup class="flex gap-4" size="lg">
+      <HRadioCard value="A">value A</HRadioCard>
+      <HRadioCard value="B">value B</HRadioCard>
+      <HRadioCard value="C">value B</HRadioCard>
+    </HRadioGroup>
   </div>
 </template>
 ```
@@ -75,8 +75,8 @@ const picked = ref('A')
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Radio value="A" disabled checked> checked </Radio>
-    <Radio value="B" disabled>unchecked</Radio>
+    <HRadio value="A" disabled checked> checked </HRadio>
+    <HRadio value="B" disabled>unchecked</HRadio>
   </div>
 </template>
 ```

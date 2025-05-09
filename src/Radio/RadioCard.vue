@@ -1,35 +1,37 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue'
-import { useModelValue } from '@/use/useModelValue'
+import { computed, inject, type PropType } from 'vue'
+import type { InputValue } from '@/utils/theme'
 import { RadioGroupInjectKey } from './types'
 
-defineOptions({ name: 'RadioItem' })
+defineOptions({ name: 'HRadioItem' })
 
 const emit = defineEmits<{
   (e: 'update:checked', value: boolean): void
   (e: 'change', value: boolean): void
 }>()
-const props = defineProps({
-  value: { type: null, required: true },
+const { value, name, disabled } = defineProps({
+  value: { type: [String, Number] as PropType<InputValue>, required: true },
   name: String,
   disabled: Boolean,
-  checked: { type: Boolean, default: undefined },
 })
 
-const group = inject(RadioGroupInjectKey, null)
-
-const [modelChecked, setModelChecked] = useModelValue(props, {
-  defaultValue: group ? group.value.value === props.value : false,
-  valuePropName: 'checked',
-  onChange: (val: boolean) => {
-    emit('change', val)
-    group?.select(props.value)
+const model = defineModel<boolean>('checked', {
+  default: false,
+  set(v) {
+    emit('change', v)
+    group?.select(value)
   },
 })
-const checked = computed(() => (group ? group.value.value === props.value : modelChecked.value))
+const group = inject(RadioGroupInjectKey, null)
+if (group) {
+  model.value = group.value.value === value
+}
+
+const checked = computed(() => (group ? group.value.value === value : model.value))
 
 const clickHandler = () => {
-  setModelChecked(true)
+  if (disabled) return
+  model.value = true
 }
 </script>
 <template>

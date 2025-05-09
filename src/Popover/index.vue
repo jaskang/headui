@@ -2,7 +2,7 @@
 import { type PropType, ref } from 'vue'
 import { Popper, type PopperPlacement, type PopperSizeMode, type PopperTrigger } from '../Base'
 
-defineOptions({ name: 'Popover' })
+defineOptions({ name: 'HPopover' })
 defineProps({
   content: String,
   trigger: {

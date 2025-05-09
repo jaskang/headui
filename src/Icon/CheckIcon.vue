@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'TCheckIcon' })
+defineOptions({ name: 'HCheckIcon' })
 </script>
 <template>
   <svg

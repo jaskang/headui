@@ -7,10 +7,10 @@ const checkList = ref(['A'])
 </script>
 <template>
   checkList: {{ checkList }}
-  <CheckboxGroup class="mt-2 flex gap-4" v-model:value="checkList">
-    <Checkbox value="A">A</Checkbox>
-    <Checkbox value="B">B</Checkbox>
-  </CheckboxGroup>
+  <HCheckboxGroup class="mt-2 flex gap-4" v-model:value="checkList">
+    <HCheckbox value="A">A</HCheckbox>
+    <HCheckbox value="B">B</HCheckbox>
+  </HCheckboxGroup>
 </template>
 ```
 
@@ -19,8 +19,8 @@ const checkList = ref(['A'])
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Checkbox value="A">checkbox</Checkbox>
-    <Checkbox value="B" checked>checkbox</Checkbox>
+    <HCheckbox value="A">checkbox</HCheckbox>
+    <HCheckbox value="B" checked>checkbox</HCheckbox>
   </div>
 </template>
 ```
@@ -30,8 +30,8 @@ const checkList = ref(['A'])
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Checkbox value="A" disabled checked> checked </Checkbox>
-    <Checkbox value="B" disabled>unchecked</Checkbox>
+    <HCheckbox value="A" disabled checked> checked </HCheckbox>
+    <HCheckbox value="B" disabled>unchecked</HCheckbox>
   </div>
 </template>
 ```

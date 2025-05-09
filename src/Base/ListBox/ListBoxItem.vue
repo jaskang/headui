@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 
-defineOptions({ name: 'ListBoxItem' })
+defineOptions({ name: 'HListBoxItem' })
 defineSlots<{ default?(props: { item: any }): any }>()
 const emit = defineEmits<{ click: [any] }>()
 

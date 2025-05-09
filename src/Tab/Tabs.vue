@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, type PropType, ref } from 'vue'
 
-defineOptions({ name: 'Tabs' })
+defineOptions({ name: 'HTabs' })
 const emit = defineEmits<{ change: [key: string] }>()
 const slots = defineSlots<{ default?(props: { current: string }): any }>()
 const props = defineProps({
@@ -53,7 +53,7 @@ const clickHandler = (key: string) => {
       type="button"
       role="tab"
       :data-active="currentKey === item.key"
-      class="data-[active=true]:bg-default-subtle data-[active=true]:text-default dark:data-[active=true]:bg-default-subtle relative inline-flex items-center justify-center whitespace-nowrap rounded-md py-1 px-3 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 data-[active=true]:shadow"
+      class="data-[active=true]:bg-default-subtle data-[active=true]:text-default dark:data-[active=true]:bg-default-subtle relative inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 data-[active=true]:shadow"
       tabindex="-1"
       @click="clickHandler(item.key)"
     >

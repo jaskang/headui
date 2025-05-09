@@ -1,8 +1,8 @@
+import type { InjectionKey, ModelRef, Ref } from 'vue'
 import type { InputValue } from '@/utils/theme'
-import type { InjectionKey, ComputedRef, Ref } from 'vue'
 
 export const RadioGroupInjectKey: InjectionKey<{
   size: Ref<'sm' | 'md' | 'lg'>
-  value: ComputedRef<InputValue>
+  model: ModelRef<InputValue | undefined>
   select: (val: InputValue) => void
 }> = Symbol('RadioGroupInjectKey')

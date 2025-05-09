@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { provide, toRef, type PropType } from 'vue'
-import { RadioGroupInjectKey } from './types'
-import { useModelValue } from '@/use/useModelValue'
+import { type PropType, provide, toRef, watch } from 'vue'
 import { type InputValue } from '@/utils/theme'
+import { RadioGroupInjectKey } from './types'
 
-defineOptions({ name: 'RadioGroup' })
-const model = defineModel<InputValue>('value', { default: undefined })
+defineOptions({ name: 'HRadioGroup' })
 const emit = defineEmits<{ change: [InputValue] }>()
-
 const props = defineProps({
   name: String,
   disabled: Boolean,
@@ -16,16 +13,17 @@ const props = defineProps({
     default: 'md',
   },
 })
+const model = defineModel<InputValue>('value')
 
-const value = useModelValue(model, {
-  emits: ['change'],
+watch(model, v => {
+  emit('change', v!)
 })
 
 provide(RadioGroupInjectKey, {
   size: toRef(props, 'size'),
-  value: value,
+  model: model,
   select: (val: InputValue) => {
-    value.value = val
+    model.value = val
   },
 })
 </script>

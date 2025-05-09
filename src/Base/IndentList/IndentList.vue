@@ -2,7 +2,7 @@
 import { type PropType, ref } from 'vue'
 import type { IIndentItem } from './types'
 
-defineOptions({ name: 'IndentList' })
+defineOptions({ name: 'HIndentList' })
 defineProps({
   items: Array as PropType<IIndentItem<T>[]>,
   deep: { type: Number, default: 0 },

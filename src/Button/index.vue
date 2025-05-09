@@ -2,7 +2,7 @@
 import { type PropType } from 'vue'
 import Loading from '../Icon/Loading.vue'
 
-defineOptions({ name: 'TButton' })
+defineOptions({ name: 'HButton' })
 const emit = defineEmits<{ click: [Event] }>()
 const slots = defineSlots<{ default?(_: {}): any; icon?(_: {}): any }>()
 const props = defineProps({

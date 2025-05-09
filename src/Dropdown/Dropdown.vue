@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'Dropdown' })
+defineOptions({ name: 'HDropdown' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ default?(_: {}): any; content?(_: {}): any }>()
 const props = defineProps({

@@ -8,23 +8,14 @@ import { ref } from 'vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
 
 const val = ref('val')
-const change = () => {
-  val.value = val.value + val.value
-}
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <Input :value="val" class="" placeholder="搜索">
+    <HInput v-model:value="val" class="" placeholder="搜索">
       <template #prefix>
         <MagnifyingGlassIcon class="ml-3 h-4 w-4" />
       </template>
-    </Input>
-    <Input class="" placeholder="搜索">
-      <template #prefix>
-        <MagnifyingGlassIcon class="ml-3 h-4 w-4" />
-      </template>
-    </Input>
-    <button @click="change">change</button>
+    </HInput>
   </div>
 </template>
 ```
@@ -34,10 +25,10 @@ const change = () => {
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Input class="w-full" />
-    <Input status="success" class="w-full" />
-    <Input status="warning" class="w-full" />
-    <Input status="danger" class="w-full" />
+    <HInput class="w-full" />
+    <HInput status="success" class="w-full" />
+    <HInput status="warning" class="w-full" />
+    <HInput status="danger" class="w-full" />
   </div>
 </template>
 ```
@@ -47,9 +38,9 @@ const change = () => {
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Input prefix="prefix" class="w-full" />
-    <Input suffix="suffix" class="w-full" />
-    <Input prefix="prefix" suffix="suffix" class="w-full" />
+    <HInput prefix="prefix" class="w-full" />
+    <HInput suffix="suffix" class="w-full" />
+    <HInput prefix="prefix" suffix="suffix" class="w-full" />
   </div>
 </template>
 ```
@@ -59,8 +50,8 @@ const change = () => {
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Input disabled class="w-full" />
-    <Input disabled prefix="prefix" class="w-full" />
+    <HInput disabled class="w-full" />
+    <HInput disabled prefix="prefix" class="w-full" />
   </div>
 </template>
 ```
@@ -71,17 +62,17 @@ const change = () => {
 <template>
   <div class="flex flex-wrap gap-2">
     <SpaceCompact class="w-full">
-      <Input />
+      <HInput />
       <Button>button</Button>
     </SpaceCompact>
     <SpaceCompact class="w-full">
-      <Input />
-      <Input />
-      <Input />
-      <Input />
+      <HInput />
+      <HInput />
+      <HInput />
+      <HInput />
     </SpaceCompact>
     <SpaceCompact class="w-full">
-      <Input />
+      <HInput />
       <Select
         placeholder="请选择"
         class="w-36"

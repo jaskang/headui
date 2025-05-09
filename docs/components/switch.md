@@ -11,7 +11,7 @@ const val = ref(true)
 </script>
 <template>
   <div class="flex items-center gap-2">
-    <Switch id="switch-1" v-model:checked="val" /> <label for="switch-1"> value: {{ val }}</label>
+    <HSwitch id="switch-1" v-model:checked="val" /> <label for="switch-1"> value: {{ val }} </label>
   </div>
 </template>
 ```
@@ -21,7 +21,7 @@ const val = ref(true)
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Switch disabled></Switch>
+    <HSwitch disabled />
   </div>
 </template>
 ```

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, computed, type PropType } from 'vue'
+import { computed, type PropType, ref } from 'vue'
 
 export type BreadcrumbItem = {
   title: string
   path: string
 }
 
-defineOptions({ name: 'Breadcrumb' })
+defineOptions({ name: 'HBreadcrumb' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ default?(_: {}): any }>()
 const props = defineProps({
@@ -15,7 +15,7 @@ const props = defineProps({
 </script>
 <template>
   <nav>
-    <ol class="flex list-none flex-wrap items-center gap-1.5 break-words text-sm">
+    <ol class="flex list-none flex-wrap items-center gap-1.5 text-sm break-words">
       <li v-for="item in items">
         {{ item.title }}
       </li>

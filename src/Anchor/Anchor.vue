@@ -3,7 +3,7 @@ import { computed, type PropType } from 'vue'
 import { IndentList } from '../Base'
 import type { IAnchorItem } from './types'
 
-defineOptions({ name: 'Anchor' })
+defineOptions({ name: 'HAnchor' })
 const emit = defineEmits<{ change: [index: number[]] }>()
 const props = defineProps({
   current: {

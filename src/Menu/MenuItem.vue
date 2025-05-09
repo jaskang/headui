@@ -4,7 +4,7 @@ import { Popper } from '../Base'
 import Menu from './Menu.vue'
 import type { MenuItemRawType } from './types'
 
-defineOptions({ name: 'MenuItem' })
+defineOptions({ name: 'HMenuItem' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ default?(_: {}): any }>()
 const props = defineProps({

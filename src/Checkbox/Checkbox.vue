@@ -1,32 +1,29 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue'
-import { useModelValue } from '@/use/useModelValue'
-import { CheckboxGroupInjectKey } from './types'
+import { computed, inject, watch } from 'vue'
 import type { InputValue } from '@/utils/theme'
+import { CheckboxGroupInjectKey } from './types'
 
-defineOptions({ name: 'Checkbox' })
+defineOptions({ name: 'HCheckbox' })
 
 const emit = defineEmits<{ change: [value: boolean] }>()
-const props = defineProps<{
+const { value, disabled } = defineProps<{
   value: InputValue
-  name?: string
   disabled?: boolean
 }>()
 const group = inject(CheckboxGroupInjectKey, null)
 
-const innerChecked = defineModel<boolean>('checked', {
-  default: false,
-  set(v) {
-    emit('change', v)
-    group?.update(props.value, v)
-  },
-})
+const model = defineModel<boolean>('checked')
 
-const checked = computed(() => (group ? group.value.value.includes(props.value) : innerChecked.value))
+const checked = computed(() => (group ? group.value.value.includes(value) : model.value))
 
 const clickHandler = () => {
-  if (props.disabled) return
-  innerChecked.value = !checked.value
+  if (disabled) return
+  if (group) {
+    group.update(value, !checked.value)
+  } else {
+    model.value = !model.value
+    emit('change', model.value)
+  }
 }
 </script>
 <template>

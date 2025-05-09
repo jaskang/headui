@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type PropType } from 'vue'
 
-defineOptions({ name: 'Badge' })
+defineOptions({ name: 'HBadge' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ default?(_: {}): any; icon?(_: {}): any }>()
 const props = defineProps({

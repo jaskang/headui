@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { type PropType } from 'vue'
-import { useModelValue } from '../use/useModelValue'
-defineOptions({ name: 'Textarea' })
+defineOptions({ name: 'HTextarea' })
 const emit = defineEmits<{
   'update:value': [string]
   change: [string]
@@ -36,16 +35,12 @@ const props = defineProps({
     default: 'off',
   },
 })
-
-const [modelValue, setModelValue] = useModelValue(props, {
-  onChange: (v: string) => {
-    emit('change', v)
-  },
+const model = defineModel<string>('value', {
+  set: v => emit('change', v),
 })
 
 const onInput = (e: Event) => {
   const el = e.currentTarget as HTMLInputElement
-  setModelValue(el.value)
   emit('input', e)
 }
 </script>
@@ -67,7 +62,7 @@ const onInput = (e: Event) => {
     }"
     type="text"
     :rows="rows"
-    :value="modelValue"
+    v-model="model"
     :readonly="readonly"
     :disabled="disabled"
     :placeholder="placeholder"

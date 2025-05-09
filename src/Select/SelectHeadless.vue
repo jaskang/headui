@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, type PropType } from 'vue'
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue'
+import { computed, type PropType } from 'vue'
+import type { InputValue } from '@/utils/theme'
 import CheckIcon from '../Icon/CheckIcon.vue'
+
 import ChevronDownIcon from '../Icon/ChevronDownIcon.vue'
-import { useModelValue } from '../use/useModelValue'
 import type { SelectOption } from './types'
 
 defineOptions({ name: 'TSelect', inheritAttrs: false })
@@ -21,19 +22,16 @@ const props = defineProps({
   clearable: Boolean,
   placeholder: String,
 })
-
-const [modelValue, setModelValue] = useModelValue(props, {
-  onChange: (v: string) => {
-    emit('change', v)
-  },
+const model = defineModel<InputValue>('value', {
+  set: v => emit('change', v),
 })
 
-const currItem = computed(() => props.options.find(item => item.value === modelValue.value))
+const currItem = computed(() => props.options.find(item => item.value === model.value))
 
 const label = computed(() => currItem.value?.label || '')
 </script>
 <template>
-  <Listbox :model-value="modelValue" @update:model-value="setModelValue">
+  <Listbox v-model="model">
     <div class="relative" v-bind="$attrs">
       <ListboxButton
         class="focus:border-primary focus:ring-primary-500 flex h-9 w-full cursor-pointer items-center gap-1 rounded-md border border-gray-200 bg-white px-1 text-left text-sm shadow-sm outline-none focus:z-10 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"

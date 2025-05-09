@@ -1,32 +1,29 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue'
-import { useModelValue } from '@/use/useModelValue'
+import { computed, inject, type PropType, watch, watchEffect } from 'vue'
+import type { InputValue } from '@/utils/theme'
 import { RadioGroupInjectKey } from './types'
 
-defineOptions({ name: 'Radio' })
-const model = defineModel<boolean>('checked', { default: undefined })
-const emit = defineEmits<{ 'update:checked': [boolean]; change: [boolean] }>()
-const { value, name, disabled } = defineProps({
-  value: { type: null, required: true },
-  name: String,
-  disabled: Boolean,
-  checked: { type: Boolean, default: undefined },
-})
+defineOptions({ name: 'HRadio' })
 
+const emit = defineEmits<{ 'update:checked': [boolean]; change: [boolean] }>()
+const { value, disabled } = defineProps({
+  value: { type: [String, Number] as PropType<InputValue>, required: true },
+  disabled: Boolean,
+})
 const group = inject(RadioGroupInjectKey, null)
 
-const innerChecked = useModelValue(model, {
-  defaultValue: group ? group.value.value === value : false,
-  emits: 'change',
-  onChange: (val: boolean) => {
-    group?.select(val)
-  },
-})
-const checked = computed(() => (group ? group.value.value === value : innerChecked.value))
+const model = defineModel<boolean>('checked')
+
+const checked = computed(() => (group ? group.model.value === value : model.value))
 
 const clickHandler = () => {
   if (disabled) return
-  innerChecked.value = !checked.value
+  if (group) {
+    group.select(value)
+  } else {
+    model.value = !model.value
+    emit('change', !!model.value)
+  }
 }
 </script>
 <template>

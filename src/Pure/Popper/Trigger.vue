@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ForwardSlot } from '../ForwardSlot'
-defineOptions({ name: 'ETrigger' })
+defineOptions({ name: 'HTrigger' })
 
 const props = defineProps({})
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'TChevronDownIcon' })
+defineOptions({ name: 'HChevronDownIcon' })
 </script>
 <template>
   <svg

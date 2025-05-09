@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { type PropType, provide } from 'vue'
-import { useModelValue } from '@/use/useModelValue'
+import { type PropType, provide, watch } from 'vue'
+import type { InputValue } from '@/utils/theme'
 import { CheckboxGroupInjectKey } from './types'
-import { type InputValue } from '@/utils/theme'
 
-defineOptions({ name: 'CheckboxGroup' })
-const model = defineModel<InputValue[]>('value', { default: undefined })
+defineOptions({ name: 'HCheckboxGroup' })
 const emit = defineEmits<{ change: [InputValue[]] }>()
 const props = defineProps({ name: String, disabled: Boolean })
+const model = defineModel<InputValue[]>('value', { default: [] })
 
-const value = useModelValue(model, {
-  emits: ['change'],
+watch(model, v => {
+  emit('change', v)
 })
+
 provide(CheckboxGroupInjectKey, {
-  value: value,
+  value: model,
   update: (val: InputValue, checked: boolean) => {
     if (checked) {
-      if (value.value.indexOf(val) === -1) {
-        value.value = [...value.value, val]
+      if (model.value.indexOf(val) === -1) {
+        model.value = [...model.value, val]
       }
     } else {
-      const index = value.value.indexOf(val)
+      const index = model.value.indexOf(val)
       if (index !== -1) {
-        const r = [...value.value]
+        const r = [...model.value]
         r.splice(index, 1)
-        value.value = r
+        model.value = r
       }
     }
   },

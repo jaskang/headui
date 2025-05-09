@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useDraggable, useResizeObserver, useScroll, type ResizeObserverEntry } from '@vueuse/core'
-import { ref, computed, onMounted, type PropType } from 'vue'
+import { type ResizeObserverEntry, useDraggable, useResizeObserver, useScroll } from '@vueuse/core'
+import { computed, onMounted, type PropType, ref } from 'vue'
 import { getScrollPositionFromPointer, getThumbOffsetFromScroll, getThumbSize, type Sizes } from './core'
 
-defineOptions({ name: 'ScrollArea' })
+defineOptions({ name: 'HScrollArea' })
 const emit = defineEmits<{ click: [any]; resize: [entries: ReadonlyArray<ResizeObserverEntry>] }>()
 const slots = defineSlots<{ default?(_: {}): any }>()
 const props = defineProps({

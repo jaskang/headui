@@ -1,17 +1,4 @@
 import {
-  computed,
-  inject,
-  type InjectionKey,
-  onMounted,
-  provide,
-  reactive,
-  type Ref,
-  ref,
-  type StyleValue,
-  toValue,
-} from 'vue'
-import { onClickOutside, useEventListener } from '@vueuse/core'
-import {
   arrow,
   autoUpdate,
   flip,
@@ -23,7 +10,21 @@ import {
   useFloating,
   type VirtualElement,
 } from '@floating-ui/vue'
+import { onClickOutside, useEventListener } from '@vueuse/core'
 import { uid } from 'kotl'
+import {
+  computed,
+  inject,
+  type InjectionKey,
+  type ModelRef,
+  onMounted,
+  provide,
+  reactive,
+  type Ref,
+  ref,
+  type StyleValue,
+  toValue,
+} from 'vue'
 import { useClickListener, useFocusListener, useHoverListener } from '../../use/useTargetEvent'
 
 export type PopperPlacement = Placement
@@ -89,7 +90,7 @@ export function usePopper({
   sizeMode,
   onChange,
 }: {
-  open: Ref<boolean>
+  open: ModelRef<boolean>
   reference: Ref<HTMLElement | PopperVirtualElement | undefined>
   floating: Ref<HTMLElement | undefined>
   floatingArrow: Ref<HTMLElement | undefined>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type ExtractPublicPropTypes, type PropType, ref, watch } from 'vue'
 
-defineOptions({ name: 'Avatar' })
+defineOptions({ name: 'HAvatar' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ fallback?(_: {}): any }>()
 const props = defineProps({

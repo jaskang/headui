@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'SpaceCompact' })
+defineOptions({ name: 'HSpaceCompact' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ default?(_: {}): any }>()
 const props = defineProps({})

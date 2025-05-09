@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { computed, type PropType, ref } from 'vue'
 import { ListBox } from '@/Base'
+import type { InputValue } from '@/utils/theme'
 import CheckIcon from '../Icon/CheckIcon.vue'
 import ChevronDownIcon from '../Icon/ChevronDownIcon.vue'
 import Popover from '../Popover/index.vue'
 import { ScrollArea } from '../ScrollArea'
-import { useModelValue } from '../use/useModelValue'
 import type { SelectOption } from './types'
-defineOptions({ name: 'TSelect', inheritAttrs: false })
+
+defineOptions({ name: 'HSelect', inheritAttrs: false })
 
 const emit = defineEmits(['update:value', 'change', 'select'])
 defineSlots<{ label?: (props: { active: boolean; item?: SelectOption; placeholder?: string }) => any }>()
 const props = defineProps({
-  value: [String, Number],
   options: {
     type: Array as PropType<SelectOption[]>,
     default: () => [],
@@ -22,14 +22,11 @@ const props = defineProps({
   clearable: Boolean,
   placeholder: String,
 })
-
-const [modelValue, setModelValue] = useModelValue(props, {
-  onChange: (v: string) => {
-    emit('change', v)
-  },
+const model = defineModel<InputValue>('value', {
+  set: v => emit('change', v),
 })
 
-const currItem = computed(() => props.options.find(item => item.value === modelValue.value))
+const currItem = computed(() => props.options.find(item => item.value === model.value))
 
 const label = computed(() => currItem.value?.label || '')
 
@@ -38,7 +35,7 @@ const buttonRef = ref<HTMLButtonElement>()
 
 const selectHandler = (item: SelectOption) => {
   console.log('selectHandler', item)
-  setModelValue(item.value)
+  model.value = item.value
   emit('select', item)
   popoverRef.value?.toggle()
   buttonRef.value?.focus()
@@ -72,16 +69,13 @@ const focused = ref(false)
           <template #item="{ item }">
             <div class="flex min-h-9 w-full items-center gap-1">
               <div class="flex flex-1 items-center overflow-hidden pl-2 text-nowrap">
-                <slot name="label" :active="item.value === modelValue" :item="item">
-                  <span
-                    class="w-full text-nowrap text-ellipsis"
-                    :class="[item.value === modelValue ? 'font-medium' : '']"
-                  >
+                <slot name="label" :active="item.value === model" :item="item">
+                  <span class="w-full text-nowrap text-ellipsis" :class="[item.value === model ? 'font-medium' : '']">
                     {{ item.label }}
                   </span>
                 </slot>
               </div>
-              <CheckIcon v-if="item.value === modelValue" class="mr-2 h-4 w-4 shrink-0" />
+              <CheckIcon v-if="item.value === model" class="mr-2 h-4 w-4 shrink-0" />
             </div>
           </template>
         </ListBox>
