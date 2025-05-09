@@ -13,11 +13,8 @@ const emit = defineEmits<{
   paste: [ClipboardEvent]
   contextmenu: [MouseEvent]
 }>()
-const slots = defineSlots<{ toolbar?(props: { content: string }): any }>()
-const props = defineProps({
-  value: String,
 
-  status: { type: String as PropType<'normal' | 'success' | 'warning' | 'danger'>, default: 'normal' },
+const props = defineProps({
   placeholder: String,
   readonly: Boolean,
   disabled: Boolean,
@@ -35,9 +32,7 @@ const props = defineProps({
     default: 'off',
   },
 })
-const model = defineModel<string>('value', {
-  set: v => emit('change', v),
-})
+const model = defineModel<string>('value')
 
 const onInput = (e: Event) => {
   const el = e.currentTarget as HTMLInputElement
@@ -45,17 +40,28 @@ const onInput = (e: Event) => {
 }
 </script>
 <template>
+  <!-- 
+  border-input 
+  placeholder:text-muted-foreground 
+  focus-visible:border-ring focus-visible:ring-ring/50    focus-visible:ring-[3px] 
+  aria-invalid:ring-destructive/20 
+  dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive 
+  dark:bg-input/30 
+  flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs 
+  transition-[color,box-shadow] outline-none 
+
+  disabled:cursor-not-allowed disabled:opacity-50 
+  md:text-sm 
+  -->
   <textarea
-    class="scrollbar placeholder:text-mute-foreground bg-input-background relative flex w-full appearance-none overflow-y-scroll rounded-md border py-1.5 pr-0 pl-3 text-sm leading-[1.375rem] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
     :class="[
+      'flex field-sizing-content min-h-16 w-full appearance-none rounded-md border bg-transparent px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] outline-none',
+      'placeholder:text-muted-foreground',
+      'aria-invalid:ring-destructive/20 aria-invalid:border-destructive',
+      'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+      'disabled:cursor-not-allowed disabled:opacity-50',
+      'dark:bg-input/30 dark:aria-invalid:ring-destructive/40',
       noBorder ? 'border-transparent dark:border-transparent' : 'focus:ring-1',
-      !noBorder &&
-        {
-          normal: 'focus:border-primary focus:ring-primary-500 border-gray-200',
-          success: 'border-success-500 focus:border-success-500 focus:ring-success-500',
-          warning: 'border-warning-500 focus:border-warning-500 focus:ring-warning-500',
-          danger: 'border-danger-500 focus:border-danger-500 focus:ring-danger-500',
-        }[props.status],
     ]"
     :style="{
       resize: resize,

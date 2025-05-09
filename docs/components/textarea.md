@@ -7,7 +7,7 @@
 import { ref } from 'vue'
 </script>
 <template>
-  <Textarea placeholder="请输入内容" />
+  <HTextarea placeholder="请输入内容" />
 </template>
 ```
 
@@ -19,9 +19,9 @@ import { ref } from 'vue'
 </script>
 <template>
   <div class="flex flex-col gap-y-4">
-    <Textarea placeholder="请输入内容" resize="vertical" />
-    <Textarea placeholder="请输入内容" resize="horizontal" />
-    <Textarea placeholder="请输入内容" resize="both" />
+    <HTextarea placeholder="请输入内容" resize="vertical" />
+    <HTextarea placeholder="请输入内容" resize="horizontal" />
+    <HTextarea placeholder="请输入内容" resize="both" />
   </div>
 </template>
 ```
@@ -34,10 +34,10 @@ import { ref } from 'vue'
 </script>
 <template>
   <div class="flex flex-col gap-y-4">
-    <Textarea placeholder="请输入内容" />
-    <Textarea placeholder="请输入内容" status="success" />
-    <Textarea placeholder="请输入内容" status="warning" />
-    <Textarea placeholder="请输入内容" status="danger" />
+    <HTextarea placeholder="请输入内容" />
+    <HTextarea placeholder="请输入内容" status="success" />
+    <HTextarea placeholder="请输入内容" status="warning" />
+    <HTextarea placeholder="请输入内容" status="danger" />
   </div>
 </template>
 ```
@@ -49,7 +49,7 @@ import { ref } from 'vue'
 import { ref } from 'vue'
 </script>
 <template>
-  <Textarea noBorder placeholder="请输入内容" resize="vertical" />
+  <HTextarea noBorder placeholder="请输入内容" resize="vertical" />
 </template>
 ```
 
@@ -60,7 +60,7 @@ import { ref } from 'vue'
 import { ref } from 'vue'
 </script>
 <template>
-  <Textarea disabled placeholder="请输入内容" />
+  <HTextarea disabled placeholder="请输入内容" />
 </template>
 ```
 
@@ -80,7 +80,7 @@ import { ref } from 'vue'
 </script>
 <template>
   <div class="">
-    <Textarea class="rounded-b-none focus:z-10" placeholder="请输入内容" />
+    <HTextarea class="rounded-b-none focus:z-10" placeholder="请输入内容" />
     <div
       class="flex items-center justify-between rounded-md rounded-t-none border border-t-0 border-gray-200 bg-gray-50 p-2 dark:border-gray-700 dark:bg-gray-800"
     >

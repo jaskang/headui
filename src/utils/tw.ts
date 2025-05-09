@@ -1,4 +1,4 @@
-import { type Prettify, clsx } from 'kotl'
+import { clsx, type Prettify } from 'kotl'
 
 type TwValue = string | [string, string]
 
@@ -75,6 +75,3 @@ export function tw<T extends VariantsObject>(
     return clsx(cls)
   }
 }
-
-export const scrollbarClass =
-  '[&::-webkit-scrollbar-sizer] [&::-webkit-scrollbar-button]:h-0 [&::-webkit-scrollbar-button]:w-0 [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-default-300 dark:[&::-webkit-scrollbar-thumb]:bg-default-500/50 [&::-webkit-scrollbar-track]:rounded [&::-webkit-scrollbar-track]:bg-default-100 dark:[&::-webkit-scrollbar-track]:bg-default-500/[0.16] [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar]:bg-transparent'

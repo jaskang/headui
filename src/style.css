@@ -122,20 +122,6 @@
   --sidebar-ring: oklch(0.488 0.243 264.376);
 }
 
-:where(body) {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-}
-
-@utility style-vars {
-  --sc-subtle: var(--color-gray-50);
-  --sc-subtle-hover: var(--color-gray-100);
-  --sc-border: var(--color-gray-200);
-  --sc-base: var(--color-gray-900);
-  --sc-base-hover: var(--color-gray-800);
-  --sc-text: var(--color-gray-700);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -143,22 +129,20 @@
   body {
     @apply bg-background text-foreground;
   }
-}
 
-@layer components {
-  .style-default {
-    @apply style-vars border border-[var(--sc-border)] bg-white text-[var(--sc-text)] hover:not-disabled:bg-[var(--sc-subtle)];
+  /* Custom scrollbar styling. Thanks @pranathiperii. */
+  ::-webkit-scrollbar {
+    width: 5px;
   }
-  .style-solid {
-    @apply style-vars bg-[var(--sc-base)] text-white hover:not-disabled:bg-[var(--sc-base-hover)];
+  ::-webkit-scrollbar-track {
+    background: transparent;
   }
-  .style-soft {
-    @apply style-vars bg-[var(--sc-subtle)] text-[var(--sc-text)] hover:not-disabled:bg-[var(--sc-subtle-hover)];
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 5px;
   }
-  .style-outline {
-    @apply style-vars border border-[var(--sc-base)] bg-white text-[var(--sc-text)] hover:not-disabled:bg-[var(--sc-subtle)];
-  }
-  .style-text {
-    @apply style-vars bg-transparent text-[var(--sc-base)] hover:not-disabled:text-[var(--sc-text)];
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
   }
 }
