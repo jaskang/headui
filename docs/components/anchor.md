@@ -10,7 +10,7 @@ const changeHandler = item => {
 </script>
 <template>
   <div>
-    <Anchor
+    <HAnchor
       :current="current"
       @change="changeHandler"
       :items="[

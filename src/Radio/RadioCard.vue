@@ -3,37 +3,45 @@ import { computed, inject, type PropType } from 'vue'
 import type { InputValue } from '@/utils/theme'
 import { RadioGroupInjectKey } from './types'
 
-defineOptions({ name: 'HRadioItem' })
+defineOptions({ name: 'HRadioCard' })
 
-const emit = defineEmits<{
-  (e: 'update:checked', value: boolean): void
-  (e: 'change', value: boolean): void
-}>()
-const { value, name, disabled } = defineProps({
-  value: { type: [String, Number] as PropType<InputValue>, required: true },
-  name: String,
-  disabled: Boolean,
-})
-
-const model = defineModel<boolean>('checked', {
-  default: false,
-  set(v) {
-    emit('change', v)
-    group?.select(value)
-  },
-})
+const emit = defineEmits<{ 'update:checked': [boolean]; change: [boolean] }>()
+const { value, disabled } = defineProps<{ value: InputValue; disabled: boolean }>()
+const model = defineModel<boolean>('checked')
 const group = inject(RadioGroupInjectKey, null)
-if (group) {
-  model.value = group.value.value === value
-}
-
-const checked = computed(() => (group ? group.value.value === value : model.value))
-
+const checked = computed(() => (group ? group.model.value === value : model.value))
 const clickHandler = () => {
   if (disabled) return
-  model.value = true
+  if (group) {
+    group.select(value)
+  } else {
+    model.value = !model.value
+    emit('change', !!model.value)
+  }
 }
 </script>
 <template>
-  <slot :checked="checked" :onClick="clickHandler" />
+  <div
+    :class="[
+      'border-input relative flex cursor-pointer items-center justify-center rounded-md border text-center shadow-xs transition-all outline-none',
+      'has-data-[state=checked]:border-primary/80 has-data-[state=checked]:bg-primary/10',
+      'has-data-disabled:cursor-not-allowed has-data-disabled:opacity-50',
+      'has-focus-visible:border-ring has-focus-visible:ring-ring/50 has-focus-visible:ring-[3px]',
+    ]"
+    :data-state="checked ? 'checked' : 'unchecked'"
+    @click="clickHandler"
+  >
+    <button
+      type="button"
+      role="radio"
+      :aria-checked="checked"
+      :data-state="checked ? 'checked' : 'unchecked'"
+      :value="value"
+      class="sr-only outline-none"
+      :disabled="disabled"
+      :tabindex="checked ? '0' : '-1'"
+      data-radix-collection-item=""
+    ></button>
+    <slot :checked="checked" :onClick="clickHandler" />
+  </div>
 </template>

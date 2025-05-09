@@ -123,7 +123,7 @@ defineExpose({
   >
     <div
       ref="viewportEl"
-      class="h-full w-full [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
+      class="h-full w-full [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       :style="{
         overflowX: direction === 'horizontal' || direction === 'all' ? 'scroll' : 'hidden',
         overflowY: direction === 'vertical' || direction === 'all' ? 'scroll' : 'hidden',

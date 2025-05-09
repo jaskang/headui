@@ -6,16 +6,10 @@ import { RadioGroupInjectKey } from './types'
 defineOptions({ name: 'HRadio' })
 
 const emit = defineEmits<{ 'update:checked': [boolean]; change: [boolean] }>()
-const { value, disabled } = defineProps({
-  value: { type: [String, Number] as PropType<InputValue>, required: true },
-  disabled: Boolean,
-})
-const group = inject(RadioGroupInjectKey, null)
-
+const { value, disabled } = defineProps<{ value: InputValue; disabled: boolean }>()
 const model = defineModel<boolean>('checked')
-
+const group = inject(RadioGroupInjectKey, null)
 const checked = computed(() => (group ? group.model.value === value : model.value))
-
 const clickHandler = () => {
   if (disabled) return
   if (group) {
