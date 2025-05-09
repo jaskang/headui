@@ -130,19 +130,46 @@
     @apply bg-background text-foreground;
   }
 
+  /* 
+  [&::-webkit-scrollbar]:w-3 
+  [&::-webkit-scrollbar]:h-3 
+  [&::-webkit-scrollbar-track]:bg-clip-content 
+  [&::-webkit-scrollbar-track]:border-4 
+  [&::-webkit-scrollbar-track]:border-gray-200 
+  [&::-webkit-scrollbar-track]:border-transparent 
+  [&::-webkit-scrollbar-track]:rounded-lg 
+  [&::-webkit-scrollbar-track]:bg-gray-200 
+  dark:[&::-webkit-scrollbar-track]:bg-gray-700 
+  [&::-webkit-scrollbar-thumb]:bg-clip-content 
+  [&::-webkit-scrollbar-thumb]:border-4  
+  [&::-webkit-scrollbar-thumb]:border-gray-200  
+  [&::-webkit-scrollbar-thumb]:border-transparent 
+  [&::-webkit-scrollbar-thumb]:rounded-lg 
+  [&::-webkit-scrollbar-thumb]:bg-gray-500 
+  hover:[&:not(:disabled)::-webkit-scrollbar-thumb]:bg-gray-800 
+  dark:hover:[&:not(:disabled)::-webkit-scrollbar-thumb]:bg-gray-200 
+  */
   /* Custom scrollbar styling. Thanks @pranathiperii. */
+  ::-webkit-scrollbar-button {
+    @apply hidden h-0 w-0;
+  }
   ::-webkit-scrollbar {
-    width: 5px;
+    @apply h-3 w-3 bg-transparent;
   }
   ::-webkit-scrollbar-track {
-    background: transparent;
+    @apply bg-transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 5px;
+    @apply bg-border rounded-full border-3 border-transparent bg-clip-content;
   }
-  * {
+  ::-webkit-scrollbar-corner {
+    @apply bg-transparent;
+  }
+  /* ::-webkit-scrollbar-thumb:hover {
+    @apply bg-border/50;
+  } */
+  /* * {
     scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;
-  }
+  } */
 }
