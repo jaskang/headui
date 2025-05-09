@@ -141,8 +141,8 @@
     background: hsl(var(--border));
     border-radius: 5px;
   }
-  * {
+  /* * {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--border)) transparent;
-  }
+  } */
 }
