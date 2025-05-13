@@ -16,6 +16,7 @@ const val = ref('val')
         <MagnifyingGlassIcon class="ml-3 h-4 w-4" />
       </template>
     </HInput>
+    {{ val }}
   </div>
 </template>
 ```

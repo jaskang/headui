@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { useRoute } from 'vitepress'
+import { useData, useRoute } from 'vitepress'
 import { computed, provide, useSlots, watch } from 'vue'
-import { useThemeStore } from './composables/theme'
-import { useData } from 'vitepress'
-import { useSidebar, useCloseSidebarOnEscape } from './composables/defaultTheme'
+import VPContent from './components/VPContent.vue'
 import VPHeader from './components/VPHeader.vue'
 import VPSidebar from './components/VPSidebar.vue'
-import VPContent from './components/VPContent.vue'
+import { useCloseSidebarOnEscape, useSidebar } from './composables/defaultTheme'
+import { useThemeStore } from './composables/theme'
 const { isOpen: isSidebarOpen, open: openSidebar, close: closeSidebar } = useSidebar()
 
 const route = useRoute()

@@ -18,7 +18,6 @@ const props = defineProps({
   placeholder: String,
   readonly: Boolean,
   disabled: Boolean,
-  noBorder: Boolean,
   rows: {
     type: Number,
     default: 3,
@@ -41,27 +40,21 @@ const onInput = (e: Event) => {
 </script>
 <template>
   <!-- 
-  border-input 
+  border-input flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none 
   placeholder:text-muted-foreground 
-  focus-visible:border-ring focus-visible:ring-ring/50    focus-visible:ring-[3px] 
-  aria-invalid:ring-destructive/20 
-  dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive 
-  dark:bg-input/30 
-  flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs 
-  transition-[color,box-shadow] outline-none 
-
-  disabled:cursor-not-allowed disabled:opacity-50 
-  md:text-sm 
+  focus-visible:border-ring focus-visible:ring-ring/50   focus-visible:ring-[3px] 
+  aria-invalid:ring-destructive/20 aria-invalid:border-destructive 
+  disabled:cursor-not-allowed disabled:opacity-50 md:text-sm
+  dark:bg-input/30  dark:aria-invalid:ring-destructive/40 
   -->
   <textarea
     :class="[
-      'flex field-sizing-content min-h-16 w-full appearance-none rounded-md border bg-transparent px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] outline-none',
+      'border-input flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] outline-none',
       'placeholder:text-muted-foreground',
       'aria-invalid:ring-destructive/20 aria-invalid:border-destructive',
       'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
       'disabled:cursor-not-allowed disabled:opacity-50',
       'dark:bg-input/30 dark:aria-invalid:ring-destructive/40',
-      noBorder ? 'border-transparent dark:border-transparent' : 'focus:ring-1',
     ]"
     :style="{
       resize: resize,

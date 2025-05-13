@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { InboxIcon } from '@heroicons/vue/24/outline'
-import { Button, Radio, RadioGroup, Switch } from '../../../src'
+import { ref } from 'vue'
 defineOptions({ name: 'ButtonBooth' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ default?(_: {}): any }>()
@@ -26,56 +25,56 @@ const disabled = ref(false)
     <div class="flex-1 space-y-4 border-gray-200 p-6 md:border-l">
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">variant:</div>
-        <RadioGroup v-model:value="variant" class="grid flex-1 grid-cols-3 gap-2 py-2">
-          <Radio value="primary" class="col-span-1">default</Radio>
-          <Radio value="secondary" class="col-span-1">secondary</Radio>
-          <Radio value="destructive" class="col-span-1">destructive</Radio>
-          <Radio value="outline" class="col-span-1">outline</Radio>
-          <Radio value="ghost" class="col-span-1">ghost</Radio>
-          <Radio value="link" class="col-span-1">link</Radio>
-        </RadioGroup>
+        <HRadioGroup v-model:value="variant" class="grid flex-1 grid-cols-3 gap-2 py-2">
+          <HRadio value="primary" class="col-span-1">default</HRadio>
+          <HRadio value="secondary" class="col-span-1">secondary</HRadio>
+          <HRadio value="destructive" class="col-span-1">destructive</HRadio>
+          <HRadio value="outline" class="col-span-1">outline</HRadio>
+          <HRadio value="ghost" class="col-span-1">ghost</HRadio>
+          <HRadio value="link" class="col-span-1">link</HRadio>
+        </HRadioGroup>
       </div>
 
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">size:</div>
-        <RadioGroup v-model:value="size" class="grid flex-1 grid-cols-3 gap-2 py-2">
-          <Radio value="sm">sm</Radio>
-          <Radio value="md">md</Radio>
-          <Radio value="lg">lg</Radio>
-        </RadioGroup>
+        <HRadioGroup v-model:value="size" class="grid flex-1 grid-cols-3 gap-2 py-2">
+          <HRadio value="sm">sm</HRadio>
+          <HRadio value="md">md</HRadio>
+          <HRadio value="lg">lg</HRadio>
+        </HRadioGroup>
       </div>
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">pill:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <Switch v-model:value="pill"></Switch>
+          <HSwitch v-model:value="pill"></HSwitch>
         </div>
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">square:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <Switch v-model:value="square"></Switch>
+          <HSwitch v-model:value="square"></HSwitch>
         </div>
       </div>
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">block:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <Switch v-model:value="block"></Switch>
+          <HSwitch v-model:value="block"></HSwitch>
         </div>
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">loading:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <Switch v-model:value="loading"></Switch>
+          <HSwitch v-model:value="loading"></HSwitch>
         </div>
       </div>
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">disabled:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <Switch v-model:value="disabled"></Switch>
+          <HSwitch v-model:value="disabled"></HSwitch>
         </div>
       </div>
     </div>
     <div class="flex flex-1 items-center justify-center p-6">
-      <Button :variant :size :pill :square :block :loading :disabled>
+      <HButton :variant :size :pill :square :block :loading :disabled>
         <InboxIcon v-if="square" />
         <template v-else>Button</template>
-      </Button>
+      </HButton>
     </div>
   </div>
 </template>

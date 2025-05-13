@@ -52,7 +52,6 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
-
 :root {
   --radius: 0.5rem;
   --background: oklch(1 0 0);
@@ -95,8 +94,8 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.546 0.245 262.881);
-  --primary-foreground: oklch(0.379 0.146 265.522);
+  --primary: oklch(0.62 0.19 259.8);
+  --primary-foreground: oklch(0.21 0.04 265.74);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);

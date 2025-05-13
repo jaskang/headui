@@ -22,8 +22,10 @@ const picked = ref('A')
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <HRadio value="A">checkbox</HRadio>
-    <HRadio value="B" checked>checkbox</HRadio>
+    <HRadioGroup class="mt-2 flex gap-4" v-model:value="picked">
+      <HRadio value="A">checkbox</HRadio>
+      <HRadio value="B" checked>checkbox</HRadio>
+    </HRadioGroup>
   </div>
 </template>
 ```
@@ -75,8 +77,10 @@ const picked = ref('A')
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <HRadio value="A" disabled checked> checked </HRadio>
-    <HRadio value="B" disabled>unchecked</HRadio>
+    <HRadioGroup class="flex gap-4" size="lg">
+      <HRadio value="A" disabled checked> checked </HRadio>
+      <HRadio value="B" disabled>unchecked</HRadio>
+    </HRadioGroup>
   </div>
 </template>
 ```

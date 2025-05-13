@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { CodeBracketIcon } from '@heroicons/vue/24/outline'
-import { Switch } from 'tailv'
 import { computed, ref } from 'vue'
 
 defineOptions({ name: 'DemoWrapper' })
@@ -40,10 +39,10 @@ const showCode = ref(false)
         </svg>
       </div>
       <div class="flex items-center">
-        <Switch v-model:checked="showCode">
+        <HSwitch v-model:value="showCode">
           <template #open><CodeBracketIcon /></template>
           <template #close><CodeBracketIcon /></template>
-        </Switch>
+        </HSwitch>
       </div>
     </div>
     <div class="not-prose demo-wrapper-svg-bg p-4">

@@ -1,37 +1,18 @@
 <script setup lang="ts">
-import { type PropType, provide, watch } from 'vue'
-import type { InputValue } from '@/utils/theme'
-import { CheckboxGroupInjectKey } from './types'
+import { type AcceptableValue, CheckboxGroupRoot, type CheckboxGroupRootProps } from 'reka-ui'
+import { watch } from 'vue'
 
 defineOptions({ name: 'HCheckboxGroup' })
-const emit = defineEmits<{ change: [InputValue[]] }>()
-const props = defineProps({ name: String, disabled: Boolean })
-const model = defineModel<InputValue[]>('value', { default: [] })
+const emit = defineEmits<{ change: [AcceptableValue[]] }>()
+const props = defineProps<Omit<CheckboxGroupRootProps, 'modelValue' | 'as' | 'asChild'>>()
+const value = defineModel<AcceptableValue[]>('value', { default: [] })
 
-watch(model, v => {
+watch(value, v => {
   emit('change', v)
-})
-
-provide(CheckboxGroupInjectKey, {
-  value: model,
-  update: (val: InputValue, checked: boolean) => {
-    if (checked) {
-      if (model.value.indexOf(val) === -1) {
-        model.value = [...model.value, val]
-      }
-    } else {
-      const index = model.value.indexOf(val)
-      if (index !== -1) {
-        const r = [...model.value]
-        r.splice(index, 1)
-        model.value = r
-      }
-    }
-  },
 })
 </script>
 <template>
-  <div>
+  <CheckboxGroupRoot v-model="value" v-bind="props">
     <slot />
-  </div>
+  </CheckboxGroupRoot>
 </template>

@@ -1,34 +1,19 @@
 <script setup lang="ts">
+import { type AcceptableValue, RadioGroupRoot, type RadioGroupRootProps } from 'reka-ui'
 import { type PropType, provide, toRef, watch } from 'vue'
 import { type InputValue } from '@/utils/theme'
-import { RadioGroupInjectKey } from './types'
 
 defineOptions({ name: 'HRadioGroup' })
-const emit = defineEmits<{ change: [InputValue] }>()
-const props = defineProps({
-  name: String,
-  disabled: Boolean,
-  size: {
-    type: String as PropType<'sm' | 'md' | 'lg'>,
-    default: 'md',
-  },
-})
-const model = defineModel<InputValue>('value')
+const emit = defineEmits<{ change: [AcceptableValue] }>()
+const props = defineProps<Omit<RadioGroupRootProps, 'modelValue' | 'as' | 'asChild'>>()
+const value = defineModel<AcceptableValue>('value')
 
-watch(model, v => {
+watch(value, v => {
   emit('change', v!)
-})
-
-provide(RadioGroupInjectKey, {
-  size: toRef(props, 'size'),
-  model: model,
-  select: (val: InputValue) => {
-    model.value = val
-  },
 })
 </script>
 <template>
-  <div>
+  <RadioGroupRoot v-model="value" v-bind="props">
     <slot />
-  </div>
+  </RadioGroupRoot>
 </template>

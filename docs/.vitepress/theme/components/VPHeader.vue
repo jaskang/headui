@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
+import { Select } from 'tailv'
+import { useData } from 'vitepress'
 import { ref } from 'vue'
 import { useThemeStore } from '../composables/theme'
-import { Select } from 'tailv'
-import { storeToRefs } from 'pinia'
 const store = useThemeStore()
 const { primary } = storeToRefs(store)
+const { isDark } = useData()
 </script>
 
 <template>
@@ -15,7 +17,7 @@ const { primary } = storeToRefs(store)
           <a class="shrink-0" aria-label="Home" href="/"> Head UI </a>
         </div>
         <div class="flex items-center gap-6 max-md:hidden">
-          <Select
+          <HSelect
             class="shadow-none!"
             v-model:value="primary"
             :options="[
@@ -38,6 +40,7 @@ const { primary } = storeToRefs(store)
               { value: 'rose', label: 'rose' },
             ]"
           />
+          <HSwitch v-model:value="isDark" />
           <a class="text-sm/6 text-gray-950 dark:text-white" href="/docs">Docs</a>
           <a class="text-sm/6 text-gray-950 dark:text-white" href="/blog">Blog</a>
           <a class="text-sm/6 text-gray-950 dark:text-white" href="/showcase">Showcase</a>

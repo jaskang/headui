@@ -5,7 +5,7 @@
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <TSelect
+    <HSelect
       class="w-60"
       placeholder="选择框"
       :options="[
@@ -21,7 +21,7 @@
         { value: 10, label: 'Emil Schaefer' },
       ]"
     />
-    <TSelect
+    <HSelect
       class="w-60"
       placeholder="选择框"
       :options="[
@@ -39,7 +39,7 @@
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <TSelect
+    <HSelect
       class="w-60"
       placeholder="选择框"
       value="2"
@@ -59,7 +59,7 @@
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <TSelect
+    <HSelect
       class="w-60"
       placeholder="选择框"
       :options="[
@@ -69,12 +69,12 @@
       ]"
     >
       <template #label="{ item }">
-        <Avatar class="-ml-1" rounded border size="sm" :src="item.src" />
-        <span class="ml-1 flex-1 overflow-hidden text-ellipsis text-nowrap">
+        <HAvatar class="-ml-1" rounded border size="sm" :src="item.src" />
+        <span class="ml-1 flex-1 overflow-hidden text-nowrap text-ellipsis">
           {{ item.label }}
         </span>
       </template>
-    </TSelect>
+    </HSelect>
   </div>
 </template>
 ```

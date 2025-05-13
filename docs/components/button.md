@@ -21,12 +21,12 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo title=默认样式
 <template>
   <div class="flex flex-wrap gap-2">
-    <TButton>default</TButton>
-    <TButton variant="secondary">secondary</TButton>
-    <TButton variant="destructive">destructive</TButton>
-    <TButton variant="outline">outline</TButton>
-    <TButton variant="ghost">ghost</TButton>
-    <TButton variant="link">link</TButton>
+    <HButton>default</HButton>
+    <HButton variant="secondary">secondary</HButton>
+    <HButton variant="destructive">destructive</HButton>
+    <HButton variant="outline">outline</HButton>
+    <HButton variant="ghost">ghost</HButton>
+    <HButton variant="link">link</HButton>
   </div>
 </template>
 ```
@@ -36,9 +36,9 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <TButton pill>button</TButton>
-    <TButton variant="outline" pill>outline</TButton>
-    <TButton variant="secondary" pill>secondary</TButton>
+    <HButton pill>button</HButton>
+    <HButton variant="outline" pill>outline</HButton>
+    <HButton variant="secondary" pill>secondary</HButton>
   </div>
 </template>
 ```
@@ -48,9 +48,9 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="flex items-center gap-2">
-    <TButton square>D</TButton>
-    <TButton variant="outline" square>D</TButton>
-    <TButton variant="secondary" square>D</TButton>
+    <HButton square>D</HButton>
+    <HButton variant="outline" square>D</HButton>
+    <HButton variant="secondary" square>D</HButton>
   </div>
 </template>
 ```
@@ -60,7 +60,7 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="space-y-2">
-    <TButton block>block button</TButton>
+    <HButton block>block button</HButton>
   </div>
 </template>
 ```
@@ -70,9 +70,9 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="flex flex-wrap items-center gap-2">
-    <TButton size="sm">size: sm</TButton>
-    <TButton size="md">size: md</TButton>
-    <TButton size="lg">size: lg</TButton>
+    <HButton size="sm">size: sm</HButton>
+    <HButton size="md">size: md</HButton>
+    <HButton size="lg">size: lg</HButton>
   </div>
 </template>
 ```
@@ -82,12 +82,12 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <TButton disabled>primary</TButton>
-    <TButton variant="secondary" disabled>secondary</TButton>
-    <TButton variant="destructive" disabled>destructive</TButton>
-    <TButton variant="outline" disabled>outline</TButton>
-    <TButton variant="ghost" disabled>ghost</TButton>
-    <TButton variant="link" disabled>link</TButton>
+    <HButton disabled>primary</HButton>
+    <HButton variant="secondary" disabled>secondary</HButton>
+    <HButton variant="destructive" disabled>destructive</HButton>
+    <HButton variant="outline" disabled>outline</HButton>
+    <HButton variant="ghost" disabled>ghost</HButton>
+    <HButton variant="link" disabled>link</HButton>
   </div>
 </template>
 ```
@@ -97,9 +97,9 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <TButton loading>primary</TButton>
-    <TButton variant="outline" loading>outline</TButton>
-    <TButton variant="secondary" loading>secondary</TButton>
+    <HButton loading>primary</HButton>
+    <HButton variant="outline" loading>outline</HButton>
+    <HButton variant="secondary" loading>secondary</HButton>
   </div>
 </template>
 ```
@@ -112,18 +112,18 @@ import { PaperAirplaneIcon, InboxIcon, TrashIcon, ArchiveBoxIcon, CircleStackIco
 </script>
 <template>
   <div class="flex items-center gap-2">
-    <TButton square>
+    <HButton square>
       <TrashIcon />
-    </TButton>
-    <TButton square variant="outline">
+    </HButton>
+    <HButton square variant="outline">
       <TrashIcon />
-    </TButton>
-    <TButton square variant="secondary">
+    </HButton>
+    <HButton square variant="secondary">
       <TrashIcon />
-    </TButton>
-    <TButton square variant="destructive">
+    </HButton>
+    <HButton square variant="destructive">
       <TrashIcon />
-    </TButton>
+    </HButton>
   </div>
 </template>
 ```
@@ -135,22 +135,22 @@ import { PaperAirplaneIcon, InboxIcon, TrashIcon, ArchiveBoxIcon, CircleStackIco
   <div class="flex flex-wrap gap-2">
     <SpaceCompact>
       <Tooltip content="Like">
-        <TButton>button</TButton>
+        <HButton>button</HButton>
       </Tooltip>
       <Tooltip content="Comment">
-        <TButton variant="soft" color="primary">button</TButton>
+        <HButton variant="soft" color="primary">button</HButton>
       </Tooltip>
       <Tooltip content="Star">
-        <TButton variant="soft" color="success">button</TButton>
+        <HButton variant="soft" color="success">button</HButton>
       </Tooltip>
       <Tooltip content="Heart">
-        <TButton>button</TButton>
+        <HButton>button</HButton>
       </Tooltip>
       <Tooltip content="Share">
-        <TButton>button</TButton>
+        <HButton>button</HButton>
       </Tooltip>
       <Tooltip content="Download">
-        <TButton>button</TButton>
+        <HButton>button</HButton>
       </Tooltip>
     </SpaceCompact>
   </div>
