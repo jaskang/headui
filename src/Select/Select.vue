@@ -79,6 +79,7 @@ const groups = computed(() => {
 
     <SelectPortal>
       <SelectContent
+        position="popper"
         :class="[
           'bg-popover text-popover-foreground relative z-50 overflow-x-hidden overflow-y-auto rounded-md border shadow-md',
           'data-[state=open]:animate-in',
