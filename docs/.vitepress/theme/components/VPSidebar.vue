@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { Anchor } from 'tailv'
 
-import { isActive, useSidebar, useCloseSidebarOnEscape } from '../composables/defaultTheme'
-import { computed } from 'vue'
 import { useData } from 'vitepress'
+import { computed } from 'vue'
+import { isActive, useCloseSidebarOnEscape, useSidebar } from '../composables/defaultTheme'
 
 const { sidebarGroups, hasSidebar } = useSidebar()
 console.log('sidebarGroups', sidebarGroups.value)

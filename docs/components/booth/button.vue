@@ -12,7 +12,7 @@ const slots = defineSlots<{ default?(_: {}): any }>()
 //   loading: Boolean,
 //   disabled: Boolean,
 
-const variant = ref<'primary' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'>('primary')
+const variant = ref<'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'>('default')
 const size = ref<'sm' | 'md' | 'lg'>('md')
 const pill = ref(false)
 const square = ref(false)
@@ -26,7 +26,7 @@ const disabled = ref(false)
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">variant:</div>
         <HRadioGroup v-model:value="variant" class="grid flex-1 grid-cols-3 gap-2 py-2">
-          <HRadio value="primary" class="col-span-1">default</HRadio>
+          <HRadio value="default" class="col-span-1">default</HRadio>
           <HRadio value="secondary" class="col-span-1">secondary</HRadio>
           <HRadio value="destructive" class="col-span-1">destructive</HRadio>
           <HRadio value="outline" class="col-span-1">outline</HRadio>

@@ -1,13 +1,13 @@
-# Tooltip
+# HTooltip
 
 ## default
 
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Tooltip content="content">
-      <Button>Button</Button>
-    </Tooltip>
+    <HTooltip content="content">
+      <HButton>HButton</HButton>
+    </HTooltip>
   </div>
 </template>
 ```
@@ -17,16 +17,16 @@
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Tooltip trigger="click">
-      <Button>Button</Button>
+    <HTooltip trigger="click">
+      <HButton>HButton</HButton>
       <template #content>
         content
-        <Tooltip>
-          <Button>Button</Button>
+        <HTooltip>
+          <HButton>HButton</HButton>
           <template #content> content </template>
-        </Tooltip>
+        </HTooltip>
       </template>
-    </Tooltip>
+    </HTooltip>
   </div>
 </template>
 ```

@@ -19,6 +19,27 @@ const val = ref(true)
 ## Icon
 
 ```vue demo
+<script setup>
+import { MoonIcon, SunIcon } from 'lucide-vue-next'
+</script>
+<template>
+  <div class="flex flex-wrap items-center gap-2">
+    <HSwitch id="switch-2">
+      <template #icon-on>
+        <MoonIcon />
+      </template>
+      <template #icon-off>
+        <SunIcon />
+      </template>
+    </HSwitch>
+    <label for="switch-2"> dark mode </label>
+  </div>
+</template>
+```
+
+## disabled
+
+```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
     <HSwitch disabled />

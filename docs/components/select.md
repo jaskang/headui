@@ -25,9 +25,26 @@
       class="w-60"
       placeholder="选择框"
       :options="[
-        { value: 1, label: 'Wade Cooper' },
-        { value: 2, label: 'Arlene Mccoy' },
-        { value: 3, label: 'Devon Webb' },
+        {
+          title: 'Fruit',
+          options: [
+            { value: 'Apple' },
+            { value: 'Banana' },
+            { value: 'Blueberry' },
+            { value: 'Grapes' },
+            { value: 'Pineapple' },
+          ],
+        },
+        {
+          title: 'Vegetables',
+          options: [
+            { value: 'Aubergine' },
+            { value: 'Broccoli' },
+            { value: 'Carrot' },
+            { value: 'Courgette' },
+            { value: 'Leek' },
+          ],
+        },
       ]"
     />
   </div>

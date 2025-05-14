@@ -25,8 +25,8 @@ const props = defineProps({
   <button
     type="button"
     :class="[
-      'inline-flex shrink-0 items-center justify-center font-medium whitespace-nowrap transition-all outline-none',
-      '[&_svg]:nosize:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+      'inline-flex shrink-0 cursor-pointer items-center justify-center font-medium whitespace-nowrap transition-all outline-none',
+      '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=text-])]:size-4',
       'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
       'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
       'disabled:pointer-events-none disabled:opacity-50',

@@ -16,7 +16,7 @@ hello: world
 
 Button 组件支持五种风格，通过 `variant` 属性设置。
 
-分别为: `primary` | `secondary` | `destructive` | `outline` | `ghost` | `link`
+分别为: `default` | `secondary` | `destructive` | `outline` | `ghost` | `link`
 
 ```vue demo title=默认样式
 <template>

@@ -1,14 +1,14 @@
-# Popover
+# HPopover
 
 ## default
 
 ```vue demo
 <template>
   <div class="flex flex-wrap gap-2">
-    <Popover trigger="click">
-      <Button>Button</Button>
+    <HPopover trigger="click">
+      <HButton>Button</HButton>
       <template #content> asdfasdfsa </template>
-    </Popover>
+    </HPopover>
   </div>
 </template>
 ```

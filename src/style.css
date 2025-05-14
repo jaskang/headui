@@ -1,4 +1,4 @@
-@plugin '../plugin.js';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 @custom-variant hover {
@@ -6,12 +6,6 @@
     &:where(&:not([disabled])):hover {
       @slot;
     }
-  }
-}
-
-@custom-variant nosize {
-  &:not([class*='size-']) {
-    @slot;
   }
 }
 

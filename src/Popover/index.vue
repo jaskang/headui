@@ -1,42 +1,32 @@
 <script setup lang="ts">
+import { PopoverArrow, PopoverClose, PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger } from 'reka-ui'
 import { type PropType, ref } from 'vue'
-import { Popper, type PopperPlacement, type PopperSizeMode, type PopperTrigger } from '../Base'
 
 defineOptions({ name: 'HPopover' })
-defineProps({
-  content: String,
-  trigger: {
-    type: String as PropType<PopperTrigger>,
-    default: 'click',
-  },
-  placement: {
-    type: String as PropType<PopperPlacement>,
-    default: 'top',
-  },
-  sizeMode: String as PropType<PopperSizeMode>,
-})
-const emit = defineEmits<{
-  'update:open': [open: boolean]
-  change: [open: boolean]
-}>()
-
-const popperRef = ref<InstanceType<typeof Popper>>()
-
-defineExpose({
-  toggle: () => popperRef.value?.toggle(),
-})
+defineProps<{}>()
 </script>
 <template>
-  <Popper :trigger :sizeMode :placement ref="popperRef" @change="emit('change', $event)">
-    <slot />
-    <template #content>
-      <div class="z-popover bg-background rounded-md shadow-lg ring-1 ring-gray-200">
-        <slot name="content">
-          <div class="px-2">
-            {{ content }}
-          </div>
-        </slot>
-      </div>
-    </template>
-  </Popper>
+  <PopoverRoot>
+    <PopoverTrigger as-child>
+      <slot />
+    </PopoverTrigger>
+    <PopoverPortal>
+      <PopoverContent
+        side="bottom"
+        data-slot="popover-content"
+        :arrowPadding="-1"
+        :class="[
+          'bg-popover text-popover-foreground z-50 rounded-md border p-4 shadow-md outline-hidden',
+          'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
+          'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+          'data-[side=top]:slide-in-from-bottom-2 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2',
+          'origin-(--reka-popover-content-transform-origin)',
+          'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+        ]"
+      >
+        <slot name="content"></slot>
+        <PopoverArrow class="fill-popover stroke-border" />
+      </PopoverContent>
+    </PopoverPortal>
+  </PopoverRoot>
 </template>
