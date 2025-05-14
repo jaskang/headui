@@ -7,8 +7,8 @@ const emit = defineEmits<{ click: [Event] }>()
 const slots = defineSlots<{ default?(_: {}): any; icon?(_: {}): any }>()
 const props = defineProps({
   variant: {
-    type: String as PropType<'primary' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'>,
-    default: 'primary',
+    type: String as PropType<'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'>,
+    default: 'default',
   },
   size: {
     type: String as PropType<'sm' | 'md' | 'lg'>,
@@ -31,7 +31,7 @@ const props = defineProps({
       'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
       'disabled:pointer-events-none disabled:opacity-50',
       {
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-xs',
+        default: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-xs',
         destructive:
           'bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white shadow-xs',
         outline:

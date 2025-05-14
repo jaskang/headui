@@ -10,7 +10,6 @@ const emit = defineEmits<{
   focus: [FocusEvent]
   blur: [FocusEvent]
 }>()
-const value = defineModel<string>('value')
 const props = defineProps<{
   name?: string
   disabled?: boolean
@@ -18,11 +17,15 @@ const props = defineProps<{
   readonly?: boolean
   required?: boolean
   autofocus?: boolean
+  maxlength?: number
+  pattern?: string
 
   prefix?: string
   suffix?: string
   allowClear?: boolean
 }>()
+
+const value = defineModel<string>('value')
 
 watch(value, v => {
   emit('change', v!)
@@ -47,14 +50,24 @@ watch(value, v => {
     </span>
     <input
       ref="inputRef"
-      class="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground block w-full flex-1 cursor-[inherit] border-0 bg-transparent px-3 py-1.5 text-sm leading-[1.375rem] outline-none focus:outline-none"
-      :class="{
-        'pl-1': prefix || slots.prefix,
-        'pr-1': suffix || slots.suffix,
-      }"
+      :class="[
+        'block w-full flex-1 cursor-[inherit] border-0 bg-transparent px-3 py-1.5 text-sm leading-[1.375rem] outline-none',
+        'selection:bg-primary selection:text-primary-foreground',
+        'placeholder:text-muted-foreground',
+        'focus:outline-none',
+        prefix || slots.prefix ? 'pl-1' : '',
+        suffix || slots.suffix ? 'pr-1' : '',
+      ]"
       type="text"
+      :name="name"
+      :disabled="disabled"
+      :placeholder="placeholder"
+      :readonly="readonly"
+      :required="required"
+      :autofocus="autofocus"
+      :maxlength="maxlength"
+      :pattern="pattern"
       v-model="value"
-      v-bind="props"
       autocomplete="off"
       @focus="emit('focus', $event)"
       @blur="emit('blur', $event)"

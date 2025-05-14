@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { Check as CheckIcon, MinusIcon } from 'lucide-vue-next'
 import { CheckboxIndicator, CheckboxRoot, type CheckboxRootProps } from 'reka-ui'
-import { computed, inject, watch } from 'vue'
-import type { InputValue } from '@/utils/theme'
 
 defineOptions({ name: 'HCheckbox' })
 

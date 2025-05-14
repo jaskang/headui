@@ -10,7 +10,7 @@ import { Menu, type MenuItemDividerType, type MenuItemRawType, type MenuItemTitl
 import { default as Popover } from './Popover/index.vue'
 import { Radio, RadioCard, RadioGroup } from './Radio'
 import { ScrollArea } from './ScrollArea'
-import { Select, type SelectOption } from './Select'
+import { type HSelectOption, Select } from './Select'
 import { default as SpaceCompact } from './Space/SpaceCompact.vue'
 import { Switch } from './Switch'
 import { Tabs } from './Tab'

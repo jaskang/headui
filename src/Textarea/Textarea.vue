@@ -1,42 +1,30 @@
 <script setup lang="ts">
 import { type PropType } from 'vue'
 defineOptions({ name: 'HTextarea' })
+
 const emit = defineEmits<{
-  'update:value': [string]
   change: [string]
   input: [Event]
   focus: [FocusEvent]
   blur: [FocusEvent]
-  keydown: [KeyboardEvent]
-  keyup: [KeyboardEvent]
-  keypress: [KeyboardEvent]
-  paste: [ClipboardEvent]
-  contextmenu: [MouseEvent]
 }>()
 
-const props = defineProps({
-  placeholder: String,
-  readonly: Boolean,
-  disabled: Boolean,
-  rows: {
-    type: Number,
-    default: 3,
-  },
-  resize: {
-    type: String as PropType<'none' | 'both' | 'horizontal' | 'vertical'>,
-    default: 'none',
-  },
-  autocomplete: {
-    type: String as PropType<'on' | 'off'>,
-    default: 'off',
-  },
-})
+const {
+  placeholder,
+  readonly,
+  disabled,
+  resize = 'none',
+  rows = 3,
+  autocomplete = 'off',
+} = defineProps<{
+  placeholder?: string
+  readonly?: boolean
+  disabled?: boolean
+  rows: number
+  resize: 'none' | 'both' | 'x' | 'y'
+  autocomplete: 'on' | 'off'
+}>()
 const model = defineModel<string>('value')
-
-const onInput = (e: Event) => {
-  const el = e.currentTarget as HTMLInputElement
-  emit('input', e)
-}
 </script>
 <template>
   <!-- 
@@ -55,23 +43,22 @@ const onInput = (e: Event) => {
       'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
       'disabled:cursor-not-allowed disabled:opacity-50',
       'dark:bg-input/30 dark:aria-invalid:ring-destructive/40',
+      {
+        none: 'resize-none',
+        both: 'resize',
+        x: 'resize-x',
+        y: 'resize-y',
+      }[resize],
     ]"
-    :style="{
-      resize: resize,
-    }"
     type="text"
-    :rows="rows"
     v-model="model"
+    :rows="rows"
     :readonly="readonly"
     :disabled="disabled"
     :placeholder="placeholder"
     :autocomplete="autocomplete"
-    @input="onInput"
-    @keypress="emit('keypress', $event)"
-    @keydown="emit('keydown', $event)"
-    @keyup="emit('keyup', $event)"
+    @input="emit('input', $event)"
     @focus="emit('focus', $event)"
     @blur="emit('blur', $event)"
-    @contextmenu="emit('contextmenu', $event)"
   />
 </template>
