@@ -1,18 +1,28 @@
 <script setup lang="ts">
-import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from 'reka-ui'
+import {
+  TooltipArrow,
+  TooltipContent,
+  TooltipPortal,
+  TooltipProvider,
+  TooltipRoot,
+  type TooltipRootProps,
+  TooltipTrigger,
+} from 'reka-ui'
 
 import { type PropType } from 'vue'
 import { Popper, type PopperPlacement } from '../Base'
 
 defineOptions({ name: 'HTooltip' })
-defineProps({
-  content: String,
-  placement: { type: String as PropType<PopperPlacement>, default: 'top' },
-})
+const props = defineProps<
+  Omit<TooltipRootProps, 'open'> & {
+    content: string
+  }
+>()
+const open = defineModel<boolean>('open')
 </script>
 <template>
   <TooltipProvider>
-    <TooltipRoot data-slot="tooltip" :delay-duration="100">
+    <TooltipRoot data-slot="tooltip" v-bind="props" :delay-duration="100" v-model:open="open">
       <TooltipTrigger data-slot="tooltip-trigger" as-child>
         <slot />
       </TooltipTrigger>

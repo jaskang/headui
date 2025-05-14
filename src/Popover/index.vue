@@ -1,12 +1,21 @@
 <script setup lang="ts">
-import { PopoverArrow, PopoverClose, PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger } from 'reka-ui'
+import {
+  PopoverArrow,
+  PopoverClose,
+  PopoverContent,
+  PopoverPortal,
+  PopoverRoot,
+  type PopoverRootProps,
+  PopoverTrigger,
+} from 'reka-ui'
 import { type PropType, ref } from 'vue'
 
 defineOptions({ name: 'HPopover' })
-defineProps<{}>()
+const props = defineProps<Omit<PopoverRootProps, 'open'>>()
+const open = defineModel<boolean>('open')
 </script>
 <template>
-  <PopoverRoot>
+  <PopoverRoot v-model:open="open" v-bind="props">
     <PopoverTrigger as-child>
       <slot />
     </PopoverTrigger>
