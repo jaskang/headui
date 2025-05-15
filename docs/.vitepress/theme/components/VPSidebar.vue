@@ -27,6 +27,7 @@ const current = computed(() => {
 </script>
 
 <template>
+  <HSidebar />
   <div v-if="hasSidebar" class="flex flex-col gap-6">
     <div v-for="(group, index) in sidebarGroups" class="flex flex-col gap-3" :key="group.text">
       <h3

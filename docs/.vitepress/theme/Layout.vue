@@ -27,7 +27,7 @@ const theme = useThemeStore()
     <div class="border-grid flex flex-1 flex-col">
       <VPHeader />
       <main class="flex flex-1 flex-col">
-        <div class="desktop:border-r desktop:border-l desktop-xl:max-w-384 mx-auto w-full max-w-360 border-dashed">
+        <div class="container-wrapper">
           <div
             class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"
           >

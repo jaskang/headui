@@ -7,10 +7,12 @@ import { default as Button } from './Button/index.vue'
 import { Checkbox, CheckboxGroup } from './Checkbox'
 import { Input } from './Input'
 import { Menu, type MenuItemDividerType, type MenuItemRawType, type MenuItemTitleType, type MenuItemType } from './Menu'
+import { NavigationMenu } from './NavigationMenu'
 import { default as Popover } from './Popover/index.vue'
 import { Radio, RadioCard, RadioGroup } from './Radio'
 import { ScrollArea } from './ScrollArea'
 import { type HSelectOption, Select } from './Select'
+import { Sidebar } from './Sidebar'
 import { default as SpaceCompact } from './Space/SpaceCompact.vue'
 import { Switch } from './Switch'
 import { Tabs } from './Tab'
@@ -29,12 +31,14 @@ export {
   // base
   ListBox,
   Menu,
+  NavigationMenu,
   Popover,
   Radio,
   RadioCard,
   RadioGroup,
   ScrollArea,
   Select,
+  Sidebar,
   SpaceCompact,
   Switch,
   Tabs,
@@ -66,6 +70,8 @@ export const plugin: Plugin = {
     app.component(SpaceCompact.name!, SpaceCompact)
     app.component(Tabs.name!, Tabs)
     app.component(Textarea.name!, Textarea)
+    app.component(NavigationMenu.name!, NavigationMenu)
+    app.component(Sidebar.name!, Sidebar)
     // base
     app.component(ListBox.name!, ListBox)
   },

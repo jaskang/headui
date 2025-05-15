@@ -5,3 +5,10 @@
   --breakpoint-desktop: 1400px;
   --breakpoint-desktop-xl: 1800px;
 }
+
+@utility container-wrapper {
+  @apply border-border/70 dark:border-border desktop:border-r desktop:border-l desktop-xl:max-w-384 mx-auto w-full max-w-360 border-dashed;
+}
+@utility container {
+  @apply mx-auto max-w-384 px-4 xl:px-6;
+}

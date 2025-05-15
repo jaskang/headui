@@ -13,10 +13,8 @@ const { isDark } = useData()
   <header
     class="border-grid bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
   >
-    <div
-      class="border-border/70 dark:border-border desktop:border-r desktop:border-l desktop-xl:max-w-384 mx-auto w-full max-w-360 border-dashed"
-    >
-      <div class="mx-auto flex h-14 items-center gap-2 px-4 md:gap-4 xl:px-6">
+    <div class="container-wrapper">
+      <div class="container flex h-14 items-center gap-2 px-4 md:gap-4 xl:px-6">
         <div class="mr-4 hidden md:flex">
           <a class="mr-4 flex items-center gap-2 lg:mr-6" href="/">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="h-6 w-6">
