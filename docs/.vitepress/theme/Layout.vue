@@ -18,49 +18,57 @@ const theme = useThemeStore()
 </script>
 
 <template>
-  <div :style="theme.themeVars" v-if="frontmatter.layout !== false" class="isolate" :class="frontmatter.pageClass">
-    <div class="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10">
+  <div
+    :style="theme.themeVars"
+    v-if="frontmatter.layout !== false"
+    class="bg-background relative flex min-h-svh flex-col"
+    :class="frontmatter.pageClass"
+  >
+    <div class="border-grid flex flex-1 flex-col">
       <VPHeader />
-      <!-- <MobileNav header={<Header />} breadcrumb={breadcrumb}>
-          <DocsSidebar />
-        </MobileNav> -->
-    </div>
-    <div
-      class="grid min-h-dvh grid-cols-1 grid-rows-[1fr_1px_auto_1px_auto] pt-26.25 lg:grid-cols-[var(--container-2xs)_2.5rem_minmax(0,1fr)_2.5rem] lg:pt-14.25 xl:grid-cols-[var(--container-2xs)_2.5rem_minmax(0,1fr)_2.5rem]"
-    >
-      <div class="relative col-start-1 row-span-full row-start-1 max-lg:hidden">
-        <div class="absolute inset-0">
+      <main class="flex flex-1 flex-col">
+        <div class="desktop:border-r desktop:border-l desktop-xl:max-w-384 mx-auto w-full max-w-360 border-dashed">
           <div
-            class="sticky top-14.25 bottom-0 left-0 h-full max-h-[calc(100dvh-(var(--spacing)*14.25))] w-2xs overflow-y-auto p-6"
+            class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"
           >
-            <VPSidebar />
+            <aside
+              class="border-grid fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 border-r md:sticky md:block"
+            >
+              <div class="no-scrollbar h-full overflow-auto py-6 pr-4 lg:py-8">
+                <VPSidebar />
+              </div>
+            </aside>
+            <VPContent />
+            <!-- <main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+              <div class="mx-auto w-full max-w-2xl min-w-0">
+              </div>
+            </main> -->
           </div>
         </div>
-      </div>
-
-      <!-- /* Candy cane */ -->
-      <div
-        class="col-start-2 row-span-5 row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-gray-950)]/5 max-lg:hidden dark:[--pattern-fg:var(--color-white)]/10"
-      ></div>
-
-      <!-- {/* Main content area */} -->
-      <div class="relative row-start-1 grid grid-cols-subgrid lg:col-start-3">
-        <VPContent />
-      </div>
-
-      <!-- {/* Candy cane */} -->
-      <div
-        class="col-start-4 row-span-5 row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-gray-950)]/5 max-lg:hidden dark:[--pattern-fg:var(--color-white)]/10"
-      ></div>
-
-      <div class="col-span-full col-start-2 row-start-2 h-px bg-gray-950/5 dark:bg-white/10" />
-      <div class="row-start-3 lg:col-start-3">
-        <FooterSitemap class="max-w-2xl lg:max-w-5xl" />
-      </div>
-      <div class="col-span-full col-start-2 row-start-4 h-px bg-gray-950/5 dark:bg-white/10" />
-      <div class="row-start-5 grid lg:col-start-3">
-        <FooterMeta class="max-w-2xl lg:max-w-5xl" />
-      </div>
+      </main>
+      <footer class="border-grid border-t py-6 md:py-0">
+        <div class="container-wrapper">
+          <div class="container py-4">
+            <div class="text-muted-foreground text-center text-sm leading-loose text-balance md:text-left">
+              Built by<!-- -->
+              <a
+                href="https://twitter.com/shadcn"
+                target="_blank"
+                rel="noreferrer"
+                class="font-medium underline underline-offset-4"
+                >shadcn</a
+              >. The source code is available on<!-- -->
+              <a
+                href="https://github.com/shadcn-ui/ui"
+                target="_blank"
+                rel="noreferrer"
+                class="font-medium underline underline-offset-4"
+                >GitHub</a
+              >.
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
   <Content v-else />

@@ -3,6 +3,7 @@ import {
   PopoverArrow,
   PopoverClose,
   PopoverContent,
+  type PopoverContentProps,
   PopoverPortal,
   PopoverRoot,
   type PopoverRootProps,
@@ -11,17 +12,22 @@ import {
 import { type PropType, ref } from 'vue'
 
 defineOptions({ name: 'HPopover' })
-const props = defineProps<Omit<PopoverRootProps, 'open'>>()
+const props = defineProps<
+  Omit<PopoverContentProps, 'as' | 'asChild'> & {
+    defaultOpen?: boolean
+    modal?: boolean
+  }
+>()
 const open = defineModel<boolean>('open')
 </script>
 <template>
-  <PopoverRoot v-model:open="open" v-bind="props">
+  <PopoverRoot v-model:open="open" :defaultOpen="defaultOpen" :modal="modal">
     <PopoverTrigger as-child>
       <slot />
     </PopoverTrigger>
     <PopoverPortal>
       <PopoverContent
-        side="bottom"
+        v-bind="props"
         data-slot="popover-content"
         :arrowPadding="-1"
         :class="[
