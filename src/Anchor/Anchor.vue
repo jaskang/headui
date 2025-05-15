@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, type PropType } from 'vue'
-import { IndentList } from '../Base'
 import type { IAnchorItem } from './types'
 
 defineOptions({ name: 'HAnchor' })

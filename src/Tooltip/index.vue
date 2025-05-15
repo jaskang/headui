@@ -9,9 +9,6 @@ import {
   TooltipTrigger,
 } from 'reka-ui'
 
-import { type PropType } from 'vue'
-import { Popper, type PopperPlacement } from '../Base'
-
 defineOptions({ name: 'HTooltip' })
 const props = defineProps<
   Omit<TooltipRootProps, 'open'> & {

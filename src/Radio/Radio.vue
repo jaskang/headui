@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { RadioGroupIndicator, RadioGroupItem, type RadioGroupItemProps, type RadioGroupItemSelectEvent } from 'reka-ui'
-import { computed, inject, type PropType, watch, watchEffect } from 'vue'
-import type { InputValue } from '@/utils/theme'
-import { RadioGroupInjectKey } from './types'
 
 defineOptions({ name: 'HRadio' })
 

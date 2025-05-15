@@ -42,7 +42,7 @@ const { isDark } = useData()
                 stroke-width="32"
               ></line>
             </svg>
-            <span class="hidden font-bold lg:inline-block">shadcn/ui</span>
+            <span class="hidden font-bold lg:inline-block">head/ui</span>
           </a>
           <nav class="flex items-center gap-4 text-sm xl:gap-6">
             <a class="hover:text-foreground/80 text-foreground/80 transition-colors" href="/docs/installation">Docs</a

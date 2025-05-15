@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { type AcceptableValue, RadioGroupRoot, type RadioGroupRootProps } from 'reka-ui'
-import { type PropType, provide, toRef, watch } from 'vue'
-import { type InputValue } from '@/utils/theme'
+import { watch } from 'vue'
 
 defineOptions({ name: 'HRadioGroup' })
 const emit = defineEmits<{ change: [AcceptableValue] }>()

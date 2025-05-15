@@ -1,17 +1,15 @@
 import type { Plugin } from 'vue'
-import { Anchor, type IAnchorItem, useAnchor } from './Anchor'
+import { Anchor, type IAnchorItem } from './Anchor'
 import { Avatar } from './Avatar'
 import { Badge } from './Badge'
-import { ListBox } from './Base'
 import { default as Button } from './Button/index.vue'
 import { Checkbox, CheckboxGroup } from './Checkbox'
 import { Input } from './Input'
-import { Menu, type MenuItemDividerType, type MenuItemRawType, type MenuItemTitleType, type MenuItemType } from './Menu'
 import { NavigationMenu } from './NavigationMenu'
 import { default as Popover } from './Popover/index.vue'
 import { Radio, RadioCard, RadioGroup } from './Radio'
 import { ScrollArea } from './ScrollArea'
-import { type HSelectOption, Select } from './Select'
+import { Select } from './Select'
 import { Sidebar } from './Sidebar'
 import { default as SpaceCompact } from './Space/SpaceCompact.vue'
 import { Switch } from './Switch'
@@ -28,9 +26,6 @@ export {
   Checkbox,
   CheckboxGroup,
   Input,
-  // base
-  ListBox,
-  Menu,
   NavigationMenu,
   Popover,
   Radio,
@@ -44,11 +39,9 @@ export {
   Tabs,
   Textarea,
   Tooltip,
-  // use
-  useAnchor,
 }
 
-export type { IAnchorItem, MenuItemDividerType, MenuItemRawType, MenuItemTitleType, MenuItemType, SelectOption }
+export type { IAnchorItem }
 export const plugin: Plugin = {
   install(app, ...options) {
     app.component(Button.name!, Button)
@@ -64,7 +57,6 @@ export const plugin: Plugin = {
     app.component(Input.name!, Input)
     app.component(Select.name!, Select)
     app.component(Switch.name!, Switch)
-    app.component(Menu.name!, Menu)
     app.component(Popover.name!, Popover)
     app.component(Tooltip.name!, Tooltip)
     app.component(SpaceCompact.name!, SpaceCompact)
@@ -72,7 +64,5 @@ export const plugin: Plugin = {
     app.component(Textarea.name!, Textarea)
     app.component(NavigationMenu.name!, NavigationMenu)
     app.component(Sidebar.name!, Sidebar)
-    // base
-    app.component(ListBox.name!, ListBox)
   },
 }

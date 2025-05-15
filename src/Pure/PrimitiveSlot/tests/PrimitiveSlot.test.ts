@@ -1,7 +1,7 @@
-import { defineComponent, ref } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, test } from 'vitest'
-import {PrimitiveSlot} from '../index'
+import { defineComponent, ref } from 'vue'
+import { PrimitiveSlot } from '../index'
 
 describe('PrimitiveSlot', () => {
   test('slot ref element', async () => {
