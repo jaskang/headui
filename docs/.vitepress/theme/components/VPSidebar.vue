@@ -7,7 +7,18 @@ import { isActive, useCloseSidebarOnEscape, useSidebar } from '../composables/de
 
 const { sidebarGroups, hasSidebar } = useSidebar()
 console.log('sidebarGroups', sidebarGroups.value)
-
+const groups = computed(() => {
+  return sidebarGroups.value.map(group => ({
+    label: group.text,
+    type: 'group',
+    children: group.items.map(item => ({
+      key: item.link,
+      label: item.title,
+      link: item.link,
+    })),
+  }))
+})
+console.log('groups', groups.value)
 const { page, hash } = useData()
 
 const matchItems = (items: any[]) => {
@@ -27,8 +38,8 @@ const current = computed(() => {
 </script>
 
 <template>
-  <HSidebar />
-  <div v-if="hasSidebar" class="flex flex-col gap-6">
+  <HSidebar :options="groups" />
+  <!-- <div v-if="hasSidebar" class="flex flex-col gap-6">
     <div v-for="(group, index) in sidebarGroups" class="flex flex-col gap-3" :key="group.text">
       <h3
         class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400"
@@ -37,5 +48,5 @@ const current = computed(() => {
       </h3>
       <Anchor :items="group.items" :current="group.text === current.group ? [current.index] : []" />
     </div>
-  </div>
+  </div> -->
 </template>
