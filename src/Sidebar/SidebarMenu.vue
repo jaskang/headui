@@ -38,9 +38,7 @@ const options = computed(() => flatOptions(props.options))
       <SidebarMenuTitle v-if="option.type === 'group'">
         <span>{{ option.label }}</span>
       </SidebarMenuTitle>
-      <SidebarMenuItem v-else>
-        <span>{{ option.label }}</span>
-      </SidebarMenuItem>
+      <SidebarMenuItem v-else :item="option" />
     </template>
   </ul>
 </template>
