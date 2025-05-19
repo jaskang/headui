@@ -6,7 +6,7 @@ defineOptions({ name: 'HSidebarMenuButton' })
 
 const props = defineProps<
   PrimitiveProps & {
-    size?: 'sm' | 'md' | 'lg'
+    size?: 'sm' | 'default' | 'lg'
     isActive?: boolean
   }
 >()
@@ -23,9 +23,9 @@ const props = defineProps<
       'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
       {
         sm: 'h-7 text-xs',
-        md: 'h-8 text-sm',
+        default: 'h-8 text-sm',
         lg: 'h-12 text-sm group-data-[collapsible=icon]:p-0!',
-      }[size || 'md'],
+      }[size || 'default'],
     ]"
   >
     <slot />
