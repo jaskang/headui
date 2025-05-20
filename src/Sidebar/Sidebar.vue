@@ -11,14 +11,35 @@ import {
   NavigationMenuViewport,
 } from 'reka-ui'
 import { computed } from 'vue'
+import SidebarGroup from './SidebarGroup.vue'
 import SidebarMenu from './SidebarMenu.vue'
-import type { ISidebarItem } from './types'
+import { type ISidebarGroup, type ISidebarItem, isSidebarGroup } from './types'
 
 defineOptions({ name: 'HSidebar' })
 
 const props = defineProps<{
-  options: ISidebarItem[]
+  options: ISidebarItem[] | ISidebarGroup[]
 }>()
+
+const groups = computed(() =>
+  props.options.reduce((acc, item) => {
+    let prevGroup = acc[acc.length - 1]
+    if (isSidebarGroup(item)) {
+      acc.push(item)
+    } else {
+      if (prevGroup && !prevGroup.label) {
+        prevGroup.children.push(item)
+      } else {
+        acc.push({
+          label: '',
+          type: 'group',
+          children: [item],
+        })
+      }
+    }
+    return acc
+  }, [] as ISidebarGroup[])
+)
 </script>
 
 <template>
@@ -31,7 +52,12 @@ const props = defineProps<{
       data-sidebar="content"
       class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden"
     >
-      <SidebarMenu :options="options" />
+      <template v-for="group in groups" :key="group.label">
+        <SidebarGroup v-if="group.label" :label="group.label">
+          <SidebarMenu :options="group.children" />
+        </SidebarGroup>
+        <SidebarMenu v-else :options="group.children" />
+      </template>
     </div>
     <div data-slot="sidebar-footer" data-sidebar="footer" class="flex flex-col gap-2 p-2">
       <slot name="footer" />
