@@ -17,9 +17,15 @@ import { type ISidebarGroup, type ISidebarItem, isSidebarGroup } from './types'
 
 defineOptions({ name: 'HSidebar' })
 
-const props = defineProps<{
-  options: ISidebarItem[] | ISidebarGroup[]
-}>()
+const props = withDefaults(
+  defineProps<{
+    options: ISidebarItem[] | ISidebarGroup[]
+    size?: 'sm' | 'default' | 'lg'
+  }>(),
+  {
+    size: 'default',
+  }
+)
 
 const groups = computed(() =>
   props.options.reduce((acc, item) => {
