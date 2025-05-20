@@ -73,6 +73,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         items: [
           { title: 'Popover', link: '/components/popover' },
           { title: 'Tooltip', link: '/components/tooltip' },
+          { title: 'Sheet', link: '/components/sheet' },
         ],
       },
     ],

@@ -10,6 +10,7 @@ import { default as Popover } from './Popover/index.vue'
 import { Radio, RadioCard, RadioGroup } from './Radio'
 import { ScrollArea } from './ScrollArea'
 import { Select } from './Select'
+import { Sheet } from './Sheet'
 import { Sidebar } from './Sidebar'
 import { default as SpaceCompact } from './Space/SpaceCompact.vue'
 import { Switch } from './Switch'
@@ -33,6 +34,7 @@ export {
   RadioGroup,
   ScrollArea,
   Select,
+  Sheet,
   Sidebar,
   SpaceCompact,
   Switch,
@@ -64,5 +66,6 @@ export const plugin: Plugin = {
     app.component(Textarea.name!, Textarea)
     app.component(NavigationMenu.name!, NavigationMenu)
     app.component(Sidebar.name!, Sidebar)
+    app.component(Sheet.name!, Sheet)
   },
 }
