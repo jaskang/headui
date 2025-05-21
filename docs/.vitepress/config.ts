@@ -27,9 +27,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
     headers: true,
     theme: { light: 'github-light', dark: 'github-dark' },
-    async shikiSetup(shiki) {
-      await shiki.loadTheme('github-light', 'github-dark')
-    },
+    languages: ['vue', 'javascript', 'typescript', 'css', 'html', 'json', 'bash'],
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

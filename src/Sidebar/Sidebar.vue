@@ -50,7 +50,7 @@ const groups = computed(() =>
 
 <template>
   <div data-slot="sidebar" class="bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col">
-    <div data-slot="sidebar-header" data-sidebar="header" class="flex flex-col gap-2 p-2">
+    <div v-if="$slots.header" data-slot="sidebar-header" data-sidebar="header" class="flex flex-col gap-2 p-2">
       <slot name="header" />
     </div>
     <div
@@ -65,7 +65,7 @@ const groups = computed(() =>
         <SidebarMenu v-else :options="group.children" />
       </template>
     </div>
-    <div data-slot="sidebar-footer" data-sidebar="footer" class="flex flex-col gap-2 p-2">
+    <div v-if="$slots.footer" data-slot="sidebar-footer" data-sidebar="footer" class="flex flex-col gap-2 p-2">
       <slot name="footer" />
     </div>
   </div>

@@ -1,6 +1,6 @@
 @import './tailwind.css';
 @import '../../../../src/style.css';
-
+@import './code.css';
 @theme {
   --breakpoint-desktop: 1400px;
   --breakpoint-desktop-xl: 1800px;

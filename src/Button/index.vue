@@ -5,21 +5,21 @@ import Loading from '../Icon/Loading.vue'
 defineOptions({ name: 'HButton' })
 const emit = defineEmits<{ click: [Event] }>()
 const slots = defineSlots<{ default?(_: {}): any; icon?(_: {}): any }>()
-const props = defineProps({
-  variant: {
-    type: String as PropType<'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'>,
-    default: 'default',
-  },
-  size: {
-    type: String as PropType<'sm' | 'md' | 'lg'>,
-    default: 'md',
-  },
-  pill: Boolean,
-  square: Boolean,
-  block: Boolean,
-  loading: Boolean,
-  disabled: Boolean,
-})
+const props = withDefaults(
+  defineProps<{
+    variant: 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'
+    size: 'default' | 'sm' | 'lg'
+    pill: boolean
+    square: boolean
+    block: boolean
+    loading: boolean
+    disabled: boolean
+  }>(),
+  {
+    variant: 'default',
+    size: 'default',
+  }
+)
 </script>
 <template>
   <button
@@ -41,8 +41,8 @@ const props = defineProps({
         link: 'text-primary underline-offset-4 hover:underline',
       }[props.variant],
       {
+        default: `h-9 text-sm ${props.square ? 'w-9' : 'gap-2 px-4 has-[>svg]:px-3'}`,
         sm: `h-7 text-xs ${props.square ? 'w-7' : 'gap-1.5 px-3 has-[>svg]:px-2.5'}`,
-        md: `h-9 text-sm ${props.square ? 'w-9' : 'gap-2 px-4 has-[>svg]:px-3'}`,
         lg: `h-11 text-base ${props.square ? 'w-11' : 'gap-2 px-6 has-[>svg]:px-4'}`,
       }[props.size],
       props.pill ? 'rounded-full' : 'rounded-md',

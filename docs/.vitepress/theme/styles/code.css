@@ -11,65 +11,247 @@
   line-height: 1.7142857;
 }
 
-/* vp-code */
-.prose :where(.vp-code span) {
-  color: var(--shiki-light, inherit);
-}
+/**
+ * Code
+ * -------------------------------------------------------------------------- */
 
-.dark .prose :where(.vp-code span) {
+.dark .vp-code span {
   color: var(--shiki-dark, inherit);
 }
 
-.prose :where(.vp-code) {
-  padding: var(--vp-code-padding-x) var(--vp-code-padding-y);
-  margin: 0;
-  /* border-radius: var(--radius); */
+html:not(.dark) .vp-code span {
+  color: var(--shiki-light, inherit);
 }
 
-.prose :where(div[class*='language-']) {
+/* inline code */
+.vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
+  font-size: var(--vp-code-font-size);
+  color: var(--vp-code-color);
+}
+
+.vp-doc :not(pre) > code {
+  border-radius: 4px;
+  padding: 3px 6px;
+  background-color: var(--vp-code-bg);
+  transition:
+    color 0.25s,
+    background-color 0.5s;
+}
+
+.vp-doc a > code {
+  color: var(--vp-code-link-color);
+}
+
+.vp-doc a:hover > code {
+  color: var(--vp-code-link-hover-color);
+}
+
+.vp-doc h1 > code,
+.vp-doc h2 > code,
+.vp-doc h3 > code,
+.vp-doc h4 > code {
+  font-size: 0.9em;
+}
+
+.vp-doc div[class*='language-'] {
   position: relative;
+  background-color: var(--vp-code-block-bg);
+  overflow-x: auto;
+  transition: background-color 0.5s;
+}
+
+@media (max-width: 639px) {
+  .vp-doc li div[class*='language-'] {
+    border-radius: 8px 0 0 8px;
+  }
+}
+
+.vp-doc div[class*='language-'] + div[class*='language-'],
+.vp-doc div[class$='-api'] + div[class*='language-'],
+.vp-doc div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
+  margin-top: -8px;
+}
+
+.vp-doc [class*='language-'] pre,
+.vp-doc [class*='language-'] code {
+  /*rtl:ignore*/
+  direction: ltr;
+  /*rtl:ignore*/
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.vp-doc [class*='language-'] pre {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 20px 0;
+  background: transparent;
   overflow-x: auto;
 }
 
-.prose :where(div[class*='language-'] > span.lang) {
-  position: absolute;
-  top: 2px;
-  color: var(--vp-code-copy-color);
-  right: 8px;
-  z-index: 2;
-  font-size: 12px;
+.vp-doc [class*='language-'] code {
+  display: block;
+  padding: 0 24px;
+  width: fit-content;
+  min-width: 100%;
+  line-height: var(--vp-code-line-height);
+  font-size: var(--vp-code-font-size);
+  color: var(--vp-code-block-color);
+  transition: color 0.5s;
 }
-.prose :where(div[class*='language-']:hover > span.lang) {
-  opacity: 0;
+
+.vp-doc [class*='language-'] code .highlighted {
+  background-color: var(--vp-code-line-highlight-color);
+  transition: background-color 0.5s;
+  margin: 0 -24px;
+  padding: 0 24px;
+  width: calc(100% + 2 * 24px);
+  display: inline-block;
 }
-.prose :where(div[class*='language-'] > button.copy) {
+
+.vp-doc [class*='language-'] code .highlighted.error {
+  background-color: var(--vp-code-line-error-color);
+}
+
+.vp-doc [class*='language-'] code .highlighted.warning {
+  background-color: var(--vp-code-line-warning-color);
+}
+
+.vp-doc [class*='language-'] code .diff {
+  transition: background-color 0.5s;
+  margin: 0 -24px;
+  padding: 0 24px;
+  width: calc(100% + 2 * 24px);
+  display: inline-block;
+}
+
+.vp-doc [class*='language-'] code .diff::before {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  left: 10px;
+}
+
+.vp-doc [class*='language-'] .has-focused-lines .line:not(.has-focus) {
+  filter: blur(0.095rem);
+  opacity: 0.4;
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
+}
+
+.vp-doc [class*='language-'] .has-focused-lines .line:not(.has-focus) {
+  opacity: 0.7;
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
+}
+
+.vp-doc [class*='language-']:hover .has-focused-lines .line:not(.has-focus) {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.vp-doc [class*='language-'] code .diff.remove {
+  background-color: var(--vp-code-line-diff-remove-color);
+  opacity: 0.7;
+}
+
+.vp-doc [class*='language-'] code .diff.remove::before {
+  content: '-';
+  color: var(--vp-code-line-diff-remove-symbol-color);
+}
+
+.vp-doc [class*='language-'] code .diff.add {
+  background-color: var(--vp-code-line-diff-add-color);
+}
+
+.vp-doc [class*='language-'] code .diff.add::before {
+  content: '+';
+  color: var(--vp-code-line-diff-add-symbol-color);
+}
+
+.vp-doc div[class*='language-'].line-numbers-mode {
+  /*rtl:ignore*/
+  padding-left: 32px;
+}
+
+.vp-doc .line-numbers-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /*rtl:ignore*/
+  left: 0;
+  z-index: 3;
+  /*rtl:ignore*/
+  border-right: 1px solid var(--vp-code-block-divider-color);
+  padding-top: 20px;
+  width: 32px;
+  text-align: center;
+  font-family: var(--vp-font-family-mono);
+  line-height: var(--vp-code-line-height);
+  font-size: var(--vp-code-font-size);
+  color: var(--vp-code-line-number-color);
+  transition:
+    border-color 0.5s,
+    color 0.5s;
+}
+
+.vp-doc [class*='language-'] > button.copy {
+  /*rtl:ignore*/
+  direction: ltr;
+  position: absolute;
+  top: 12px;
+  /*rtl:ignore*/
+  right: 12px;
   z-index: 3;
   border: 1px solid var(--vp-code-copy-code-border-color);
   border-radius: 4px;
-  width: 36px;
-  height: 36px;
-  color: var(--vp-code-copy-color);
+  width: 40px;
+  height: 40px;
   background-color: var(--vp-code-copy-code-bg);
   opacity: 0;
   cursor: pointer;
   background-image: var(--vp-icon-copy);
   background-position: 50%;
-  background-size: 18px;
+  background-size: 20px;
   background-repeat: no-repeat;
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    opacity 0.25s;
 }
-.prose :where(div[class*='language-']:hover > button.copy) {
+
+.vp-doc [class*='language-']:hover > button.copy,
+.vp-doc [class*='language-'] > button.copy:focus {
   opacity: 1;
 }
 
-.prose :where(div[class*='language-'] > button.copy.copied) {
+.vp-doc [class*='language-'] > button.copy:hover,
+.vp-doc [class*='language-'] > button.copy.copied {
+  border-color: var(--vp-code-copy-code-hover-border-color);
+  background-color: var(--vp-code-copy-code-hover-bg);
+}
+
+.vp-doc [class*='language-'] > button.copy.copied,
+.vp-doc [class*='language-'] > button.copy:hover.copied {
+  /*rtl:ignore*/
   border-radius: 0 4px 4px 0;
+  background-color: var(--vp-code-copy-code-hover-bg);
   background-image: var(--vp-icon-copied);
 }
 
-.prose :where(div[class*='language-'] > button.copy.copied)::before {
+.vp-doc [class*='language-'] > button.copy.copied::before,
+.vp-doc [class*='language-'] > button.copy:hover.copied::before {
   position: relative;
   top: -1px;
   /*rtl:ignore*/
@@ -77,36 +259,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--vp-code-copy-code-border-color);
+  border: 1px solid var(--vp-code-copy-code-hover-border-color);
   /*rtl:ignore*/
   border-right: 0;
+  /*rtl:ignore*/
   border-radius: 4px 0 0 4px;
   padding: 0 10px;
   width: fit-content;
-  height: 36px;
+  height: 40px;
   text-align: center;
   font-size: 12px;
   font-weight: 500;
-  color: var(--color-green-600);
-  background-color: var(--vp-code-copy-code-bg);
+  color: var(--vp-code-copy-code-active-text);
+  background-color: var(--vp-code-copy-code-hover-bg);
   white-space: nowrap;
-  content: 'Copied';
+  content: var(--vp-code-copy-copied-text-content);
 }
 
-.prose :where(div[class*='language-'].line-numbers-mode) {
-  padding-left: 32px;
-}
-
-.prose :where(div[class*='language-'] .line-numbers-wrapper) {
+.vp-doc [class*='language-'] > span.lang {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  border-right-width: 1px;
-  border-style: solid;
-  left: 0;
-  padding-top: var(--vp-code-padding-y);
-  padding-bottom: var(--vp-code-padding-y);
-  z-index: 3;
-  width: 32px;
-  text-align: center;
+  top: 2px;
+  /*rtl:ignore*/
+  right: 8px;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 500;
+  user-select: none;
+  color: var(--vp-code-lang-color);
+  transition:
+    color 0.4s,
+    opacity 0.4s;
+}
+
+.vp-doc [class*='language-']:hover > button.copy + span.lang,
+.vp-doc [class*='language-'] > button.copy:focus + span.lang {
+  opacity: 0;
 }
