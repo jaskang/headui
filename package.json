@@ -1,7 +1,7 @@
 {
   "name": "headui",
   "author": "jaskang",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "license": "MIT",
   "type": "module",
   "publishConfig": {
