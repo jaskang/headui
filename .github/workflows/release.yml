@@ -1,41 +1,46 @@
 name: Release
+
 on:
   push:
     branches:
       - main
+
 env:
   CI: true
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
 jobs:
   release:
-    name: 🚀 Release
-    timeout-minutes: 15
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇️ Checkout
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
         with:
-          fetch-depth: 0
+          version: 10
+          run_install: false
 
-      - name: 💼 Enable Corepack
-        run: corepack enable
-
-      - name: 🟢 Setup node
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          # cache: 'pnpm'
 
-      - name: 🔆 Setup Config
+      - name: Setup Config
         run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: 🧩 Install Dependencies
-        run: pnpm install
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
 
-      - name: 📣 Create Release Pull Request
+      - name: Create Release Pull Request
         uses: changesets/action@v1
         with:
           version: pnpm changeset version

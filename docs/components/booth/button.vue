@@ -13,7 +13,7 @@ const slots = defineSlots<{ default?(_: {}): any }>()
 //   disabled: Boolean,
 
 const variant = ref<'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'>('default')
-const size = ref<'sm' | 'md' | 'lg'>('md')
+const size = ref<'default' | 'sm' | 'lg'>('default')
 const pill = ref(false)
 const square = ref(false)
 const block = ref(false)
@@ -38,8 +38,8 @@ const disabled = ref(false)
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">size:</div>
         <HRadioGroup v-model:value="size" class="grid flex-1 grid-cols-3 gap-2 py-2">
+          <HRadio value="default">default</HRadio>
           <HRadio value="sm">sm</HRadio>
-          <HRadio value="md">md</HRadio>
           <HRadio value="lg">lg</HRadio>
         </HRadioGroup>
       </div>

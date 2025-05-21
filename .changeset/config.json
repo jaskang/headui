@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "jaskang/tailv" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "jaskang/headui" }],
   "commit": true,
   "fixed": [],
   "linked": [],

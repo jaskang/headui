@@ -1,5 +1,5 @@
 {
-  "name": "elenext",
+  "name": "headui",
   "author": "jaskang",
   "version": "0.1.11",
   "license": "MIT",
@@ -16,11 +16,6 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    },
-    "./preset": {
-      "types": "./dist/preset.d.ts",
-      "require": "./dist/preset.cjs",
-      "import": "./dist/preset.js"
     }
   },
   "scripts": {
