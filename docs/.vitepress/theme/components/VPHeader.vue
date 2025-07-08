@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { Select } from 'tailv'
+import { Select } from 'sinvue'
 import { useData } from 'vitepress'
 import { ref } from 'vue'
 import { useThemeStore } from '../composables/theme'

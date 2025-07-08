@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { CodeBracketIcon } from '@heroicons/vue/24/outline'
+import { CodeIcon } from 'lucide-vue-next'
+import { Switch } from 'sinvue'
 import { computed, ref } from 'vue'
 
 defineOptions({ name: 'DemoWrapper' })
@@ -39,10 +40,10 @@ const showCode = ref(false)
         </svg>
       </div>
       <div class="flex items-center">
-        <HSwitch v-model:value="showCode">
-          <template #open><CodeBracketIcon /></template>
-          <template #close><CodeBracketIcon /></template>
-        </HSwitch>
+        <Switch v-model:value="showCode">
+          <template #icon-on><CodeIcon /></template>
+          <template #icon-off><CodeIcon /></template>
+        </Switch>
       </div>
     </div>
     <div class="not-prose demo-wrapper-svg-bg p-4">

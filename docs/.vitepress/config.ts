@@ -80,7 +80,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     plugins: [jsx(), demo(), tailwindcss()],
     resolve: {
       alias: [
-        { find: /^tailv$/, replacement: resolve(__dirname, '../../src') },
+        { find: 'sinvue', replacement: resolve(__dirname, '../../src') },
         { find: '@', replacement: resolve(__dirname, '../../src') },
       ],
     },

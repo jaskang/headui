@@ -5,35 +5,33 @@
 ```vue demo
 <script setup lang="ts">
 import { CheckIcon } from 'lucide-vue-next'
+import { Badge } from 'sinvue'
 </script>
 <template>
   <div class="flex w-full flex-wrap gap-2">
-    <HBadge>Badge</HBadge>
-    <HBadge variant="secondary">Secondary</HBadge>
-    <HBadge variant="destructive">Destructive</HBadge>
-    <HBadge variant="outline">Outline</HBadge>
-    <HBadge> <CheckIcon />icon </HBadge>
-    <HBadge pill>99</HBadge>
-    <HBadge variant="secondary" pill>88</HBadge>
-    <HBadge variant="destructive" pill>77</HBadge>
-    <HBadge variant="outline" pill><CheckIcon /></HBadge>
+    <Badge>Badge</Badge>
+    <Badge variant="secondary">Secondary</Badge>
+    <Badge variant="destructive">Destructive</Badge>
+    <Badge variant="outline">Outline</Badge>
+    <Badge> <CheckIcon />icon </Badge>
   </div>
 </template>
 ```
 
-## 链接用法
+## pill
 
 ```vue demo
 <script setup lang="ts">
 import { CheckIcon } from 'lucide-vue-next'
+import { Badge } from 'sinvue'
 </script>
 <template>
   <div class="flex w-full flex-wrap gap-2">
-    <HBadge as="a" href="#">Badge</HBadge>
-    <HBadge variant="secondary" as="a" href="#">Secondary</HBadge>
-    <HBadge variant="destructive" as="a" href="#">Destructive</HBadge>
-    <HBadge variant="outline" as="a" href="#">Outline</HBadge>
-    <HBadge as="a" href="#"> <CheckIcon />icon </HBadge>
+    <Badge pill>Badge</Badge>
+    <Badge variant="secondary" pill>Secondary</Badge>
+    <Badge variant="destructive" pill>Destructive</Badge>
+    <Badge variant="outline" pill>Outline</Badge>
+    <Badge pill> <CheckIcon />icon </Badge>
   </div>
 </template>
 ```

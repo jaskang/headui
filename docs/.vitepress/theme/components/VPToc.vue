@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Anchor } from 'tailv'
-import { useAnchor } from '../composables/anchor'
+import { Anchor } from 'sinvue'
 import { useData } from 'vitepress'
+import { useAnchor } from '../composables/anchor'
 
 defineOptions({ name: 'Toc' })
 const emit = defineEmits<{ click: [any] }>()

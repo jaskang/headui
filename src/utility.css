@@ -1,0 +1,56 @@
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* Custom scrollbar styling. Thanks @pranathiperii. */
+  ::-webkit-scrollbar-button {
+    @apply hidden h-0 w-0;
+  }
+  ::-webkit-scrollbar {
+    @apply h-3 w-3 bg-transparent;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full border-3 border-transparent bg-clip-content;
+  }
+  ::-webkit-scrollbar-corner {
+    @apply bg-transparent;
+  }
+  /* ::-webkit-scrollbar-thumb:hover {
+    @apply bg-border/50;
+  } */
+  /* * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  } */
+}
+
+@utility animate-collapsible-down {
+  animation: collapsible-down 0.2s ease-out;
+}
+
+@utility animate-collapsible-up {
+  animation: collapsible-up 0.2s ease-out;
+}
+
+@keyframes collapsible-down {
+  0% {
+    height: 0;
+  }
+  to {
+    height: var(--reka-collapsible-content-height);
+  }
+}
+
+@keyframes collapsible-up {
+  0% {
+    height: var(--reka-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}

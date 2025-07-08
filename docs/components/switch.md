@@ -1,3 +1,7 @@
+<script>
+  import { Switch } from 'sinvue'
+</script>
+
 # Switch
 
 开关
@@ -7,11 +11,12 @@
 ```vue demo
 <script setup>
 import { ref } from 'vue'
+import { Switch } from 'sinvue'
 const val = ref(true)
 </script>
 <template>
   <div class="flex items-center gap-2">
-    <HSwitch id="switch-1" v-model:checked="val" /> <label for="switch-1"> value: {{ val }} </label>
+    <Switch id="switch-1" v-model:value="val" /> <label for="switch-1"> value: {{ val }} </label>
   </div>
 </template>
 ```
@@ -21,17 +26,18 @@ const val = ref(true)
 ```vue demo
 <script setup>
 import { MoonIcon, SunIcon } from 'lucide-vue-next'
+import { Switch } from 'sinvue'
 </script>
 <template>
   <div class="flex flex-wrap items-center gap-2">
-    <HSwitch id="switch-2">
+    <Switch id="switch-2">
       <template #icon-on>
         <MoonIcon />
       </template>
       <template #icon-off>
         <SunIcon />
       </template>
-    </HSwitch>
+    </Switch>
     <label for="switch-2"> dark mode </label>
   </div>
 </template>
@@ -40,9 +46,12 @@ import { MoonIcon, SunIcon } from 'lucide-vue-next'
 ## disabled
 
 ```vue demo
+<script setup>
+import { Switch } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HSwitch disabled />
+    <Switch disabled />
   </div>
 </template>
 ```

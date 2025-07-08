@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { InboxIcon } from '@heroicons/vue/24/outline'
+import { Button } from 'sinvue'
 import { ref } from 'vue'
 defineOptions({ name: 'ButtonBooth' })
 const emit = defineEmits<{ click: [any] }>()
@@ -46,35 +47,35 @@ const disabled = ref(false)
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">pill:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <HSwitch v-model:value="pill"></HSwitch>
+          <Switch v-model:value="pill"></Switch>
         </div>
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">square:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <HSwitch v-model:value="square"></HSwitch>
+          <Switch v-model:value="square"></Switch>
         </div>
       </div>
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">block:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <HSwitch v-model:value="block"></HSwitch>
+          <Switch v-model:value="block"></Switch>
         </div>
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">loading:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <HSwitch v-model:value="loading"></HSwitch>
+          <Switch v-model:value="loading"></Switch>
         </div>
       </div>
       <div class="flex items-start">
         <div class="mr-4 w-16 py-2 text-right text-sm font-semibold">disabled:</div>
         <div class="grid flex-1 grid-cols-3 py-1.5">
-          <HSwitch v-model:value="disabled"></HSwitch>
+          <Switch v-model:value="disabled"></Switch>
         </div>
       </div>
     </div>
     <div class="flex flex-1 items-center justify-center p-6">
-      <HButton :variant :size :pill :square :block :loading :disabled>
+      <Button :variant :size :pill :square :block :loading :disabled>
         <InboxIcon v-if="square" />
         <template v-else>Button</template>
-      </HButton>
+      </Button>
     </div>
   </div>
 </template>

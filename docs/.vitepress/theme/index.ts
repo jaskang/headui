@@ -1,10 +1,9 @@
 // https://vitepress.dev/guide/custom-theme
 import './styles/index.css'
-import { plugin } from 'tailv'
+import { createPinia } from 'pinia'
 import type { Theme } from 'vitepress'
 import DemoWrapper from './components/DemoWrapper.vue'
 import Layout from './Layout.vue'
-import { createPinia } from 'pinia'
 
 const pinia = createPinia()
 
@@ -14,7 +13,7 @@ export default {
     ctx.app.use(pinia)
     ctx.app.component('DemoWrapper', DemoWrapper)
     // @ts-ignore
-    ctx.app.use(plugin)
+    // ctx.app.use(plugin)
   },
 } satisfies Theme
 

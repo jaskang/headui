@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Anchor } from 'tailv'
+import { Anchor } from 'sinvue'
 
 import { useData } from 'vitepress'
 import { computed } from 'vue'

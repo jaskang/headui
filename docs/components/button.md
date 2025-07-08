@@ -4,6 +4,7 @@ hello: world
 
 <script>
   import ButtonBooth from './booth/button.vue'
+  import { Button } from 'sinvue'
 </script>
 
 # Button
@@ -19,14 +20,17 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 分别为: `default` | `secondary` | `destructive` | `outline` | `ghost` | `link`
 
 ```vue demo title=默认样式
+<script setup>
+import { Button } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HButton>default</HButton>
-    <HButton variant="secondary">secondary</HButton>
-    <HButton variant="destructive">destructive</HButton>
-    <HButton variant="outline">outline</HButton>
-    <HButton variant="ghost">ghost</HButton>
-    <HButton variant="link">link</HButton>
+    <Button>default</Button>
+    <Button variant="secondary">secondary</Button>
+    <Button variant="destructive">destructive</Button>
+    <Button variant="outline">outline</Button>
+    <Button variant="ghost">ghost</Button>
+    <Button variant="link">link</Button>
   </div>
 </template>
 ```
@@ -34,11 +38,14 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ## Pill
 
 ```vue demo
+<script setup>
+import { Button } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HButton pill>button</HButton>
-    <HButton variant="outline" pill>outline</HButton>
-    <HButton variant="secondary" pill>secondary</HButton>
+    <Button pill>button</Button>
+    <Button variant="outline" pill>outline</Button>
+    <Button variant="secondary" pill>secondary</Button>
   </div>
 </template>
 ```
@@ -46,11 +53,14 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ## Square
 
 ```vue demo
+<script setup>
+import { Button } from 'sinvue'
+</script>
 <template>
   <div class="flex items-center gap-2">
-    <HButton square>D</HButton>
-    <HButton variant="outline" square>D</HButton>
-    <HButton variant="secondary" square>D</HButton>
+    <Button square>D</Button>
+    <Button variant="outline" square>D</Button>
+    <Button variant="secondary" square>D</Button>
   </div>
 </template>
 ```
@@ -58,9 +68,12 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ## block
 
 ```vue demo
+<script setup>
+import { Button } from 'sinvue'
+</script>
 <template>
   <div class="space-y-2">
-    <HButton block>block button</HButton>
+    <Button block>block button</Button>
   </div>
 </template>
 ```
@@ -68,11 +81,14 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ## Sizes
 
 ```vue demo
+<script setup>
+import { Button } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap items-center gap-2">
-    <HButton size="sm">size: sm</HButton>
-    <HButton size="md">size: md</HButton>
-    <HButton size="lg">size: lg</HButton>
+    <Button size="sm">sm</Button>
+    <Button>default</Button>
+    <Button size="lg">lg</Button>
   </div>
 </template>
 ```
@@ -80,14 +96,17 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ## Disabled
 
 ```vue demo
+<script setup>
+import { Button } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HButton disabled>primary</HButton>
-    <HButton variant="secondary" disabled>secondary</HButton>
-    <HButton variant="destructive" disabled>destructive</HButton>
-    <HButton variant="outline" disabled>outline</HButton>
-    <HButton variant="ghost" disabled>ghost</HButton>
-    <HButton variant="link" disabled>link</HButton>
+    <Button disabled>primary</Button>
+    <Button variant="secondary" disabled>secondary</Button>
+    <Button variant="destructive" disabled>destructive</Button>
+    <Button variant="outline" disabled>outline</Button>
+    <Button variant="ghost" disabled>ghost</Button>
+    <Button variant="link" disabled>link</Button>
   </div>
 </template>
 ```
@@ -95,11 +114,14 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 ## Loading
 
 ```vue demo
+<script setup>
+import { Button } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HButton loading>primary</HButton>
-    <HButton variant="outline" loading>outline</HButton>
-    <HButton variant="secondary" loading>secondary</HButton>
+    <Button loading>primary</Button>
+    <Button variant="outline" loading>outline</Button>
+    <Button variant="secondary" loading>secondary</Button>
   </div>
 </template>
 ```
@@ -108,22 +130,23 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 
 ```vue demo
 <script setup>
-import { PaperAirplaneIcon, InboxIcon, TrashIcon, ArchiveBoxIcon, CircleStackIcon } from '@heroicons/vue/24/outline'
+import { TrashIcon } from 'lucide-vue-next'
+import { Button } from 'sinvue'
 </script>
 <template>
   <div class="flex items-center gap-2">
-    <HButton square>
+    <Button square>
       <TrashIcon />
-    </HButton>
-    <HButton square variant="outline">
+    </Button>
+    <Button square variant="outline">
       <TrashIcon />
-    </HButton>
-    <HButton square variant="secondary">
+    </Button>
+    <Button square variant="secondary">
       <TrashIcon />
-    </HButton>
-    <HButton square variant="destructive">
+    </Button>
+    <Button square variant="destructive">
       <TrashIcon />
-    </HButton>
+    </Button>
   </div>
 </template>
 ```
@@ -131,26 +154,29 @@ import { PaperAirplaneIcon, InboxIcon, TrashIcon, ArchiveBoxIcon, CircleStackIco
 ## SpaceCompact
 
 ```vue demo
+<script setup>
+import { Button } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
     <SpaceCompact>
       <Tooltip content="Like">
-        <HButton>button</HButton>
+        <Button>button</Button>
       </Tooltip>
       <Tooltip content="Comment">
-        <HButton variant="soft" color="primary">button</HButton>
+        <Button variant="soft" color="primary">button</Button>
       </Tooltip>
       <Tooltip content="Star">
-        <HButton variant="soft" color="success">button</HButton>
+        <Button variant="soft" color="success">button</Button>
       </Tooltip>
       <Tooltip content="Heart">
-        <HButton>button</HButton>
+        <Button>button</Button>
       </Tooltip>
       <Tooltip content="Share">
-        <HButton>button</HButton>
+        <Button>button</Button>
       </Tooltip>
       <Tooltip content="Download">
-        <HButton>button</HButton>
+        <Button>button</Button>
       </Tooltip>
     </SpaceCompact>
   </div>
