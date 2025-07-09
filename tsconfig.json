@@ -9,5 +9,5 @@
       "sinvue": ["./src/index.ts"]
     }
   },
-  "include": ["./env.d.ts", "./src/**/*", "./docs/**/*"]
+  "include": ["./env.d.ts", "./src/**/*", "./docs/**/*", "./docs/**/*.vue"]
 }

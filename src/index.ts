@@ -3,6 +3,8 @@ import { Avatar } from './Avatar'
 import { Checkbox, CheckboxGroup } from './Checkbox'
 import { default as Badge } from './components/Badge.vue'
 import { default as Button } from './components/Button.vue'
+import { default as Sidebar } from './components/Sidebar.vue'
+import { default as SidebarMenu } from './components/SidebarMenu.vue'
 import { default as Switch } from './components/Switch.vue'
 import { Input } from './Input'
 import { NavigationMenu } from './NavigationMenu'
@@ -11,7 +13,6 @@ import { Radio, RadioCard, RadioGroup } from './Radio'
 import { ScrollArea } from './ScrollArea'
 import { Select } from './Select'
 import { Sheet } from './Sheet'
-import { Sidebar } from './Sidebar'
 import { default as SpaceCompact } from './Space/SpaceCompact.vue'
 import { Tabs } from './Tab'
 import { Textarea } from './Textarea'
@@ -35,6 +36,7 @@ export {
   Select,
   Sheet,
   Sidebar,
+  SidebarMenu,
   SpaceCompact,
   Switch,
   Tabs,

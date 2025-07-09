@@ -34,9 +34,8 @@ const theme = useThemeStore()
             <aside
               class="border-grid fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 border-r md:sticky md:block"
             >
-              <div class="no-scrollbar h-full overflow-auto py-6 pr-4 lg:py-8">
-                <VPSidebar />
-              </div>
+              <VPSidebar class="h-full overflow-auto bg-transparent py-6 pr-4 lg:py-8" />
+              <!-- <div class="no-scrollbar h-full overflow-auto py-6 pr-4 lg:py-8"></div> -->
             </aside>
             <VPContent />
             <!-- <main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">

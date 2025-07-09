@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Anchor } from 'sinvue'
+import { Sidebar, SidebarMenu } from 'sinvue'
 
 import { useData } from 'vitepress'
 import { computed } from 'vue'
@@ -12,8 +12,8 @@ const groups = computed(() => {
     label: group.text,
     type: 'group',
     children: group.items.map(item => ({
-      key: item.link,
       label: item.title,
+      value: item.link,
       link: item.link,
     })),
   }))
@@ -23,20 +23,22 @@ const { page, hash } = useData()
 
 const matchItems = (items: any[]) => {
   console.log('items', page.value.relativePath, items)
-  return items.findIndex(item => isActive(page.value.relativePath, item.link))
+  return items.find(item => isActive(page.value.relativePath, item.value))
 }
 const current = computed(() => {
   for (const group of sidebarGroups.value) {
-    const index = matchItems(group.items)
-    if (index !== -1) {
-      console.log('matchItems', group.text, index)
-      return { group: group.text, index }
+    const item = matchItems(group.items)
+    if (item) {
+      console.log('matchItems', group.text, item)
+      return item.value
     }
   }
-  return { group: '', index: -1 }
+  return null
 })
 </script>
 
 <template>
-  <HSidebar :options="groups" />
+  <Sidebar :value="current">
+    <SidebarMenu v-for="group in groups" :key="group.label" :label="group.label" :items="group.children" />
+  </Sidebar>
 </template>

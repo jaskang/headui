@@ -1,27 +1,41 @@
 <script lang="ts">
 export const SIDEBAR_INJECTION_KEY = Symbol('sidebar') as InjectionKey<{
   current: Ref<string>
+  variant: ComputedRef<'default' | 'outline'>
+  size: ComputedRef<'default' | 'sm' | 'lg'>
 }>
 </script>
 
 <script setup lang="ts">
-import { type InjectionKey, provide, type Ref, ref } from 'vue'
+import { computed, type ComputedRef, type InjectionKey, provide, type Ref, ref } from 'vue'
+import { cn } from '@/lib/utils'
 
 export type SidebarProps = {
-  value?: string
+  variant?: 'default' | 'outline'
+  size?: 'default' | 'sm' | 'lg'
+  class?: string | string[]
 }
 
-const props = defineProps<SidebarProps>()
+const props = withDefaults(defineProps<SidebarProps>(), {
+  variant: 'default',
+  size: 'default',
+})
+
 const value = defineModel<string>('value', { required: true })
 
 provide(SIDEBAR_INJECTION_KEY, {
   current: value,
+  variant: computed(() => props.variant),
+  size: computed(() => props.size),
 })
 </script>
 
 <template>
-  <div data-slot="sidebar" class="bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col">
-    <div data-slot="sidebar-header" data-sidebar="header" class="flex flex-col gap-2 p-2">
+  <div
+    data-slot="sidebar"
+    :class="cn(['bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col', props.class])"
+  >
+    <div v-if="$slots.header" data-slot="sidebar-header" data-sidebar="header" class="flex flex-col gap-2 p-2">
       <slot name="header" />
     </div>
     <div
@@ -31,7 +45,7 @@ provide(SIDEBAR_INJECTION_KEY, {
     >
       <slot />
     </div>
-    <div data-slot="sidebar-footer" data-sidebar="footer" class="flex flex-col gap-2 p-2">
+    <div v-if="$slots.footer" data-slot="sidebar-footer" data-sidebar="footer" class="flex flex-col gap-2 p-2">
       <slot name="footer" />
     </div>
   </div>
