@@ -8,7 +8,7 @@ export type SidebarMenuProps = {
     label: string
     value: string
     icon?: string
-    to?: string
+    href?: string
     disabled?: boolean
   }[]
 }
@@ -38,7 +38,7 @@ const provider = inject(SIDEBAR_INJECTION_KEY, {
         data-sidebar="menu-item"
         class="group/menu-item relative"
       >
-        <div
+        <a
           role="button"
           data-slot="sidebar-menu-button"
           data-sidebar="menu-button"
@@ -57,10 +57,11 @@ const provider = inject(SIDEBAR_INJECTION_KEY, {
               lg: 'h-12 text-sm group-data-[collapsible=icon]:p-0!',
             }[provider?.size.value],
           ]"
+          :href="item.href || 'javascript:void(0)'"
         >
           {{ item.icon }}
           {{ item.label }}
-        </div>
+        </a>
       </li>
     </ul>
   </div>

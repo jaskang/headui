@@ -5,17 +5,17 @@
 ```vue demo
 <script setup>
 import { ref } from 'vue'
-import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
-
+import { Input } from 'sinvue'
+import { SearchIcon } from 'lucide-vue-next'
 const val = ref('val')
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HInput v-model:value="val" class="" placeholder="搜索">
+    <Input v-model:value="val" class="" placeholder="搜索">
       <template #prefix>
-        <MagnifyingGlassIcon class="ml-3 h-4 w-4" />
+        <SearchIcon />
       </template>
-    </HInput>
+    </Input>
     {{ val }}
   </div>
 </template>
@@ -24,12 +24,15 @@ const val = ref('val')
 ## status
 
 ```vue demo
+<script setup>
+import { Input } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HInput class="w-full" />
-    <HInput status="success" class="w-full" />
-    <HInput status="warning" class="w-full" />
-    <HInput status="danger" class="w-full" />
+    <Input class="w-full" />
+    <Input status="success" class="w-full" />
+    <Input status="warning" class="w-full" />
+    <Input status="danger" class="w-full" />
   </div>
 </template>
 ```
@@ -37,11 +40,46 @@ const val = ref('val')
 ## prefix & suffix
 
 ```vue demo
+<script setup>
+import { Input } from 'sinvue'
+import { SearchIcon } from 'lucide-vue-next'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HInput prefix="prefix" class="w-full" />
-    <HInput suffix="suffix" class="w-full" />
-    <HInput prefix="prefix" suffix="suffix" class="w-full" />
+    <Input class="w-full">
+      <template #prefix><SearchIcon /></template>
+    </Input>
+    <Input class="w-full">
+      <template #suffix><SearchIcon /></template>
+    </Input>
+    <Input class="w-full">
+      <template #prefix>prefix</template>
+    </Input>
+    <Input class="w-full">
+      <template #suffix>suffix</template>
+    </Input>
+  </div>
+</template>
+```
+
+## size
+
+```vue demo
+<script setup>
+import { Input } from 'sinvue'
+import { SearchIcon } from 'lucide-vue-next'
+</script>
+<template>
+  <div class="flex flex-wrap gap-2">
+    <Input class="w-full">
+      <template #prefix><SearchIcon /></template>
+    </Input>
+    <Input size="sm" class="w-full">
+      <template #prefix><SearchIcon /></template>
+    </Input>
+    <Input size="lg" class="w-full">
+      <template #prefix><SearchIcon /></template>
+    </Input>
   </div>
 </template>
 ```
@@ -49,10 +87,18 @@ const val = ref('val')
 ## disabled
 
 ```vue demo
+<script setup>
+import { Input } from 'sinvue'
+import { SearchIcon } from 'lucide-vue-next'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HInput disabled class="w-full" />
-    <HInput disabled prefix="prefix" class="w-full" />
+    <Input disabled class="w-full" />
+    <Input disabled class="w-full">
+      <template #prefix>
+        <SearchIcon />
+      </template>
+    </Input>
   </div>
 </template>
 ```
@@ -60,20 +106,23 @@ const val = ref('val')
 ## SpaceCompact
 
 ```vue demo
+<script setup>
+import { Input } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
     <SpaceCompact class="w-full">
-      <HInput />
+      <Input />
       <Button>button</Button>
     </SpaceCompact>
     <SpaceCompact class="w-full">
-      <HInput />
-      <HInput />
-      <HInput />
-      <HInput />
+      <Input />
+      <Input />
+      <Input />
+      <Input />
     </SpaceCompact>
     <SpaceCompact class="w-full">
-      <HInput />
+      <Input />
       <Select
         placeholder="请选择"
         class="w-36"

@@ -14,7 +14,7 @@ const groups = computed(() => {
     children: group.items.map(item => ({
       label: item.title,
       value: item.link,
-      link: item.link,
+      href: item.link,
     })),
   }))
 })

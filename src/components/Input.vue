@@ -1,32 +1,83 @@
 <script setup lang="ts">
-import { type InputHTMLAttributes, type PropType, ref, watch } from 'vue'
+import { XIcon } from 'lucide-vue-next'
+import { type InputHTMLAttributes, type PropType, ref, useTemplateRef, watch } from 'vue'
 import type { InputValue } from '../utils/theme'
+import Button from './Button.vue'
 
-defineOptions({ name: 'HInput' })
-const slots = defineSlots<{ prefix?: (_: {}) => any; suffix?: (_: {}) => any }>()
-const emit = defineEmits<{
-  change: [val: string]
-  input: [Event]
-  focus: [FocusEvent]
-  blur: [FocusEvent]
-}>()
-const props = defineProps<{
+// export type InputTypeHTMLAttribute = 'button' | 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'text' | 'time' | 'url' | 'week' | (string & {});
+// export interface InputHTMLAttributes extends HTMLAttributes {
+//     accept?: string;
+//     alt?: string;
+//     autocomplete?: string;
+//     autofocus?: Booleanish;
+//     capture?: boolean | 'user' | 'environment';
+//     checked?: Booleanish | any[] | Set<any>;
+//     crossorigin?: string;
+//     disabled?: Booleanish;
+//     enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+//     form?: string;
+//     formaction?: string;
+//     formenctype?: string;
+//     formmethod?: string;
+//     formnovalidate?: Booleanish;
+//     formtarget?: string;
+//     height?: Numberish;
+//     indeterminate?: boolean;
+//     list?: string;
+//     max?: Numberish;
+//     maxlength?: Numberish;
+//     min?: Numberish;
+//     minlength?: Numberish;
+//     multiple?: Booleanish;
+//     name?: string;
+//     pattern?: string;
+//     placeholder?: string;
+//     readonly?: Booleanish;
+//     required?: Booleanish;
+//     size?: Numberish;
+//     src?: string;
+//     step?: Numberish;
+//     type?: InputTypeHTMLAttribute;
+//     value?: any;
+//     width?: Numberish;
+// }
+export type InputProps = {
+  // 原生属性
   name?: string
   disabled?: boolean
   placeholder?: string
   readonly?: boolean
-  required?: boolean
   autofocus?: boolean
-  maxlength?: number
-  pattern?: string
+  // 自定义
+  size?: 'default' | 'sm' | 'lg'
+  clearable?: boolean
+}
 
-  prefix?: string
-  suffix?: string
-  allowClear?: boolean
+const emit = defineEmits<{
+  focus: [event: FocusEvent]
+  blur: [event: FocusEvent]
+  change: [val: string]
+  input: [event: Event]
+  keydown: [event: KeyboardEvent]
+  keyup: [event: KeyboardEvent]
+  keypress: [event: KeyboardEvent]
+
+  clear: []
 }>()
+const slots = defineSlots<{ prefix?: (_: {}) => any; suffix?: (_: {}) => any }>()
+const props = withDefaults(defineProps<InputProps>(), {
+  size: 'default',
+})
 
 const value = defineModel<string>('value')
 
+const inputRef = useTemplateRef<HTMLInputElement>('inputRef')
+
+const onClear = () => {
+  value.value = ''
+  inputRef.value?.focus()
+  emit('clear')
+}
 watch(value, v => {
   emit('change', v!)
 })
@@ -34,50 +85,84 @@ watch(value, v => {
 <template>
   <div
     :class="[
-      'flex h-9 w-full min-w-0 rounded-md text-sm shadow-xs',
+      'group',
+      'flex w-full min-w-0 rounded-md text-sm shadow-xs',
       'dark:bg-input/30 border-input bg-background border transition-[color,box-shadow]',
       'focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]',
       'data-[disabled=true]:pointer-events-none data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50',
       'aria-invalid:ring-destructive/20 aria-invalid:border-destructive dark:aria-invalid:ring-destructive/40',
+      {
+        default: 'h-9 px-2',
+        sm: 'h-8 px-2',
+        lg: 'h-10 px-3',
+      }[props.size],
     ]"
     :data-disabled="disabled"
   >
-    <span v-if="prefix || slots.prefix" class="flex h-full items-center">
-      <slot name="prefix">
-        <span class="pl-3"> {{ prefix }} </span>
-      </slot>
-    </span>
-    <input
-      ref="inputRef"
+    <span
+      v-if="slots.prefix"
       :class="[
-        'block w-full flex-1 cursor-[inherit] border-0 bg-transparent px-3 py-1.5 text-sm leading-[1.375rem] outline-none',
-        'selection:bg-primary selection:text-primary-foreground',
-        'placeholder:text-muted-foreground',
-        'focus:outline-none',
-        prefix || slots.prefix ? 'pl-1' : '',
-        suffix || slots.suffix ? 'pr-1' : '',
+        'z-input_prefix flex h-full items-center',
+        {
+          default: '[&>svg]:size-4',
+          sm: '[&>svg]:size-3.5',
+          lg: '[&>svg]:size-4.5',
+        }[size],
       ]"
-      type="text"
-      :name="name"
-      :disabled="disabled"
-      :placeholder="placeholder"
-      :readonly="readonly"
-      :required="required"
-      :autofocus="autofocus"
-      :maxlength="maxlength"
-      :pattern="pattern"
-      autocomplete="off"
-      v-model="value"
-      @focus="emit('focus', $event)"
-      @blur="emit('blur', $event)"
-      @input="emit('input', $event)"
-    />
-    <span v-if="suffix || slots.suffix" class="z-input_suffix flex h-full items-center">
-      <slot name="suffix">
-        <span class="pr-3">
-          {{ suffix }}
-        </span>
-      </slot>
+    >
+      <slot name="prefix" />
+    </span>
+    <div class="relative flex w-full flex-1 items-center">
+      <input
+        ref="inputRef"
+        :class="[
+          'block w-full cursor-[inherit] border-0 bg-transparent outline-none',
+          'selection:bg-primary selection:text-primary-foreground',
+          'placeholder:text-muted-foreground',
+          'focus:outline-none',
+          {
+            default: 'px-1 py-1.5 text-sm leading-[1.375rem]',
+            sm: 'px-0.5 py-1 text-sm leading-6',
+            lg: 'px-1.5 py-2 text-base leading-6',
+          }[size],
+        ]"
+        type="text"
+        :name="name"
+        :disabled="disabled"
+        :placeholder="placeholder"
+        :readonly="readonly"
+        :autofocus="autofocus"
+        autocomplete="off"
+        v-model="value"
+        @focus="emit('focus', $event)"
+        @blur="emit('blur', $event)"
+        @input="emit('input', $event)"
+        @keydown="emit('keydown', $event)"
+        @keyup="emit('keyup', $event)"
+        @keypress="emit('keypress', $event)"
+      />
+      <div
+        role="button"
+        tabindex="-1"
+        v-if="clearable && value"
+        @click="onClear"
+        class="text-muted-foreground hover:text-foreground bg-muted absolute top-1/2 right-0.5 hidden size-4 -translate-y-1/2 items-center justify-center rounded-full group-hover:flex"
+      >
+        <XIcon class="size-3" />
+      </div>
+    </div>
+    <span
+      v-if="slots.suffix"
+      :class="[
+        'z-input_suffix flex h-full items-center',
+        {
+          default: '[&>svg]:size-4',
+          sm: '[&>svg]:size-3.5',
+          lg: '[&>svg]:size-4.5',
+        }[size],
+      ]"
+    >
+      <slot name="suffix" />
     </span>
   </div>
 </template>

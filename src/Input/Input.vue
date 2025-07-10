@@ -2,7 +2,7 @@
 import { type InputHTMLAttributes, type PropType, ref, watch } from 'vue'
 import type { InputValue } from '../utils/theme'
 
-defineOptions({ name: 'HInput' })
+defineOptions({ name: 'Input' })
 const slots = defineSlots<{ prefix?: (_: {}) => any; suffix?: (_: {}) => any }>()
 const emit = defineEmits<{
   change: [InputValue]
