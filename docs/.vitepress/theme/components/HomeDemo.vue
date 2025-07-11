@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Avatar, Button, Input, RadioCard, RadioGroup, Select, Tabs } from '../../../../src'
+import { Avatar, Button, Input, RadioGroup, Select, Tabs } from '../../../../src'
 
 defineOptions({ name: 'HomeDemo' })
 const emit = defineEmits<{ click: [any] }>()

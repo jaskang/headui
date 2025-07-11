@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type PropType } from 'vue'
-defineOptions({ name: 'HTextarea' })
+defineOptions({ name: 'Textarea' })
 
 const emit = defineEmits<{
   change: [string]
