@@ -37,7 +37,7 @@ watch(value, v => {
     :class="[
       'flex h-9 w-full min-w-0 rounded-md text-sm shadow-xs',
       'dark:bg-input/30 border-input bg-background border transition-[color,box-shadow]',
-      'focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]',
+      'focus-within:ring-focus',
       'data-[disabled=true]:pointer-events-none data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50',
       'aria-invalid:ring-destructive/20 aria-invalid:border-destructive dark:aria-invalid:ring-destructive/40',
     ]"

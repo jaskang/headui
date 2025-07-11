@@ -62,28 +62,6 @@ import { SearchIcon } from 'lucide-vue-next'
 </template>
 ```
 
-## size
-
-```vue demo
-<script setup>
-import { Input } from 'sinvue'
-import { SearchIcon } from 'lucide-vue-next'
-</script>
-<template>
-  <div class="flex flex-wrap gap-2">
-    <Input class="w-full">
-      <template #prefix><SearchIcon /></template>
-    </Input>
-    <Input size="sm" class="w-full">
-      <template #prefix><SearchIcon /></template>
-    </Input>
-    <Input size="lg" class="w-full">
-      <template #prefix><SearchIcon /></template>
-    </Input>
-  </div>
-</template>
-```
-
 ## disabled
 
 ```vue demo

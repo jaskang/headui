@@ -2,6 +2,7 @@
 
 ```vue demo
 <script setup>
+import { Radio, RadioGroup } from 'sinvue'
 import { ref } from 'vue'
 
 const picked = ref('A')
@@ -9,10 +10,10 @@ const picked = ref('A')
 <template>
   <div>
     picked: {{ picked }}
-    <HRadioGroup class="mt-2 flex gap-4" v-model:value="picked">
-      <HRadio value="A">A</HRadio>
-      <HRadio value="B">B</HRadio>
-    </HRadioGroup>
+    <RadioGroup class="mt-2 flex gap-4" v-model:value="picked">
+      <Radio value="A">A</Radio>
+      <Radio value="B">B</Radio>
+    </RadioGroup>
   </div>
 </template>
 ```
@@ -20,12 +21,15 @@ const picked = ref('A')
 ## Default
 
 ```vue demo
+<script setup>
+import { Radio, RadioGroup } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HRadioGroup class="mt-2 flex gap-4" v-model:value="picked">
-      <HRadio value="A">checkbox</HRadio>
-      <HRadio value="B" checked>checkbox</HRadio>
-    </HRadioGroup>
+    <RadioGroup class="mt-2 flex gap-4" v-model:value="picked">
+      <Radio value="A">checkbox</Radio>
+      <Radio value="B" checked>checkbox</Radio>
+    </RadioGroup>
   </div>
 </template>
 ```
@@ -33,22 +37,25 @@ const picked = ref('A')
 ## RadioCard
 
 ```vue demo
+<script setup>
+import { Radio, RadioGroup } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-col gap-4">
-    <HRadioGroup class="flex gap-4">
-      <HRadioCard value="A" class="flex flex-col">
+    <RadioGroup class="flex gap-4">
+      <RadioCard value="A" class="flex flex-col">
         <span class="font-semibold">8-core CPU</span>
         <span>32 GB RAM</span>
-      </HRadioCard>
-      <HRadioCard value="B" class="flex flex-col">
+      </RadioCard>
+      <RadioCard value="B" class="flex flex-col">
         <span class="font-semibold">6-core CPU</span>
         <span>24 GB RAM</span>
-      </HRadioCard>
-      <HRadioCard value="C" class="flex flex-col">
+      </RadioCard>
+      <RadioCard value="C" class="flex flex-col">
         <span class="font-semibold">4-core CPU</span>
         <span>16 GB RAM</span>
-      </HRadioCard>
-    </HRadioGroup>
+      </RadioCard>
+    </RadioGroup>
   </div>
 </template>
 ```
@@ -56,18 +63,21 @@ const picked = ref('A')
 ## RadioCard size
 
 ```vue demo
+<script setup>
+import { Radio, RadioGroup } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-col gap-4">
-    <HRadioGroup class="flex gap-4" size="sm">
-      <HRadioCard value="A">value A</HRadioCard>
-      <HRadioCard value="B">value B</HRadioCard>
-      <HRadioCard value="C">value B</HRadioCard>
-    </HRadioGroup>
-    <HRadioGroup class="flex gap-4" size="lg">
-      <HRadioCard value="A">value A</HRadioCard>
-      <HRadioCard value="B">value B</HRadioCard>
-      <HRadioCard value="C">value B</HRadioCard>
-    </HRadioGroup>
+    <RadioGroup class="flex gap-4" size="sm">
+      <RadioCard value="A">value A</RadioCard>
+      <RadioCard value="B">value B</RadioCard>
+      <RadioCard value="C">value B</RadioCard>
+    </RadioGroup>
+    <RadioGroup class="flex gap-4" size="lg">
+      <RadioCard value="A">value A</RadioCard>
+      <RadioCard value="B">value B</RadioCard>
+      <RadioCard value="C">value B</RadioCard>
+    </RadioGroup>
   </div>
 </template>
 ```
@@ -75,12 +85,15 @@ const picked = ref('A')
 ## Disabled
 
 ```vue demo
+<script setup>
+import { Radio, RadioGroup } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HRadioGroup class="flex gap-4" size="lg">
-      <HRadio value="A" disabled checked> checked </HRadio>
-      <HRadio value="B" disabled>unchecked</HRadio>
-    </HRadioGroup>
+    <RadioGroup class="flex gap-4" size="lg">
+      <Radio value="A" disabled checked> checked </Radio>
+      <Radio value="B" disabled>unchecked</Radio>
+    </RadioGroup>
   </div>
 </template>
 ```

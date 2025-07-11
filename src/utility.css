@@ -28,29 +28,33 @@
     scrollbar-color: var(--border) transparent;
   } */
 }
-
-@utility animate-collapsible-down {
-  animation: collapsible-down 0.2s ease-out;
+@utility ring-focus {
+  @apply border-ring ring-ring/50 ring-[3px];
 }
-
-@utility animate-collapsible-up {
-  animation: collapsible-up 0.2s ease-out;
-}
-
-@keyframes collapsible-down {
-  0% {
-    height: 0;
+@layer utilities {
+  .animate-collapsible-down {
+    animation: collapsible-down 0.2s ease-out;
   }
-  to {
-    height: var(--reka-collapsible-content-height);
-  }
-}
 
-@keyframes collapsible-up {
-  0% {
-    height: var(--reka-collapsible-content-height);
+  .animate-collapsible-up {
+    animation: collapsible-up 0.2s ease-out;
   }
-  to {
-    height: 0;
+
+  @keyframes collapsible-down {
+    0% {
+      height: 0;
+    }
+    to {
+      height: var(--reka-collapsible-content-height);
+    }
+  }
+
+  @keyframes collapsible-up {
+    0% {
+      height: var(--reka-collapsible-content-height);
+    }
+    to {
+      height: 0;
+    }
   }
 }

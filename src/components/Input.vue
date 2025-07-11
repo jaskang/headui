@@ -49,7 +49,6 @@ export type InputProps = {
   readonly?: boolean
   autofocus?: boolean
   // 自定义
-  size?: 'default' | 'sm' | 'lg'
   clearable?: boolean
 }
 
@@ -65,9 +64,7 @@ const emit = defineEmits<{
   clear: []
 }>()
 const slots = defineSlots<{ prefix?: (_: {}) => any; suffix?: (_: {}) => any }>()
-const props = withDefaults(defineProps<InputProps>(), {
-  size: 'default',
-})
+const props = withDefaults(defineProps<InputProps>(), {})
 
 const value = defineModel<string>('value')
 
@@ -86,30 +83,15 @@ watch(value, v => {
   <div
     :class="[
       'group',
-      'flex w-full min-w-0 rounded-md text-sm shadow-xs',
+      'flex h-9 w-full min-w-0 rounded-md px-2 text-sm shadow-xs',
       'dark:bg-input/30 border-input bg-background border transition-[color,box-shadow]',
-      'focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]',
+      'focus-within:ring-focus',
       'data-[disabled=true]:pointer-events-none data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50',
       'aria-invalid:ring-destructive/20 aria-invalid:border-destructive dark:aria-invalid:ring-destructive/40',
-      {
-        default: 'h-9 px-2',
-        sm: 'h-8 px-2',
-        lg: 'h-10 px-3',
-      }[props.size],
     ]"
     :data-disabled="disabled"
   >
-    <span
-      v-if="slots.prefix"
-      :class="[
-        'z-input_prefix flex h-full items-center',
-        {
-          default: '[&>svg]:size-4',
-          sm: '[&>svg]:size-3.5',
-          lg: '[&>svg]:size-4.5',
-        }[size],
-      ]"
-    >
+    <span v-if="slots.prefix" class="z-input_prefix flex h-full items-center [&>svg]:size-4">
       <slot name="prefix" />
     </span>
     <div class="relative flex w-full flex-1 items-center">
@@ -120,11 +102,7 @@ watch(value, v => {
           'selection:bg-primary selection:text-primary-foreground',
           'placeholder:text-muted-foreground',
           'focus:outline-none',
-          {
-            default: 'px-1 py-1.5 text-sm leading-[1.375rem]',
-            sm: 'px-0.5 py-1 text-sm leading-6',
-            lg: 'px-1.5 py-2 text-base leading-6',
-          }[size],
+          'px-1 py-1.5 text-sm leading-[1.375rem]',
         ]"
         type="text"
         :name="name"
@@ -151,17 +129,7 @@ watch(value, v => {
         <XIcon class="size-3" />
       </div>
     </div>
-    <span
-      v-if="slots.suffix"
-      :class="[
-        'z-input_suffix flex h-full items-center',
-        {
-          default: '[&>svg]:size-4',
-          sm: '[&>svg]:size-3.5',
-          lg: '[&>svg]:size-4.5',
-        }[size],
-      ]"
-    >
+    <span v-if="slots.suffix" class="z-input_suffix flex h-full items-center [&>svg]:size-4">
       <slot name="suffix" />
     </span>
   </div>

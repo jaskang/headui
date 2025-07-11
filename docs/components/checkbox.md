@@ -2,25 +2,29 @@
 
 ```vue demo
 <script setup>
+import { Checkbox, CheckboxGroup } from 'sinvue'
 import { ref } from 'vue'
 const checkList = ref(['A'])
 </script>
 <template>
   checkList: {{ checkList }}
-  <HCheckboxGroup class="mt-2 flex gap-4" v-model:value="checkList">
-    <HCheckbox value="A">A</HCheckbox>
-    <HCheckbox value="B">B</HCheckbox>
-  </HCheckboxGroup>
+  <CheckboxGroup class="mt-2 flex gap-4" v-model:value="checkList">
+    <Checkbox value="A">A</Checkbox>
+    <Checkbox value="B">B</Checkbox>
+  </CheckboxGroup>
 </template>
 ```
 
 ## Default
 
 ```vue demo
+<script setup>
+import { Checkbox } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HCheckbox value="A">checkbox</HCheckbox>
-    <HCheckbox value="B" checked>checkbox</HCheckbox>
+    <Checkbox value="A">checkbox</Checkbox>
+    <Checkbox value="B" checked>checkbox</Checkbox>
   </div>
 </template>
 ```
@@ -28,10 +32,19 @@ const checkList = ref(['A'])
 ## Disabled
 
 ```vue demo
+<script setup>
+import { Checkbox, CheckboxGroup } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HCheckbox value="A" disabled checked> checked </HCheckbox>
-    <HCheckbox value="B" disabled>unchecked</HCheckbox>
+    <CheckboxGroup disabled>
+      <Checkbox value="A" :default-value="true"> checked </Checkbox>
+      <Checkbox value="B" :default-value="false">unchecked</Checkbox>
+    </CheckboxGroup>
+  </div>
+  <div class="flex flex-wrap gap-2">
+    <Checkbox value="A" disabled :default-value="true"> checked </Checkbox>
+    <Checkbox value="B" disabled :default-value="false">unchecked</Checkbox>
   </div>
 </template>
 ```

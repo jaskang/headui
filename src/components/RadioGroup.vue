@@ -12,7 +12,7 @@ watch(value, v => {
 })
 </script>
 <template>
-  <RadioGroupRoot v-model="value" v-bind="props">
+  <RadioGroupRoot class="group" v-model="value" v-bind="props">
     <slot />
   </RadioGroupRoot>
 </template>

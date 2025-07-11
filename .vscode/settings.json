@@ -4,6 +4,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "cSpell.words": ["jaskang"],
-  "oxc.enable": true
+  "oxc.enable": false
 }

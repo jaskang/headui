@@ -3,9 +3,12 @@
 ## default
 
 ```vue demo
+<script setup>
+import { Select } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HSelect
+    <Select
       class="w-60"
       placeholder="选择框"
       :options="[
@@ -21,13 +24,13 @@
         { value: 10, label: 'Emil Schaefer' },
       ]"
     />
-    <HSelect
+    <Select
       class="w-60"
       placeholder="选择框"
       :options="[
         {
-          title: 'Fruit',
-          options: [
+          label: 'Fruit',
+          children: [
             { value: 'Apple' },
             { value: 'Banana' },
             { value: 'Blueberry' },
@@ -36,8 +39,8 @@
           ],
         },
         {
-          title: 'Vegetables',
-          options: [
+          label: 'Vegetables',
+          children: [
             { value: 'Aubergine' },
             { value: 'Broccoli' },
             { value: 'Carrot' },
@@ -54,9 +57,12 @@
 ## default
 
 ```vue demo
+<script setup>
+import { Select } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HSelect
+    <Select
       class="w-60"
       placeholder="选择框"
       value="2"
@@ -74,9 +80,12 @@
 ## template
 
 ```vue demo
+<script setup>
+import { Select } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HSelect
+    <Select
       class="w-60"
       placeholder="选择框"
       :options="[
@@ -91,7 +100,7 @@
           {{ item.label }}
         </span>
       </template>
-    </HSelect>
+    </Select>
   </div>
 </template>
 ```
