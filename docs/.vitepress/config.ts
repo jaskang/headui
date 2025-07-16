@@ -2,14 +2,13 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import jsx from '@vitejs/plugin-vue-jsx'
-import { defineConfigWithTheme } from 'vitepress'
+import { defineConfig } from 'vitepress'
 import { demo } from './plugins/demo'
-import type { ThemeConfig } from './theme/theme'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // https://vitepress.dev/reference/site-config
-export default defineConfigWithTheme<ThemeConfig>({
+export default defineConfig({
   title: 'My Awesome Project',
   // appearance: {
   //   valueDark: 'vscode-dark',

@@ -5,12 +5,12 @@
 </template>
 <!-- 
 
-function SidebarSeparator({ className, ...props }: React.ComponentProps<typeof Separator>) {
+function SidebarSeparator({ class, ...props }: React.ComponentProps<typeof Separator>) {
   return (
     <Separator
       data-slot="sidebar-separator"
       data-sidebar="separator"
-      className={cn('bg-sidebar-border mx-2 w-auto', className)}
+      class={cn('bg-sidebar-border mx-2 w-auto', class)}
       {...props}
     />
   )

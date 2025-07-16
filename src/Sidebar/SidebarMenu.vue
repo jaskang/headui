@@ -21,7 +21,7 @@ const props = defineProps<{
   <ul data-slot="sidebar-menu" data-sidebar="menu" class="flex w-full min-w-0 flex-col gap-1">
     <template v-for="option in options" :key="option.label">
       <template v-if="option.children && option.children.length > 0">
-        <CollapsibleRoot className="group/collapsible">
+        <CollapsibleRoot class="group/collapsible">
           <SidebarMenuSubItem>
             <CollapsibleTrigger as-child>
               <SidebarMenuButton>

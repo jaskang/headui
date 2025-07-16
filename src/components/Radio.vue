@@ -28,7 +28,7 @@ const checked = defineModel<boolean>('checked')
       v-model="checked"
     >
       <RadioGroupIndicator data-slot="radio-group-indicator" class="relative flex items-center justify-center">
-        <CircleIcon className="fill-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
+        <CircleIcon class="fill-primary absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2" />
         <!-- <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <circle cx="12" cy="12" r="5"></circle>
         </svg> -->
