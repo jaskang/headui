@@ -81,25 +81,25 @@ import { SearchIcon } from 'lucide-vue-next'
 </template>
 ```
 
-## SpaceCompact
+## InputGroup
 
 ```vue demo
 <script setup>
-import { Input } from 'sinvue'
+import { Input, Button, InputGroup, Select } from 'sinvue'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <SpaceCompact class="w-full">
+    <InputGroup class="w-full">
       <Input />
       <Button>button</Button>
-    </SpaceCompact>
-    <SpaceCompact class="w-full">
+    </InputGroup>
+    <InputGroup class="w-full">
       <Input />
       <Input />
       <Input />
       <Input />
-    </SpaceCompact>
-    <SpaceCompact class="w-full">
+    </InputGroup>
+    <InputGroup class="w-full">
       <Input />
       <Select
         placeholder="请选择"
@@ -117,7 +117,7 @@ import { Input } from 'sinvue'
           { value: 10, label: 'Emil Schaefer' },
         ]"
       />
-    </SpaceCompact>
+    </InputGroup>
   </div>
 </template>
 ```

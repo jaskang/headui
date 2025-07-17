@@ -33,7 +33,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/', activeMatch: '/' },
       { text: 'Components', link: '/components/button', activeMatch: '/components/' },
-      { text: '更新日志', link: '/CHANGELOG', activeMatch: '/CHANGELOG' },
+      { text: '更新日志', link: '/CHANGELOG.md', activeMatch: '/CHANGELOG' },
     ],
 
     sidebar: {
@@ -61,7 +61,7 @@ export default defineConfig({
           text: '展示',
           items: [
             { text: 'Menu', link: '/components/menu' },
-            { text: 'Tab', link: '/components/tab' },
+            { text: 'Tabs', link: '/components/tabs' },
             { text: 'Avatar', link: '/components/avatar' },
             { text: 'Badge', link: '/components/badge' },
             { text: 'ListBox', link: '/components/list-box' },
