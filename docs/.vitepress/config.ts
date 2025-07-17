@@ -31,17 +31,17 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { title: 'Home', link: '/', activeMatch: '/' },
-      { title: 'Components', link: '/components/button', activeMatch: '/components/' },
+      { text: 'Home', link: '/', activeMatch: '/' },
+      { text: 'Components', link: '/components/button', activeMatch: '/components/' },
     ],
 
     sidebar: [
       {
         text: '基础',
         items: [
-          { title: 'Button', link: '/components/button' },
-          { title: 'Anchor', link: '/components/anchor' },
-          { title: 'ScrollArea', link: '/components/scroll-area' },
+          { text: 'Button', link: '/components/button' },
+          { text: 'Anchor', link: '/components/anchor' },
+          { text: 'ScrollArea', link: '/components/scroll-area' },
         ],
       },
       {

@@ -3,9 +3,9 @@ import { Sidebar, SidebarMenu } from 'sinvue'
 
 import { useData } from 'vitepress'
 import { computed } from 'vue'
-import { isActive, useCloseSidebarOnEscape, useSidebar } from '../composables/defaultTheme'
+import { isActive, useLayout } from '../composables/defaultTheme'
 
-const { sidebarGroups, hasSidebar } = useSidebar()
+const { sidebarGroups } = useLayout()
 console.log('sidebarGroups', sidebarGroups.value)
 const groups = computed(() => {
   return sidebarGroups.value.map(group => ({

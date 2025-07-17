@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { useData, useRoute } from 'vitepress'
 import { computed } from 'vue'
-import { usePrevNext, useSidebar } from '../composables/defaultTheme'
+import { usePrevNext } from '../composables/defaultTheme'
 import VPDocFooter from './VPDocFooter.vue'
 import VPToc from './VPToc.vue'
 
 const { theme } = useData()
 
 const route = useRoute()
-const { hasSidebar, hasAside, leftAside } = useSidebar()
 
 const control = usePrevNext()
 

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
-import { useSidebar } from '../composables/defaultTheme'
+
 import VPDoc from './VPDoc.vue'
 import VPHome from './VPHome.vue'
 import VPNotFound from './VPNotFound.vue'
 import VPPage from './VPPage.vue'
 
 const { page, frontmatter } = useData()
-const { hasSidebar } = useSidebar()
 </script>
 
 <template>
