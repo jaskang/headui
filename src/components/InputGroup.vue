@@ -10,7 +10,7 @@ const props = defineProps<{
   <div
     :class="
       cn(
-        'flex items-center [&>*]:rounded-none [&>*]:first:rounded-l-md [&>*]:last:rounded-r-md [&>*]:focus-within:z-10',
+        'flex items-center space-x-[-1px] [&>*]:rounded-none [&>*]:first:rounded-l-md [&>*]:last:rounded-r-md [&>*]:focus-within:z-10',
         props.class
       )
     "
