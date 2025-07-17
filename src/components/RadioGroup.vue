@@ -2,7 +2,7 @@
 import { type AcceptableValue, RadioGroupRoot, type RadioGroupRootProps } from 'reka-ui'
 import { watch } from 'vue'
 
-defineOptions({ name: 'HRadioGroup' })
+defineOptions({ name: 'RadioGroup' })
 const emit = defineEmits<{ change: [AcceptableValue] }>()
 const props = defineProps<Omit<RadioGroupRootProps, 'modelValue' | 'as' | 'asChild'>>()
 const value = defineModel<AcceptableValue>('value')

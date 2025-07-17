@@ -27,8 +27,16 @@ const theme = useThemeStore()
     <VPHeader />
     <main class="flex flex-1 flex-col">
       <div class="container-wrapper flex flex-1 flex-col px-2">
-        <VPSidebar class="h-full overflow-auto bg-transparent py-6 pr-4 lg:py-8" />
-        <VPContent />
+        <div
+          data-slot="sidebar-wrapper"
+          class="group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar 3xl:fixed:container 3xl:fixed:px-3 flex min-h-min w-full flex-1 items-start px-0 [--sidebar-width:220px] [--top-spacing:0] lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--sidebar-width:240px] lg:[--top-spacing:calc(var(--spacing)*4)]"
+          style="--sidebar-width: 16rem; --sidebar-width-icon: 3rem"
+        >
+          <VPSidebar
+            class="text-sidebar-foreground sticky top-[calc(var(--header-height)+1px)] z-30 hidden h-[calc(100svh-var(--header-height)-var(--footer-height))] w-(--sidebar-width) flex-col bg-transparent lg:flex"
+          />
+          <VPContent />
+        </div>
       </div>
     </main>
     <VPFooter />

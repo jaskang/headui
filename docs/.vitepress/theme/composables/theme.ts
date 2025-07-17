@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useData } from 'vitepress'
 import { computed, ref } from 'vue'
 
 export const useThemeStore = defineStore('theme', () => {
@@ -45,3 +46,4 @@ export const useThemeStore = defineStore('theme', () => {
     themeVars,
   }
 })
+

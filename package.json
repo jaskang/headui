@@ -46,7 +46,6 @@
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.29.5",
     "@ctrl/tinycolor": "^4.1.0",
-    "@heroicons/vue": "^2.2.0",
     "@jaskang/config": "^2.6.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
@@ -70,12 +69,13 @@
     "typescript": "^5.8.3",
     "unist-util-visit": "^5.0.0",
     "unplugin-vue": "^6.2.0",
-    "vite": "^7.0.4",
-    "vite-plugin-dts": "^4.5.4",
-    "vitepress": "^2.0.0-alpha.8",
-    "vitest": "^3.2.4"
+    "vite": "npm:rolldown-vite@latest",
+    "vitepress": "^2.0.0-alpha.8"
   },
   "pnpm": {
+    "overrides": {
+      "vite": "npm:rolldown-vite@latest"
+    },
     "peerDependencyRules": {
       "allowedVersions": {
         "eslint": "9"

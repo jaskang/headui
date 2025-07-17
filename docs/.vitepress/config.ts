@@ -33,47 +33,50 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/', activeMatch: '/' },
       { text: 'Components', link: '/components/button', activeMatch: '/components/' },
+      { text: '更新日志', link: '/CHANGELOG', activeMatch: '/CHANGELOG' },
     ],
 
-    sidebar: [
-      {
-        text: '基础',
-        items: [
-          { text: 'Button', link: '/components/button' },
-          { text: 'Anchor', link: '/components/anchor' },
-          { text: 'ScrollArea', link: '/components/scroll-area' },
-        ],
-      },
-      {
-        text: '表单',
-        items: [
-          { title: 'Checkbox', link: '/components/checkbox' },
-          { title: 'Radio', link: '/components/radio' },
-          { title: 'Input', link: '/components/input' },
-          { title: 'Textarea', link: '/components/textarea' },
-          { title: 'Select', link: '/components/select' },
-          { title: 'Switch', link: '/components/switch' },
-        ],
-      },
-      {
-        text: '展示',
-        items: [
-          { title: 'Menu', link: '/components/menu' },
-          { title: 'Tab', link: '/components/tab' },
-          { title: 'Avatar', link: '/components/avatar' },
-          { title: 'Badge', link: '/components/badge' },
-          { title: 'ListBox', link: '/components/list-box' },
-        ],
-      },
-      {
-        text: '反馈',
-        items: [
-          { title: 'Popover', link: '/components/popover' },
-          { title: 'Tooltip', link: '/components/tooltip' },
-          { title: 'Sheet', link: '/components/sheet' },
-        ],
-      },
-    ],
+    sidebar: {
+      '/components/': [
+        {
+          text: '基础',
+          items: [
+            { text: 'Button', link: '/components/button' },
+            { text: 'Anchor', link: '/components/anchor' },
+            { text: 'ScrollArea', link: '/components/scroll-area' },
+          ],
+        },
+        {
+          text: '表单',
+          items: [
+            { text: 'Checkbox', link: '/components/checkbox' },
+            { text: 'Radio', link: '/components/radio' },
+            { text: 'Input', link: '/components/input' },
+            { text: 'Textarea', link: '/components/textarea' },
+            { text: 'Select', link: '/components/select' },
+            { text: 'Switch', link: '/components/switch' },
+          ],
+        },
+        {
+          text: '展示',
+          items: [
+            { text: 'Menu', link: '/components/menu' },
+            { text: 'Tab', link: '/components/tab' },
+            { text: 'Avatar', link: '/components/avatar' },
+            { text: 'Badge', link: '/components/badge' },
+            { text: 'ListBox', link: '/components/list-box' },
+          ],
+        },
+        {
+          text: '反馈',
+          items: [
+            { text: 'Popover', link: '/components/popover' },
+            { text: 'Tooltip', link: '/components/tooltip' },
+            { text: 'Sheet', link: '/components/sheet' },
+          ],
+        },
+      ],
+    },
   },
   vite: {
     plugins: [jsx(), demo(), tailwindcss()],

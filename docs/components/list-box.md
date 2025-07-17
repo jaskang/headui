@@ -5,7 +5,7 @@
 ```vue demo
 <script setup>
 import { ref } from 'vue'
-import { PaperAirplaneIcon, InboxIcon, TrashIcon, ArchiveBoxIcon, CircleStackIcon } from '@heroicons/vue/24/outline'
+import { PaperAirplaneIcon, InboxIcon, TrashIcon, ArchiveBoxIcon, CircleStackIcon } from 'lucide-vue-next'
 
 const items = ref([
   { key: 'Inbox', label: 'Inbox', icon: InboxIcon },

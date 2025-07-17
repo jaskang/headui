@@ -31,8 +31,8 @@ const { isDark } = useData()
           </div>
           <span class="flex h-8 items-center text-lg leading-none font-medium">Menu</span>
         </Button>
-        <Button href="/"
-          ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="size-5">
+        <Button href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="size-5">
             <rect width="256" height="256" fill="none"></rect>
             <line
               x1="208"
@@ -57,26 +57,29 @@ const { isDark } = useData()
               stroke-width="32"
             ></line>
           </svg>
-          <span class="sr-only">shadcn/ui</span>
+          <span class="sr-only">sinvue/ui</span>
         </Button>
         <nav class="hidden items-center gap-0.5 lg:flex">
           <a
             class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 has-[&gt;svg]:px-2.5 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 rounded-md px-3 text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
             data-slot="button"
-            href="/docs/installation"
-            >Docs
+            href="/"
+          >
+            Home
           </a>
           <a
             class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 has-[&gt;svg]:px-2.5 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 rounded-md px-3 text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
             data-slot="button"
-            href="/docs/components"
-            >Components
+            href="/components/button"
+          >
+            Components
           </a>
           <a
             class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 has-[&gt;svg]:px-2.5 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 rounded-md px-3 text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
             data-slot="button"
-            href="/blocks"
-            >Blocks
+            href="/CHANGELOG"
+          >
+            更新日志
           </a>
           <a
             class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 has-[&gt;svg]:px-2.5 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 rounded-md px-3 text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
