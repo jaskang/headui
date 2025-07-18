@@ -1,27 +1,43 @@
 <script setup lang="ts">
-import { TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger } from 'reka-ui'
+import {
+  TooltipArrow,
+  TooltipContent,
+  TooltipPortal,
+  TooltipProvider,
+  TooltipRoot,
+  type TooltipRootEmits,
+  type TooltipRootProps,
+  TooltipTrigger,
+  useForwardPropsEmits,
+} from 'reka-ui'
 import { computed, ref } from 'vue'
 
+type TooltipProps = {
+  content?: string
+}
 defineOptions({ name: 'Tooltip' })
-const emit = defineEmits<{ click: [any] }>()
-const slots = defineSlots<{ default?(_: {}): any }>()
-const props = defineProps({})
+
+const props = defineProps<TooltipRootProps & TooltipProps>()
+const emits = defineEmits<TooltipRootEmits>()
+
+const forward = useForwardPropsEmits(props, emits)
 </script>
 <template>
-  <TooltipProvider>
-    <TooltipRoot>
-      <TooltipTrigger
-        class="text-grass11 inline-flex h-[35px] w-[35px] items-center justify-center rounded-full border bg-white shadow-sm outline-none hover:bg-stone-50 focus:shadow-[0_0_0_2px] focus:shadow-black"
-      >
-        <Icon icon="radix-icons:plus" />
+  <TooltipProvider :delay-duration="100">
+    <TooltipRoot v-bind="forward">
+      <TooltipTrigger as-child>
+        <slot />
       </TooltipTrigger>
       <TooltipPortal>
         <TooltipContent
-          class="data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-grass11 rounded-md border bg-white px-[15px] py-[10px] text-sm leading-none shadow-sm will-change-[transform,opacity] select-none"
-          :side-offset="5"
+          data-slot="tooltip-content"
+          :sideOffset="2"
+          class="bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance"
         >
-          Add to library
-          <TooltipArrow class="fill-white stroke-gray-200" :width="12" :height="6" />
+          <slot name="content">
+            {{ props.content }}
+          </slot>
+          <TooltipArrow :width="11" :height="5" />
         </TooltipContent>
       </TooltipPortal>
     </TooltipRoot>

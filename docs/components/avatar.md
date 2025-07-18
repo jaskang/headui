@@ -3,6 +3,9 @@
 ## 基础用法
 
 ```vue demo
+<script setup>
+import { Avatar } from 'sinvue'
+</script>
 <template>
   <div>
     <Avatar src="https://i.pravatar.cc/150?u=1" />
@@ -10,28 +13,19 @@
 </template>
 ```
 
-## rounded
-
-```vue demo
-<template>
-  <div class="flex items-center gap-4">
-    <Avatar rounded src="https://i.pravatar.cc/150?u=1" />
-    <Avatar rounded src="https://i.pravatar.cc/150?u=2" />
-    <Avatar rounded src="https://i.pravatar.cc/150?u=3" />
-  </div>
-</template>
-```
-
 ## border
 
 ```vue demo
+<script setup>
+import { Avatar } from 'sinvue'
+</script>
 <template>
   <div class="flex items-center gap-4">
-    <Avatar rounded border src="https://i.pravatar.cc/150?u=1" />
-    <Avatar rounded border class="border-primary" src="https://i.pravatar.cc/150?u=2" />
-    <Avatar rounded border class="border-success" src="https://i.pravatar.cc/150?u=2" />
-    <Avatar rounded border class="border-warning" src="https://i.pravatar.cc/150?u=2" />
-    <Avatar rounded border class="border-danger" src="https://i.pravatar.cc/150?u=2" />
+    <Avatar src="https://i.pravatar.cc/150?u=1" />
+    <Avatar src="https://i.pravatar.cc/150?u=2" />
+    <Avatar src="https://i.pravatar.cc/150?u=3" />
+    <Avatar src="https://i.pravatar.cc/150?u=4" />
+    <Avatar src="https://i.pravatar.cc/150?u=5" />
   </div>
 </template>
 ```
@@ -39,6 +33,9 @@
 ## 基础用法
 
 ```vue demo
+<script setup>
+import { Avatar } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-col gap-4">
     <div class="flex items-center gap-4">

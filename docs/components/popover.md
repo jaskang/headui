@@ -10,7 +10,7 @@ const open = ref(false)
 <template>
   <div class="flex flex-wrap gap-2">
     <HPopover v-model:open="open" trigger="click">
-      <HButton>Button</HButton>
+      <Button>Button</Button>
       <template #content> asdfasdfsa </template>
     </HPopover>
     status: {{ open }}
@@ -28,7 +28,7 @@ const open = ref(false)
 <template>
   <div class="flex flex-wrap gap-2">
     <HPopover v-model:open="open" modal trigger="click">
-      <HButton>Button</HButton>
+      <Button>Button</Button>
       <template #content> asdfasdfsa </template>
     </HPopover>
     status: {{ open }}

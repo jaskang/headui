@@ -1,18 +1,16 @@
-# HTooltip
+# Tooltip
 
 ## default
 
 ```vue demo
 <script setup>
-import { ref } from 'vue'
-const open = ref(false)
+import { Tooltip, Button } from 'sinvue'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HTooltip v-model:open="open" content="content">
-      <HButton>HButton</HButton>
-    </HTooltip>
-    status: {{ open }}
+    <Tooltip content="content">
+      <Button>Button</Button>
+    </Tooltip>
   </div>
 </template>
 ```
@@ -20,12 +18,15 @@ const open = ref(false)
 ## nested
 
 ```vue demo
+<script setup>
+import { Tooltip, Button } from 'sinvue'
+</script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HTooltip trigger="click">
-      <HButton>HButton</HButton>
+    <Tooltip trigger="click">
+      <Button>Button</Button>
       <template #content> content </template>
-    </HTooltip>
+    </Tooltip>
   </div>
 </template>
 ```

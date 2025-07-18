@@ -46,4 +46,3 @@ export const useThemeStore = defineStore('theme', () => {
     themeVars,
   }
 })
-

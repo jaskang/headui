@@ -7,7 +7,7 @@ const open = ref(false)
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HButton @click="open = !open">Open</HButton>
+    <Button @click="open = !open">Open</Button>
     <HSheet v-model:open="open" title="Sheet" description="Sheet description">
       <div>asdf</div>
     </HSheet>
