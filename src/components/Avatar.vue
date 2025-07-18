@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
+import type { ClassValue } from 'kotl'
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui'
 import { cn } from '@/lib/utils'
 

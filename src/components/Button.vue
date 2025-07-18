@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { LoaderCircleIcon } from 'lucide-vue-next'
+import type { ClassValue } from 'kotl'
 
+import { LoaderCircleIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { cn } from '../lib/utils'
 
@@ -11,12 +12,11 @@ export type ButtonProps = {
   square?: boolean
   disabled?: boolean
   loading?: boolean
-  class?: string
 }
 
 const emit = defineEmits<{ click: [event: MouseEvent] }>()
 const slots = defineSlots<{ default?(_: {}): any }>()
-const props = withDefaults(defineProps<ButtonProps>(), {
+const props = withDefaults(defineProps<ButtonProps & { class?: ClassValue }>(), {
   variant: 'default',
   size: 'default',
 })

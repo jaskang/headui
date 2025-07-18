@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ClassValue } from 'clsx'
+import type { ClassValue } from 'kotl'
 import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from 'reka-ui'
 import { computed, ref } from 'vue'
 import { cn, type OverrideClass } from '@/lib/utils'
