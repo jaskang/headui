@@ -5,6 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export type overrideClass<T> = T & {
+export type OverrideClass<T extends Record<string, any>> = T & {
   class?: ClassValue
 }

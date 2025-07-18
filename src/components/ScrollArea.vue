@@ -2,7 +2,7 @@
 import type { ClassValue } from 'clsx'
 import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from 'reka-ui'
 import { computed, ref } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn, type OverrideClass } from '@/lib/utils'
 
 type ScrollAreaProps = {
   orientation?: 'horizontal' | 'vertical'
@@ -11,16 +11,9 @@ type ScrollAreaProps = {
 defineOptions({ name: 'ScrollArea' })
 const emit = defineEmits<{ click: [any] }>()
 const slots = defineSlots<{ default?(_: {}): any }>()
-const props = withDefaults(
-  defineProps<
-    ScrollAreaProps & {
-      class?: ClassValue
-    }
-  >(),
-  {
-    orientation: 'vertical',
-  }
-)
+const props = withDefaults(defineProps<ScrollAreaProps & { class?: ClassValue }>(), {
+  orientation: 'vertical',
+})
 </script>
 <template>
   <ScrollAreaRoot data-slot="scroll-area" :class="cn('relative', props.class)" style="--scrollbar-size: 10px">
