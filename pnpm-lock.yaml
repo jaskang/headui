@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  vite: npm:rolldown-vite@latest
+  vite: npm:rolldown-vite@^7.0.9
 
 importers:
 
@@ -124,7 +124,7 @@ importers:
         specifier: ^6.2.0
         version: 6.2.0(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)(vue@3.5.17(typescript@5.8.3))
       vite:
-        specifier: npm:rolldown-vite@latest
+        specifier: npm:rolldown-vite@^7.0.9
         version: rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)
       vitepress:
         specifier: ^2.0.0-alpha.8

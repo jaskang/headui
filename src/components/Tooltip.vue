@@ -12,7 +12,7 @@ import {
 } from 'reka-ui'
 import { computed, ref } from 'vue'
 
-type TooltipProps = {
+export type TooltipProps = {
   content?: string
 }
 defineOptions({ name: 'Tooltip' })

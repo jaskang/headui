@@ -2,15 +2,14 @@
 
 ```vue demo
 <script setup lang="ts">
+import { Sheet, Button } from 'sinvue'
 import { ref } from 'vue'
-const open = ref(false)
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <Button @click="open = !open">Open</Button>
-    <HSheet v-model:open="open" title="Sheet" description="Sheet description">
-      <div>asdf</div>
-    </HSheet>
+    <Sheet title="Sheet" description="Sheet description">
+      <Button>Open</Button>
+    </Sheet>
   </div>
 </template>
 ```

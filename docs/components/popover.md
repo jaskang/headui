@@ -1,18 +1,19 @@
-# HPopover
+# Popover
 
 ## default
 
 ```vue demo
 <script setup>
+import { Popover, Button } from 'sinvue'
 import { ref } from 'vue'
 const open = ref(false)
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HPopover v-model:open="open" trigger="click">
+    <Popover v-model:open="open" trigger="click">
       <Button>Button</Button>
       <template #content> asdfasdfsa </template>
-    </HPopover>
+    </Popover>
     status: {{ open }}
   </div>
 </template>
@@ -22,15 +23,16 @@ const open = ref(false)
 
 ```vue demo
 <script setup>
+import { Popover, Button } from 'sinvue'
 import { ref } from 'vue'
 const open = ref(false)
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <HPopover v-model:open="open" modal trigger="click">
+    <Popover v-model:open="open" modal trigger="click">
       <Button>Button</Button>
       <template #content> asdfasdfsa </template>
-    </HPopover>
+    </Popover>
     status: {{ open }}
   </div>
 </template>
