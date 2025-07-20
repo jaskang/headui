@@ -65,6 +65,7 @@ export default defineConfig({
             { text: 'Avatar', link: '/components/avatar' },
             { text: 'Badge', link: '/components/badge' },
             { text: 'ListBox', link: '/components/list-box' },
+            { text: 'Alert', link: '/components/alert' },
           ],
         },
         {

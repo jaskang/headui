@@ -1,5 +1,6 @@
 import { Anchor, type IAnchorItem } from './Anchor'
 
+import { default as Alert } from './components/Alert.vue'
 import { default as Avatar } from './components/Avatar.vue'
 import { default as Badge } from './components/Badge.vue'
 import { default as Button } from './components/Button.vue'
@@ -25,6 +26,7 @@ import { NavigationMenu } from './NavigationMenu'
 import { default as SpaceCompact } from './Space/SpaceCompact.vue'
 
 export {
+  Alert,
   Anchor,
   Avatar,
   Badge,
