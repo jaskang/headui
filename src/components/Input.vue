@@ -88,21 +88,31 @@ watch(value, v => {
     :class="
       cn([
         'group',
-        'flex w-full min-w-0 rounded-md px-2 text-sm shadow-xs',
+        'flex w-full min-w-0 rounded-md text-sm shadow-xs',
         'dark:bg-input/30 border-input bg-background border transition-[color,box-shadow]',
         'focus-within:ring-focus',
         'data-[disabled=true]:pointer-events-none data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50',
         'aria-invalid:ring-invalid',
         {
-          sm: 'h-8',
+          sm: 'h-8 px-1.5',
           default: 'h-9 px-2',
-          lg: 'h-10',
+          lg: 'h-10 px-2.5',
         }[props.size],
       ])
     "
     :data-disabled="disabled"
   >
-    <span v-if="slots.prefix" class="z-input_prefix flex h-full items-center [&>svg]:size-4">
+    <span
+      v-if="slots.prefix"
+      class="z-input_prefix flex h-full items-center"
+      :class="
+        {
+          sm: '[&>svg]:size-3.5',
+          default: '[&>svg]:size-4',
+          lg: '[&>svg]:size-4.5',
+        }[props.size]
+      "
+    >
       <slot name="prefix" />
     </span>
     <div class="relative flex w-full flex-1 items-center">
@@ -113,7 +123,7 @@ watch(value, v => {
           'selection:bg-primary selection:text-primary-foreground',
           'placeholder:text-muted-foreground',
           'focus:outline-none',
-          'px-1 py-1.5 text-sm leading-[1.375rem]',
+          'px-2 py-1.5 text-sm leading-[1.375rem]',
         ]"
         type="text"
         :name="name"
