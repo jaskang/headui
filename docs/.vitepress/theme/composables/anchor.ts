@@ -1,21 +1,12 @@
-import { type Ref, computed, onMounted, ref } from 'vue'
 import { isClient, useScroll } from '@vueuse/core'
-import type { IAnchorItem } from '../../../../src'
-import { useRoute, useData, type Header } from 'vitepress'
+import { type Header, useData, useRoute } from 'vitepress'
+import { computed, onMounted, type Ref, ref } from 'vue'
 
 type AnchorHeader = Header & {
   path: number[]
 }
 
-function convertHeadersToAnchor(headers: Header[]): IAnchorItem[] {
-  return headers.map(header => ({
-    id: header.slug,
-    title: header.title,
-    link: header.link,
-    children: header.children ? convertHeadersToAnchor(header.children) : [],
-  }))
-}
-function flattenHeaders(items: Header[]) {
+function flattenHeaders(items: Header[]): AnchorHeader[] {
   const flatList: AnchorHeader[] = []
   function traverse(items: Header[], parent: number[] = []) {
     for (const [index, item] of items.entries()) {
@@ -38,7 +29,6 @@ export function useAnchor() {
   const { page } = useData()
   const current: Ref = ref([])
   const headers = computed(() => flattenHeaders(page.value.headers))
-  const items = computed(() => convertHeadersToAnchor(headers.value))
 
   function updateCurrent() {
     const activeHeader = headers.value.find(header => {
@@ -61,5 +51,5 @@ export function useAnchor() {
       })
     }
   })
-  return { current, items }
+  return { current, headers }
 }

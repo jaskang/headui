@@ -34,7 +34,6 @@ const pageName = computed(() => route.path.replace(/[./]+/g, '_').replace(/_html
     >
       <div class="h-(--top-spacing) shrink-0"></div>
       <div class="no-scrollbar overflow-y-auto px-8">
-        <p class="text-muted-foreground bg-background sticky top-0 h-6 text-xs">On This Page</p>
         <VPToc>
           <template #aside-top><slot name="aside-top" /></template>
           <template #aside-bottom><slot name="aside-bottom" /></template>

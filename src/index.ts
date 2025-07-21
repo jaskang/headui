@@ -1,5 +1,3 @@
-import { Anchor, type IAnchorItem } from './Anchor'
-
 import { default as Alert } from './components/Alert.vue'
 import { default as Avatar } from './components/Avatar.vue'
 import { default as Badge } from './components/Badge.vue'
@@ -21,13 +19,9 @@ import { default as Tabs } from './components/Tabs.vue'
 import { default as TabsContent } from './components/TabsContent.vue'
 import { default as Textarea } from './components/Textarea.vue'
 import { default as Tooltip } from './components/Tooltip.vue'
-import { NavigationMenu } from './NavigationMenu'
-
-import { default as SpaceCompact } from './Space/SpaceCompact.vue'
 
 export {
   Alert,
-  Anchor,
   Avatar,
   Badge,
   // components
@@ -36,7 +30,6 @@ export {
   CheckboxGroup,
   Input,
   InputGroup,
-  NavigationMenu,
   Popover,
   Radio,
   RadioGroup,
@@ -45,12 +38,9 @@ export {
   Sheet,
   Sidebar,
   SidebarMenu,
-  SpaceCompact,
   Switch,
   Tabs,
   TabsContent,
   Textarea,
   Tooltip,
 }
-
-export type { IAnchorItem }

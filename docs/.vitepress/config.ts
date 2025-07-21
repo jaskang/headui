@@ -42,7 +42,6 @@ export default defineConfig({
           text: '基础',
           items: [
             { text: 'Button', link: '/components/button' },
-            { text: 'Anchor', link: '/components/anchor' },
             { text: 'ScrollArea', link: '/components/scroll-area' },
           ],
         },
