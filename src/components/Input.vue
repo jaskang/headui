@@ -88,50 +88,33 @@ watch(value, v => {
     :class="
       cn([
         'group',
-        'flex w-full min-w-0 rounded-md text-sm shadow-xs',
+        'flex w-full min-w-0 items-center rounded-md text-sm shadow-xs',
         'dark:bg-input/30 border-input bg-background border transition-[color,box-shadow]',
         'focus-within:ring-focus',
         'data-[disabled=true]:pointer-events-none data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50',
         'aria-invalid:ring-invalid',
         {
-          sm: 'h-8 px-1.5',
-          default: 'h-9 px-2',
-          lg: 'h-10 px-2.5',
+          sm: 'h-8 gap-1.5 px-1.5 [&>svg]:size-3.5',
+          default: 'h-9 gap-2 px-2 [&>svg]:size-4',
+          lg: 'h-10 gap-2.5 px-2.5 [&>svg]:size-4.5',
         }[props.size],
       ])
     "
+    :data-size="props.size"
     :data-disabled="disabled"
   >
-    <span
-      v-if="slots.prefix"
-      class="z-input_prefix flex h-full items-center"
-      :class="
-        {
-          sm: '[&>svg]:size-3.5',
-          default: '[&>svg]:size-4',
-          lg: '[&>svg]:size-4.5',
-        }[props.size]
-      "
-    >
-      <slot name="prefix" />
-    </span>
+    <slot name="prefix" />
     <div class="relative flex w-full flex-1 items-center">
       <input
         ref="inputRef"
-        :class="[
-          'block w-full cursor-[inherit] border-0 bg-transparent outline-none',
-          'selection:bg-primary selection:text-primary-foreground',
-          'placeholder:text-muted-foreground',
-          'focus:outline-none',
-          'px-2 py-1.5 text-sm leading-[1.375rem]',
-        ]"
+        class="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground block w-full cursor-[inherit] border-0 bg-transparent text-sm leading-[1.375rem] outline-none focus:outline-none"
         type="text"
+        autocomplete="off"
         :name="name"
         :disabled="disabled"
         :placeholder="placeholder"
         :readonly="readonly"
         :autofocus="autofocus"
-        autocomplete="off"
         v-model="value"
         @focus="emit('focus', $event)"
         @blur="emit('blur', $event)"
@@ -150,8 +133,6 @@ watch(value, v => {
         <XIcon class="size-3" />
       </div>
     </div>
-    <span v-if="slots.suffix" class="z-input_suffix flex h-full items-center [&>svg]:size-4">
-      <slot name="suffix" />
-    </span>
+    <slot name="suffix" />
   </div>
 </template>
