@@ -8,3 +8,5 @@ export function cn(...inputs: ClassValue[]) {
 export type OverrideClass<T extends Record<string, any>> = T & {
   class?: ClassValue
 }
+
+export type ThemeSize = 'sm' | 'default' | 'lg'

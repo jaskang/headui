@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { XIcon } from 'lucide-vue-next'
 import { type InputHTMLAttributes, type PropType, ref, useTemplateRef, watch } from 'vue'
+import { cn, type ThemeSize } from '@/lib/utils'
 import type { InputValue } from '../utils/theme'
 import Button from './Button.vue'
 
@@ -50,6 +51,7 @@ export type InputProps = {
   autofocus?: boolean
   // 自定义
   clearable?: boolean
+  size?: ThemeSize
 }
 
 const emit = defineEmits<{
@@ -64,7 +66,9 @@ const emit = defineEmits<{
   clear: []
 }>()
 const slots = defineSlots<{ prefix?: (_: {}) => any; suffix?: (_: {}) => any }>()
-const props = withDefaults(defineProps<InputProps>(), {})
+const props = withDefaults(defineProps<InputProps>(), {
+  size: 'default',
+})
 
 const value = defineModel<string>('value')
 
@@ -81,14 +85,21 @@ watch(value, v => {
 </script>
 <template>
   <div
-    :class="[
-      'group',
-      'flex h-9 w-full min-w-0 rounded-md px-2 text-sm shadow-xs',
-      'dark:bg-input/30 border-input bg-background border transition-[color,box-shadow]',
-      'focus-within:ring-focus',
-      'data-[disabled=true]:pointer-events-none data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50',
-      'aria-invalid:ring-destructive/20 aria-invalid:border-destructive dark:aria-invalid:ring-destructive/40',
-    ]"
+    :class="
+      cn([
+        'group',
+        'flex w-full min-w-0 rounded-md px-2 text-sm shadow-xs',
+        'dark:bg-input/30 border-input bg-background border transition-[color,box-shadow]',
+        'focus-within:ring-focus',
+        'data-[disabled=true]:pointer-events-none data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50',
+        'aria-invalid:ring-invalid',
+        {
+          sm: 'h-8',
+          default: 'h-9 px-2',
+          lg: 'h-10',
+        }[props.size],
+      ])
+    "
     :data-disabled="disabled"
   >
     <span v-if="slots.prefix" class="z-input_prefix flex h-full items-center [&>svg]:size-4">

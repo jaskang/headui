@@ -2,6 +2,10 @@
   @apply border-ring ring-ring/50 ring-[3px];
 }
 
+@utility ring-invalid {
+  @apply aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive;
+}
+
 @layer base {
   button:not(:disabled),
   [role='button']:not(:disabled) {

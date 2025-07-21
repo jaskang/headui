@@ -3,11 +3,11 @@ import type { ClassValue } from 'kotl'
 
 import { LoaderCircleIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
-import { cn } from '../lib/utils'
+import { cn, type ThemeSize } from '../lib/utils'
 
 export type ButtonProps = {
   variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'
-  size?: 'default' | 'sm' | 'lg'
+  size?: ThemeSize
   pill?: boolean
   square?: boolean
   disabled?: boolean
@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<ButtonProps & { class?: ClassValue }>(), 
 
 const rootClass = computed(() => {
   return cn(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-focus aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-focus aria-invalid:ring-invalid",
     {
       default: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
       destructive:
@@ -35,8 +35,8 @@ const rootClass = computed(() => {
       link: 'text-primary underline-offset-4 hover:underline',
     }[props.variant],
     {
-      default: props.square ? 'size-9' : 'h-9 px-4 py-2 has-[>svg]:px-3',
       sm: props.square ? 'size-8' : 'h-8 gap-1.5 px-3 has-[>svg]:px-2.5',
+      default: props.square ? 'size-9' : 'h-9 px-4 py-2 has-[>svg]:px-3',
       lg: props.square ? 'size-10' : 'h-10 px-6 has-[>svg]:px-4',
     }[props.size],
     props.pill && 'rounded-full',

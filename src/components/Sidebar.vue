@@ -2,17 +2,17 @@
 export const SIDEBAR_INJECTION_KEY = Symbol('sidebar') as InjectionKey<{
   current: Ref<string>
   variant: ComputedRef<'default' | 'outline'>
-  size: ComputedRef<'default' | 'sm' | 'lg'>
+  size: ComputedRef<ThemeSize>
 }>
 </script>
 
 <script setup lang="ts">
 import { computed, type ComputedRef, type InjectionKey, provide, type Ref, ref } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn, type ThemeSize } from '@/lib/utils'
 
 export type SidebarProps = {
   variant?: 'default' | 'outline'
-  size?: 'default' | 'sm' | 'lg'
+  size?: ThemeSize
   class?: string | string[]
 }
 

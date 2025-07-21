@@ -14,7 +14,7 @@ const slots = defineSlots<{ default?(_: {}): any }>()
 //   disabled: Boolean,
 
 const variant = ref<'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'>('default')
-const size = ref<'default' | 'sm' | 'lg'>('default')
+const size = ref<ThemeSize>('default')
 const pill = ref(false)
 const square = ref(false)
 const loading = ref(false)

@@ -15,7 +15,7 @@ const { isDark } = useData()
       <div class="3xl:fixed:container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-4">
         <Button
           data-slot="popover-trigger"
-          class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:text-accent-foreground has-[&gt;svg]:px-3 extend-touch-target flex h-8 shrink-0 touch-manipulation items-center justify-start gap-2.5 rounded-md !p-0 px-4 py-2 text-sm font-medium whitespace-nowrap transition-all outline-none hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent disabled:pointer-events-none disabled:opacity-50 lg:hidden dark:hover:bg-transparent [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+          class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-invalid hover:text-accent-foreground has-[&gt;svg]:px-3 extend-touch-target flex h-8 shrink-0 touch-manipulation items-center justify-start gap-2.5 rounded-md !p-0 px-4 py-2 text-sm font-medium whitespace-nowrap transition-all outline-none hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent disabled:pointer-events-none disabled:opacity-50 lg:hidden dark:hover:bg-transparent [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
           type="button"
           aria-haspopup="dialog"
           aria-expanded="false"
@@ -68,7 +68,7 @@ const { isDark } = useData()
           <div class="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
             <button
               data-slot="dialog-trigger"
-              class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-secondary/80 has-[&gt;svg]:px-3 bg-surface text-surface-foreground/60 dark:bg-card relative inline-flex h-8 w-full shrink-0 items-center justify-start gap-2 rounded-md px-4 py-2 pl-2.5 text-sm font-normal whitespace-nowrap shadow-none transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 sm:pr-12 md:w-40 lg:w-56 xl:w-64 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+              class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-invalid hover:bg-secondary/80 has-[&gt;svg]:px-3 bg-surface text-surface-foreground/60 dark:bg-card relative inline-flex h-8 w-full shrink-0 items-center justify-start gap-2 rounded-md px-4 py-2 pl-2.5 text-sm font-normal whitespace-nowrap shadow-none transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 sm:pr-12 md:w-40 lg:w-56 xl:w-64 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
               type="button"
               aria-haspopup="dialog"
               aria-expanded="false"

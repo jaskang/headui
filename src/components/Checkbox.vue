@@ -30,7 +30,7 @@ watch(checked, v => {
   >
     <CheckboxRoot
       data-slot="checkbox"
-      class="peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:ring-focus aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none"
+      class="peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:ring-focus aria-invalid:ring-invalid size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none"
       v-model="checked"
       v-bind="props"
     >

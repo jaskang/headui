@@ -62,7 +62,7 @@ importers:
         version: 0.5.16(tailwindcss@4.1.11)
       '@tailwindcss/vite':
         specifier: ^4.1.11
-        version: 4.1.11(rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2))
+        version: 4.1.11(rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2))
       '@types/jsdom':
         specifier: ^21.1.7
         version: 21.1.7
@@ -70,14 +70,14 @@ importers:
         specifier: ^4.0.4
         version: 4.0.4
       '@types/node':
-        specifier: ^24.0.14
-        version: 24.0.14
+        specifier: ^24.0.15
+        version: 24.0.15
       '@vitejs/plugin-vue':
         specifier: ^6.0.0
-        version: 6.0.0(rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))
+        version: 6.0.0(rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))
       '@vitejs/plugin-vue-jsx':
         specifier: ^5.0.1
-        version: 5.0.1(rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))
+        version: 5.0.1(rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
@@ -121,14 +121,14 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       unplugin-vue:
-        specifier: ^6.2.0
-        version: 6.2.0(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)(vue@3.5.17(typescript@5.8.3))
+        specifier: ^7.0.0
+        version: 7.0.0(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)(vue@3.5.17(typescript@5.8.3))
       vite:
         specifier: npm:rolldown-vite@^7.0.9
-        version: rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)
+        version: rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)
       vitepress:
         specifier: ^2.0.0-alpha.8
-        version: 2.0.0-alpha.8(@algolia/client-search@5.20.4)(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)(postcss@8.5.6)(search-insights@2.17.3)(typescript@5.8.3)
+        version: 2.0.0-alpha.8(@algolia/client-search@5.20.4)(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)(postcss@8.5.6)(search-insights@2.17.3)(typescript@5.8.3)
 
 packages:
 
@@ -1095,8 +1095,8 @@ packages:
   '@types/node@20.19.4':
     resolution: {integrity: sha512-OP+We5WV8Xnbuvw0zC2m4qfB/BJvjyCwtNjhHdJxV1639SGSKrLmJkc3fMnp2Qy8nJyHp8RO6umxELN/dS1/EA==}
 
-  '@types/node@24.0.14':
-    resolution: {integrity: sha512-4zXMWD91vBLGRtHK3YbIoFMia+1nqEz72coM42C5ETjnNCa/heoj7NT1G67iAfOqMmcfhuCZ4uNpyz8EjlAejw==}
+  '@types/node@24.0.15':
+    resolution: {integrity: sha512-oaeTSbCef7U/z7rDeJA138xpG3NuKc64/rZ2qmUFkFJmnMsAPaluIifqyWd8hSSMxyP9oie3dLAqYPblag9KgA==}
 
   '@types/tough-cookie@4.0.5':
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
@@ -1362,9 +1362,6 @@ packages:
       typescript:
         optional: true
 
-  '@vue/reactivity@3.5.13':
-    resolution: {integrity: sha512-NaCwtw8o48B9I6L1zl2p41OHo/2Z4wqYGGIK1Khu5T7yxrn+ATOixn/Udn2m+6kZKB/J7cuT9DbWWhRxqixACg==}
-
   '@vue/reactivity@3.5.17':
     resolution: {integrity: sha512-l/rmw2STIscWi7SNJp708FK4Kofs97zc/5aEPQh4bOsReD/8ICuBcEmS7KGwDj5ODQLYWVN2lNibKJL1z5b+Lw==}
 
@@ -1378,9 +1375,6 @@ packages:
     resolution: {integrity: sha512-BOHhm8HalujY6lmC3DbqF6uXN/K00uWiEeF22LfEsm9Q93XeJ/plHTepGwf6tqFcF7GA5oGSSAAUock3VvzaCA==}
     peerDependencies:
       vue: 3.5.17
-
-  '@vue/shared@3.5.13':
-    resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
 
   '@vue/shared@3.5.14':
     resolution: {integrity: sha512-oXTwNxVfc9EtP1zzXAlSlgARLXNC84frFYkS0HHz0h3E4WZSP9sywqjqzGCP9Y34M8ipNmd380pVgmMuwELDyQ==}
@@ -3478,14 +3472,14 @@ packages:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
 
-  unplugin-vue@6.2.0:
-    resolution: {integrity: sha512-/FRiRuBu8AFzeF9qetgMLrDJtBGvJTOn/TqA0DiURIYT8IMAttXajjMO7UM2oK07R5ZX3mFW+OGe/reYEq9wSQ==}
-    engines: {node: '>=18.0.0'}
+  unplugin-vue@7.0.0:
+    resolution: {integrity: sha512-dAc5HYa6mz8OGN8+EZw0K666fU8DR+Q6kwM24AoFpqSdkRxBJKRDgfLqc0ZymUnF6BIF4peZlOsODkFgYlSxAw==}
+    engines: {node: '>=20.19.0'}
     peerDependencies:
       vue: ^3.2.25
 
-  unplugin@2.3.4:
-    resolution: {integrity: sha512-m4PjxTurwpWfpMomp8AptjD5yj8qEZN5uQjjGM3TAs9MWWD2tXSSNNj6jGR2FoVGod4293ytyV6SwBbertfyJg==}
+  unplugin@2.3.5:
+    resolution: {integrity: sha512-RyWSb5AHmGtjjNQ6gIlA67sHOsWpsbWpwDokLwTcejVdOjEkJZh7QKu14J00gDDVSh8kGH4KYC/TNBceXFZhtw==}
     engines: {node: '>=18.12.0'}
 
   unrs-resolver@1.11.0:
@@ -4664,12 +4658,12 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.11
 
-  '@tailwindcss/vite@4.1.11(rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2))':
+  '@tailwindcss/vite@4.1.11(rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2))':
     dependencies:
       '@tailwindcss/node': 4.1.11
       '@tailwindcss/oxide': 4.1.11
       tailwindcss: 4.1.11
-      vite: rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)
+      vite: rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)
 
   '@tanstack/virtual-core@3.13.2': {}
 
@@ -4700,7 +4694,7 @@ snapshots:
 
   '@types/jsdom@21.1.7':
     dependencies:
-      '@types/node': 24.0.14
+      '@types/node': 24.0.15
       '@types/tough-cookie': 4.0.5
       parse5: 7.2.1
 
@@ -4718,7 +4712,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@24.0.14':
+  '@types/node@24.0.15':
     dependencies:
       undici-types: 7.8.0
 
@@ -4883,21 +4877,21 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.0':
     optional: true
 
-  '@vitejs/plugin-vue-jsx@5.0.1(rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))':
+  '@vitejs/plugin-vue-jsx@5.0.1(rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-transform-typescript': 7.27.1(@babel/core@7.28.0)
       '@rolldown/pluginutils': 1.0.0-beta.8-commit.d95f99e
       '@vue/babel-plugin-jsx': 1.4.0(@babel/core@7.28.0)
-      vite: rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)
+      vite: rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)
       vue: 3.5.17(typescript@5.8.3)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue@6.0.0(rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))':
+  '@vitejs/plugin-vue@6.0.0(rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.19
-      vite: rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)
+      vite: rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)
       vue: 3.5.17(typescript@5.8.3)
 
   '@volar/language-core@2.4.12':
@@ -5062,10 +5056,6 @@ snapshots:
       typescript: 5.8.3
     optional: true
 
-  '@vue/reactivity@3.5.13':
-    dependencies:
-      '@vue/shared': 3.5.13
-
   '@vue/reactivity@3.5.17':
     dependencies:
       '@vue/shared': 3.5.17
@@ -5087,8 +5077,6 @@ snapshots:
       '@vue/compiler-ssr': 3.5.17
       '@vue/shared': 3.5.17
       vue: 3.5.17(typescript@5.8.3)
-
-  '@vue/shared@3.5.13': {}
 
   '@vue/shared@3.5.14': {}
 
@@ -6944,7 +6932,7 @@ snapshots:
       - oxc-resolver
       - supports-color
 
-  rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2):
+  rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2):
     dependencies:
       fdir: 6.4.6(picomatch@4.0.2)
       lightningcss: 1.30.1
@@ -6953,7 +6941,7 @@ snapshots:
       rolldown: 1.0.0-beta.27
       tinyglobby: 0.2.14
     optionalDependencies:
-      '@types/node': 24.0.14
+      '@types/node': 24.0.15
       esbuild: 0.25.1
       fsevents: 2.3.3
       jiti: 2.4.2
@@ -7369,12 +7357,12 @@ snapshots:
 
   universalify@0.1.2: {}
 
-  unplugin-vue@6.2.0(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)(vue@3.5.17(typescript@5.8.3)):
+  unplugin-vue@7.0.0(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)(vue@3.5.17(typescript@5.8.3)):
     dependencies:
-      '@vue/reactivity': 3.5.13
+      '@vue/reactivity': 3.5.17
       debug: 4.4.1
-      unplugin: 2.3.4
-      vite: rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)
+      unplugin: 2.3.5
+      vite: rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)
       vue: 3.5.17(typescript@5.8.3)
     transitivePeerDependencies:
       - '@types/node'
@@ -7390,9 +7378,9 @@ snapshots:
       - tsx
       - yaml
 
-  unplugin@2.3.4:
+  unplugin@2.3.5:
     dependencies:
-      acorn: 8.14.1
+      acorn: 8.15.0
       picomatch: 4.0.2
       webpack-virtual-modules: 0.6.2
 
@@ -7442,7 +7430,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vitepress@2.0.0-alpha.8(@algolia/client-search@5.20.4)(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)(postcss@8.5.6)(search-insights@2.17.3)(typescript@5.8.3):
+  vitepress@2.0.0-alpha.8(@algolia/client-search@5.20.4)(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)(postcss@8.5.6)(search-insights@2.17.3)(typescript@5.8.3):
     dependencies:
       '@docsearch/css': 3.9.0
       '@docsearch/js': 3.9.0(@algolia/client-search@5.20.4)(search-insights@2.17.3)
@@ -7450,7 +7438,7 @@ snapshots:
       '@shikijs/core': 3.8.0
       '@shikijs/transformers': 3.8.0
       '@shikijs/types': 3.8.0
-      '@vitejs/plugin-vue': 6.0.0(rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))
+      '@vitejs/plugin-vue': 6.0.0(rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2))(vue@3.5.17(typescript@5.8.3))
       '@vue/devtools-api': 7.7.7
       '@vue/shared': 3.5.17
       '@vueuse/core': 13.5.0(vue@3.5.17(typescript@5.8.3))
@@ -7459,7 +7447,7 @@ snapshots:
       mark.js: 8.11.1
       minisearch: 7.1.2
       shiki: 3.8.0
-      vite: rolldown-vite@7.0.9(@types/node@24.0.14)(esbuild@0.25.1)(jiti@2.4.2)
+      vite: rolldown-vite@7.0.9(@types/node@24.0.15)(esbuild@0.25.1)(jiti@2.4.2)
       vue: 3.5.17(typescript@5.8.3)
     optionalDependencies:
       postcss: 8.5.6
