@@ -4,7 +4,7 @@
 
 ```vue demo
 <script setup>
-import { Popover, Button } from 'sinvue'
+import { Popover, Button } from 'headui'
 import { ref } from 'vue'
 const open = ref(false)
 </script>
@@ -23,7 +23,7 @@ const open = ref(false)
 
 ```vue demo
 <script setup>
-import { Popover, Button } from 'sinvue'
+import { Popover, Button } from 'headui'
 import { ref } from 'vue'
 const open = ref(false)
 </script>

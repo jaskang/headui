@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Button } from 'headui'
 import { storeToRefs } from 'pinia'
-import { Button } from 'sinvue'
 import { useData } from 'vitepress'
 import { ref } from 'vue'
 import { useThemeStore } from '../composables/theme'
@@ -57,7 +57,7 @@ const { isDark } = useData()
               stroke-width="32"
             ></line>
           </svg>
-          <span class="sr-only">sinvue/ui</span>
+          <span class="sr-only">headui/ui</span>
         </Button>
         <nav class="hidden items-center gap-0.5 lg:flex">
           <Button variant="ghost" href="/"> Home </Button>

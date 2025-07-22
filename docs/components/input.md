@@ -5,7 +5,7 @@
 ```vue demo
 <script setup>
 import { ref } from 'vue'
-import { Input } from 'sinvue'
+import { Input } from 'headui'
 import { SearchIcon } from 'lucide-vue-next'
 const val = ref('val')
 </script>
@@ -25,7 +25,7 @@ const val = ref('val')
 
 ```vue demo
 <script setup>
-import { Input } from 'sinvue'
+import { Input } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -41,7 +41,7 @@ import { Input } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Input } from 'sinvue'
+import { Input } from 'headui'
 import { SearchIcon } from 'lucide-vue-next'
 </script>
 <template>
@@ -66,7 +66,7 @@ import { SearchIcon } from 'lucide-vue-next'
 
 ```vue demo
 <script setup>
-import { Input } from 'sinvue'
+import { Input } from 'headui'
 import { SearchIcon } from 'lucide-vue-next'
 </script>
 <template>
@@ -91,7 +91,7 @@ import { SearchIcon } from 'lucide-vue-next'
 
 ```vue demo
 <script setup>
-import { Input } from 'sinvue'
+import { Input } from 'headui'
 import { SearchIcon } from 'lucide-vue-next'
 </script>
 <template>
@@ -110,7 +110,7 @@ import { SearchIcon } from 'lucide-vue-next'
 
 ```vue demo
 <script setup>
-import { Input, Button, InputGroup, Select } from 'sinvue'
+import { Input, Button, InputGroup, Select } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">

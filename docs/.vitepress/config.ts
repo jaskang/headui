@@ -82,7 +82,7 @@ export default defineConfig({
     plugins: [jsx(), demo(), tailwindcss()],
     resolve: {
       alias: [
-        { find: 'sinvue', replacement: resolve(__dirname, '../../src') },
+        { find: 'headui', replacement: resolve(__dirname, '../../src') },
         { find: '@', replacement: resolve(__dirname, '../../src') },
       ],
     },

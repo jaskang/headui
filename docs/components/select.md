@@ -4,7 +4,7 @@
 
 ```vue demo
 <script setup>
-import { Select } from 'sinvue'
+import { Select } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -58,7 +58,7 @@ import { Select } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Select } from 'sinvue'
+import { Select } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -81,7 +81,7 @@ import { Select } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Select } from 'sinvue'
+import { Select } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">

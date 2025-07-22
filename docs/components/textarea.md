@@ -4,7 +4,7 @@
 
 ```vue demo
 <script setup>
-import { Textarea } from 'sinvue'
+import { Textarea } from 'headui'
 import { ref } from 'vue'
 </script>
 <template>
@@ -16,7 +16,7 @@ import { ref } from 'vue'
 
 ```vue demo
 <script setup>
-import { Textarea } from 'sinvue'
+import { Textarea } from 'headui'
 import { ref } from 'vue'
 </script>
 <template>
@@ -32,7 +32,7 @@ import { ref } from 'vue'
 
 ```vue demo
 <script setup>
-import { Textarea } from 'sinvue'
+import { Textarea } from 'headui'
 import { ref } from 'vue'
 </script>
 <template>
@@ -50,7 +50,7 @@ import { ref } from 'vue'
 ```vue demo
 <script setup>
 import { ref } from 'vue'
-import { Textarea } from 'sinvue'
+import { Textarea } from 'headui'
 </script>
 <template>
   <Textarea disabled placeholder="请输入内容" />

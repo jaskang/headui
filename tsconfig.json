@@ -6,7 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "sinvue": ["./src/index.ts"]
+      "headui": ["./src/index.ts"]
     }
   },
   "include": ["./env.d.ts", "./src/**/*", "./docs/**/*", "./docs/**/*.vue"]

@@ -3,7 +3,7 @@ import type { ClassValue } from 'kotl'
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
-type AvatarProps = {
+export type AvatarProps = {
   src?: string
   fallback?: string
 }

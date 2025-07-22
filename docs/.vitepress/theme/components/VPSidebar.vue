@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Sidebar, SidebarMenu } from 'sinvue'
+import { Sidebar, SidebarMenu } from 'headui'
 
 import { useData } from 'vitepress'
 import { computed } from 'vue'

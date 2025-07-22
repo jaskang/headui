@@ -5,7 +5,7 @@
 ```vue demo
 <script setup>
 import { ref } from 'vue'
-import { Tabs } from 'sinvue'
+import { Tabs } from 'headui'
 
 const items = [
   { value: '1', text: 'Tab 1' },
@@ -25,7 +25,7 @@ const current = ref('1')
 
 ```vue demo
 <script setup>
-import { Tabs, TabsContent } from 'sinvue'
+import { Tabs, TabsContent } from 'headui'
 
 const items = [
   { value: '1', text: 'Tab 1' },

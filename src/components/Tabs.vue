@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ClassValue } from 'kotl'
 import { TabsContent, TabsIndicator, TabsList, TabsRoot, TabsTrigger } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
@@ -10,7 +11,7 @@ type TabsProps = {
 const props = withDefaults(
   defineProps<
     TabsProps & {
-      class?: string | string[]
+      class?: ClassValue
     }
   >(),
   {

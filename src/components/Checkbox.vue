@@ -3,16 +3,12 @@ import { Check as CheckIcon, MinusIcon } from 'lucide-vue-next'
 import { type AcceptableValue, CheckboxIndicator, CheckboxRoot, type CheckboxRootProps } from 'reka-ui'
 import { watch } from 'vue'
 
-defineOptions({ name: 'HCheckbox' })
+defineOptions({ name: 'Checkbox' })
 
 export type checkboxProps = {
   defaultValue?: boolean | 'indeterminate'
   /** When `true`, prevents the user from interacting with the checkbox */
   disabled?: boolean
-  /**
-   * The value given as data when submitted with a `name`.
-   *  @defaultValue "on"
-   */
   value?: AcceptableValue
 }
 

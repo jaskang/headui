@@ -5,7 +5,7 @@
 ```vue demo
 <script setup lang="ts">
 import { CheckIcon } from 'lucide-vue-next'
-import { Badge } from 'sinvue'
+import { Badge } from 'headui'
 </script>
 <template>
   <div class="flex w-full flex-wrap gap-2">
@@ -23,7 +23,7 @@ import { Badge } from 'sinvue'
 ```vue demo
 <script setup lang="ts">
 import { CheckIcon } from 'lucide-vue-next'
-import { Badge } from 'sinvue'
+import { Badge } from 'headui'
 </script>
 <template>
   <div class="flex w-full flex-wrap gap-2">

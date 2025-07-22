@@ -2,7 +2,10 @@
 import { computed, ref } from 'vue'
 import { cn } from '@/lib/utils'
 
-type AlertProps = {
+export type AlertProps = {
+  /**
+   * 变体类型
+   */
   variant?: 'default' | 'destructive'
   title?: string
 }

@@ -2,7 +2,7 @@
 
 ```vue demo
 <script setup>
-import { Radio, RadioGroup } from 'sinvue'
+import { Radio, RadioGroup } from 'headui'
 import { ref } from 'vue'
 
 const picked = ref('A')
@@ -22,7 +22,7 @@ const picked = ref('A')
 
 ```vue demo
 <script setup>
-import { Radio, RadioGroup } from 'sinvue'
+import { Radio, RadioGroup } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -38,7 +38,7 @@ import { Radio, RadioGroup } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Radio, RadioGroup } from 'sinvue'
+import { Radio, RadioGroup } from 'headui'
 </script>
 <template>
   <div class="flex flex-col gap-4">
@@ -64,7 +64,7 @@ import { Radio, RadioGroup } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Radio, RadioGroup } from 'sinvue'
+import { Radio, RadioGroup } from 'headui'
 </script>
 <template>
   <div class="flex flex-col gap-4">
@@ -86,7 +86,7 @@ import { Radio, RadioGroup } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Radio, RadioGroup } from 'sinvue'
+import { Radio, RadioGroup } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">

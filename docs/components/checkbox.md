@@ -2,7 +2,7 @@
 
 ```vue demo
 <script setup>
-import { Checkbox, CheckboxGroup } from 'sinvue'
+import { Checkbox, CheckboxGroup } from 'headui'
 import { ref } from 'vue'
 const checkList = ref(['A'])
 </script>
@@ -19,7 +19,7 @@ const checkList = ref(['A'])
 
 ```vue demo
 <script setup>
-import { Checkbox } from 'sinvue'
+import { Checkbox } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -33,7 +33,7 @@ import { Checkbox } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Checkbox, CheckboxGroup } from 'sinvue'
+import { Checkbox, CheckboxGroup } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">

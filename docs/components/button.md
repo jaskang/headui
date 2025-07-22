@@ -4,7 +4,7 @@ hello: world
 
 <script>
   import ButtonBooth from './booth/button.vue'
-  import { Button } from 'sinvue'
+  import { Button } from 'headui'
 </script>
 
 # Button
@@ -21,7 +21,7 @@ Button 组件支持五种风格，通过 `variant` 属性设置。
 
 ```vue demo title=默认样式
 <script setup>
-import { Button } from 'sinvue'
+import { Button } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -39,7 +39,7 @@ import { Button } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Button } from 'sinvue'
+import { Button } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -54,7 +54,7 @@ import { Button } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Button } from 'sinvue'
+import { Button } from 'headui'
 </script>
 <template>
   <div class="flex items-center gap-2">
@@ -69,7 +69,7 @@ import { Button } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Button } from 'sinvue'
+import { Button } from 'headui'
 </script>
 <template>
   <div class="space-y-2">
@@ -82,7 +82,7 @@ import { Button } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Button } from 'sinvue'
+import { Button } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap items-center gap-2">
@@ -97,7 +97,7 @@ import { Button } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Button } from 'sinvue'
+import { Button } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -115,7 +115,7 @@ import { Button } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Button } from 'sinvue'
+import { Button } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -131,7 +131,7 @@ import { Button } from 'sinvue'
 ```vue demo
 <script setup>
 import { TrashIcon } from 'lucide-vue-next'
-import { Button } from 'sinvue'
+import { Button } from 'headui'
 </script>
 <template>
   <div class="flex items-center gap-2">
@@ -155,7 +155,7 @@ import { Button } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Button } from 'sinvue'
+import { Button } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">

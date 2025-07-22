@@ -2,7 +2,7 @@
 
 ```vue demo
 <script setup lang="ts">
-import { Sheet, Button } from 'sinvue'
+import { Sheet, Button } from 'headui'
 import { ref } from 'vue'
 </script>
 <template>

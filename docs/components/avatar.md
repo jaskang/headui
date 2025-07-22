@@ -4,7 +4,7 @@
 
 ```vue demo
 <script setup>
-import { Avatar } from 'sinvue'
+import { Avatar } from 'headui'
 </script>
 <template>
   <div>
@@ -17,7 +17,7 @@ import { Avatar } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Avatar } from 'sinvue'
+import { Avatar } from 'headui'
 </script>
 <template>
   <div class="flex items-center gap-4">
@@ -34,7 +34,7 @@ import { Avatar } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Avatar } from 'sinvue'
+import { Avatar } from 'headui'
 </script>
 <template>
   <div class="flex flex-col gap-4">

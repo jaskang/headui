@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CodeIcon } from 'lucide-vue-next'
-import { Switch } from 'sinvue'
+import { Switch } from 'headui'
 import { computed, ref } from 'vue'
 
 defineOptions({ name: 'DemoWrapper' })

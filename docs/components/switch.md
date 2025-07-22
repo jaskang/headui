@@ -1,5 +1,5 @@
 <script>
-  import { Switch } from 'sinvue'
+  import { Switch } from 'headui'
 </script>
 
 # Switch
@@ -11,7 +11,7 @@
 ```vue demo
 <script setup>
 import { ref } from 'vue'
-import { Switch } from 'sinvue'
+import { Switch } from 'headui'
 const val = ref(true)
 </script>
 <template>
@@ -26,7 +26,7 @@ const val = ref(true)
 ```vue demo
 <script setup>
 import { MoonIcon, SunIcon } from 'lucide-vue-next'
-import { Switch } from 'sinvue'
+import { Switch } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap items-center gap-2">
@@ -47,7 +47,7 @@ import { Switch } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Switch } from 'sinvue'
+import { Switch } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">

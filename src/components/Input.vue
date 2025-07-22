@@ -94,7 +94,7 @@ watch(value, v => {
         'data-[disabled=true]:pointer-events-none data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50',
         'aria-invalid:ring-invalid',
         {
-          sm: 'h-8 gap-1.5 px-1.5 [&>svg]:size-3.5',
+          sm: 'h-8 gap-2 px-2 [&>svg]:size-3.5',
           default: 'h-9 gap-2 px-2 [&>svg]:size-4',
           lg: 'h-10 gap-2.5 px-2.5 [&>svg]:size-4.5',
         }[props.size],

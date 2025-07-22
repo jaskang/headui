@@ -2,7 +2,7 @@
 
 ```vue demo
 <script setup>
-import { ScrollArea } from 'sinvue'
+import { ScrollArea } from 'headui'
 </script>
 <template>
   <ScrollArea class="h-72 w-48 rounded-md border">

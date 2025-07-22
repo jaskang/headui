@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Button, Radio, RadioGroup, Switch } from 'headui'
 import { InboxIcon } from 'lucide-vue-next'
-import { Button, Radio, RadioGroup, Switch } from 'sinvue'
 import { ref } from 'vue'
 defineOptions({ name: 'ButtonBooth' })
 const emit = defineEmits<{ click: [any] }>()

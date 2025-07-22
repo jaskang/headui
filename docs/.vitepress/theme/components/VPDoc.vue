@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Button } from 'headui'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-vue-next'
-import { Button } from 'sinvue'
 import { useData, useRoute } from 'vitepress'
 import { computed } from 'vue'
 import VPToc from './VPToc.vue'

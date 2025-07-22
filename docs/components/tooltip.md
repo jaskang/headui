@@ -4,7 +4,7 @@
 
 ```vue demo
 <script setup>
-import { Tooltip, Button } from 'sinvue'
+import { Tooltip, Button } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -19,7 +19,7 @@ import { Tooltip, Button } from 'sinvue'
 
 ```vue demo
 <script setup>
-import { Tooltip, Button } from 'sinvue'
+import { Tooltip, Button } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">

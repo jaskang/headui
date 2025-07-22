@@ -2,7 +2,7 @@
 
 ```vue demo
 <script setup lang="ts">
-import { Alert, Button } from 'sinvue'
+import { Alert, Button } from 'headui'
 import { CheckIcon, SearchIcon, TrashIcon } from 'lucide-vue-next'
 </script>
 <template>
@@ -22,7 +22,7 @@ import { CheckIcon, SearchIcon, TrashIcon } from 'lucide-vue-next'
 
 ```vue demo
 <script setup lang="ts">
-import { Alert, Button } from 'sinvue'
+import { Alert, Button } from 'headui'
 import { CheckIcon, SearchIcon, TrashIcon } from 'lucide-vue-next'
 </script>
 <template>
