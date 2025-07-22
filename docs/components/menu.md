@@ -5,22 +5,22 @@
 ```vue demo
 <script setup>
 import { ref } from 'vue'
-import { PaperAirplaneIcon, InboxIcon, TrashIcon, ArchiveBoxIcon, CircleStackIcon } from 'lucide-vue-next'
+import { InboxIcon, TrashIcon } from 'lucide-vue-next'
 
 const items = ref([
   { key: 'Inbox', label: 'Inbox', icon: InboxIcon },
-  { key: 'Sent', label: 'Sent', icon: PaperAirplaneIcon },
+  { key: 'Sent', label: 'Sent', icon: InboxIcon },
   { key: 'Trash', label: 'Trash', icon: TrashIcon },
   {
     key: 'Archive',
     label: 'Archive',
-    icon: ArchiveBoxIcon,
+    icon: TrashIcon,
     children: [
       { key: '1-1', label: '1st menu item' },
       { key: '1-2', label: '2nd menu item' },
     ],
   },
-  { key: 'Drafts', label: 'Drafts', icon: CircleStackIcon },
+  { key: 'Drafts', label: 'Drafts', icon: TrashIcon },
   { type: 'title', label: 'group2' },
   {
     key: 'item-4',

@@ -61,6 +61,7 @@
     "mdast-util-to-markdown": "^2.1.2",
     "micromark-extension-frontmatter": "^2.0.0",
     "npm-run-all2": "^8.0.4",
+    "oxc-minify": "^0.77.3",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4.1.11",
