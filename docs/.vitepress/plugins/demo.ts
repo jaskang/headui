@@ -1,13 +1,13 @@
+import { createHash } from 'node:crypto'
+import fs from 'node:fs'
+import { relative } from 'node:path'
 import type { Html } from 'mdast'
-import type { Plugin, ResolvedConfig } from 'vite'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { frontmatterFromMarkdown, frontmatterToMarkdown } from 'mdast-util-frontmatter'
 import { toMarkdown } from 'mdast-util-to-markdown'
 import { frontmatter } from 'micromark-extension-frontmatter'
-import { createHash } from 'node:crypto'
-import fs from 'node:fs'
-import { relative } from 'node:path'
 import { visit } from 'unist-util-visit'
+import type { Plugin, ResolvedConfig } from 'vite'
 
 const CODE_VUE_REGEXP = /.md.DemoI[a-zA-Z0-9]{8}\.vue$/
 const DemoMap = new Map<string, string>()

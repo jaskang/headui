@@ -1,11 +1,21 @@
 {
+  "extends": "@jaskang/config/tsconfig.node.json",
+  "include": [
+    "vite.config.*",
+    "vitest.config.*",
+    "cypress.config.*",
+    "nightwatch.conf.*",
+    "playwright.config.*",
+    "eslint.config.*",
+    "docs/.vitepress/config.*",
+    "docs/.vitepress/plugins"
+  ],
   "compilerOptions": {
-    "composite": true,
-    "skipLibCheck": true,
+    "noEmit": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "strict": true
-  },
-  "include": ["vite.config.ts", "tsup.config.ts", "preset.ts"]
+    "moduleResolution": "Bundler",
+    "types": ["node"]
+  }
 }

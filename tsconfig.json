@@ -1,13 +1,14 @@
 {
-  "extends": "@jaskang/config/tsconfig.vue.json",
-  "compilerOptions": {
-    "jsxImportSource": "vue",
-    "types": ["vite/client"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "headui": ["./src/index.ts"]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
     }
-  },
-  "include": ["./env.d.ts", "./src/**/*", "./docs/**/*", "./docs/**/*.vue"]
+  ]
 }
