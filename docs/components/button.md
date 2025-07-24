@@ -151,34 +151,34 @@ import { Button } from 'headui'
 </template>
 ```
 
-## SpaceCompact
+## InputGroup
 
 ```vue demo
 <script setup>
-import { Button } from 'headui'
+import { Button, InputGroup, Tooltip } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <SpaceCompact>
+    <InputGroup>
       <Tooltip content="Like">
-        <Button>button</Button>
+        <Button variant="outline">button</Button>
       </Tooltip>
       <Tooltip content="Comment">
-        <Button variant="soft" color="primary">button</Button>
+        <Button variant="outline" color="primary">button</Button>
       </Tooltip>
       <Tooltip content="Star">
-        <Button variant="soft" color="success">button</Button>
+        <Button variant="outline" color="success">button</Button>
       </Tooltip>
       <Tooltip content="Heart">
-        <Button>button</Button>
+        <Button variant="outline">button</Button>
       </Tooltip>
       <Tooltip content="Share">
-        <Button>button</Button>
+        <Button variant="outline">button</Button>
       </Tooltip>
       <Tooltip content="Download">
-        <Button>button</Button>
+        <Button variant="outline">button</Button>
       </Tooltip>
-    </SpaceCompact>
+    </InputGroup>
   </div>
 </template>
 ```
