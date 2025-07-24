@@ -1,11 +1,25 @@
-import fs from 'node:fs'
-import { parseAsync } from 'oxc-parser'
-import { parse as parseVue } from 'vue/compiler-sfc'
+import type { Plugin } from 'vite'
 
-async function loadComponentDoc(file: string) {
-  const content = fs.readFileSync(file, 'utf8')
-  const vue = parseVue(content)
-  const ast = await parseAsync('gg', vue.descriptor.scriptSetup?.content || '')
-  console.log('ast', ast)
-  return ast
+function replaceDoc(id: string, content: string): string | undefined {
+  // id: /Users/jaskang/Documents/codes/headui/docs/components/button.md
+  // 只匹配 components/xxx.md，不匹配多层目录
+  const ret = id.match(/components\/([^\/]+)\.md$/)
+  if (ret && ret.length === 2) {
+    const name = ret[1]
+    return content.replace(/\\\[\\\[doc\]\]/g, `doc:${name?.toUpperCase()}`)
+  }
+}
+
+export function doc(): Plugin {
+  return {
+    name: 'vite:markdown-doc',
+    enforce: 'pre',
+    transform(code, id, options) {
+      if (id.endsWith('.md')) {
+        const ret = replaceDoc(id, code)
+        console.log(id)
+        return ret
+      }
+    },
+  }
 }

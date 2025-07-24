@@ -183,20 +183,4 @@ import { Button } from 'headui'
 </template>
 ```
 
-## Props
-
-| Prop     | Type                  | Default | Description                  |
-| -------- | --------------------- | ------- | ---------------------------- |
-| variant  | 'secondary' \| 'text' | -       | Variant of the button        |
-| size     | 'sm' \|'md' \| 'lg'   | 'md'    | Size of the button           |
-| pill     | boolean               | false   | Pill style of the button     |
-| square   | boolean               | false   | Square style of the button   |
-| loading  | boolean               | false   | Loading state of the button  |
-| disabled | boolean               | false   | Disabled state of the button |
-| color    | string                | -       | Color of the button          |
-
-## Slots
-
-| Name    | Description |
-| ------- | ----------- |
-| default | children    |
+[[doc]]

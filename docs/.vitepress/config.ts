@@ -4,7 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vitepress'
 import { demo } from './plugins/demo'
+import { doc } from './plugins/doc'
 
+console.log(demo, doc)
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // https://vitepress.dev/reference/site-config
@@ -16,7 +18,7 @@ export default defineConfig({
   // },
   description: 'A VitePress Site',
   markdown: {
-    // lineNumbers: true,
+    // lineNumbers: true
     codeTransformers: [
       {
         pre(node) {
@@ -79,7 +81,7 @@ export default defineConfig({
     },
   },
   vite: {
-    plugins: [jsx(), demo(), tailwindcss()],
+    plugins: [jsx(), doc(), demo(), tailwindcss()],
     resolve: {
       alias: [
         { find: 'headui', replacement: resolve(__dirname, '../../src') },
