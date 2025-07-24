@@ -41,3 +41,5 @@ const items = [
   </Tabs>
 </template>
 ```
+
+[[doc]]

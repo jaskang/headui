@@ -37,3 +37,5 @@ const open = ref(false)
   </div>
 </template>
 ```
+
+[[doc]]

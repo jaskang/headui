@@ -56,3 +56,5 @@ import { Textarea } from 'headui'
   <Textarea disabled placeholder="请输入内容" />
 </template>
 ```
+
+[[doc]]

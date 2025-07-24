@@ -30,3 +30,5 @@ import { Tooltip, Button } from 'headui'
   </div>
 </template>
 ```
+
+[[doc]]

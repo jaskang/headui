@@ -51,3 +51,5 @@ import { Avatar } from 'headui'
   </div>
 </template>
 ```
+
+[[doc]]

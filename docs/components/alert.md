@@ -38,3 +38,5 @@ import { CheckIcon, SearchIcon, TrashIcon } from 'lucide-vue-next'
   </div>
 </template>
 ```
+
+[[doc]]

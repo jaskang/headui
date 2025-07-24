@@ -14,3 +14,5 @@ import { ScrollArea } from 'headui'
   </ScrollArea>
 </template>
 ```
+
+[[doc]]

@@ -98,17 +98,4 @@ import { Radio, RadioGroup } from 'headui'
 </template>
 ```
 
-## Props
-
-| Prop        | Type    | Default | Description                   |
-| ----------- | ------- | ------- | ----------------------------- |
-| **checked** | boolean | false   | whether the checkbox checked  |
-| name        | string  | -       | input name                    |
-| value       | any     | -       | value for group               |
-| disabled    | boolean | false   | whether the checkbox disabled |
-
-## Slots
-
-| Name    | Description |
-| ------- | ----------- |
-| default | children    |
+[[doc]]

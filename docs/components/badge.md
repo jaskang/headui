@@ -35,3 +35,5 @@ import { Badge } from 'headui'
   </div>
 </template>
 ```
+
+[[doc]]
