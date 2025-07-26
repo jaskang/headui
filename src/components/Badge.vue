@@ -1,14 +1,20 @@
 <script setup lang="ts">
+import type { ClassValue } from 'kotl'
 import { computed, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 export type BadgeProps = {
+  /**
+   * 变体类型
+   */
   variant?: 'default' | 'secondary' | 'outline' | 'destructive'
+  /**
+   * 是否为圆形徽章
+   */
   pill?: boolean
-  class?: string
 }
 
-const props = withDefaults(defineProps<BadgeProps>(), {
+const props = withDefaults(defineProps<BadgeProps & { class?: ClassValue }>(), {
   variant: 'default',
 })
 

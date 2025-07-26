@@ -21,8 +21,16 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
       const vueSFC = await parseVue(vueCode)
       const script = vueSFC.descriptor.scriptSetup?.content || ''
       console.log(script)
-      const props: any[] = []
-      await parseAndWalk(script, `${name}.ts`, node => {
+      const props: {
+        name: string
+        type: string
+        optional: boolean
+        start: number
+        end: number
+        comment: string
+        default: string
+      }[] = []
+      const ast = await parseAndWalk(script, `${name}.ts`, (node, parent, ctx) => {
         if (
           node.type === 'TSTypeAliasDeclaration' &&
           node.id.name === `${name}Props` &&
@@ -34,17 +42,64 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
               const typeAnnotation = member.typeAnnotation?.typeAnnotation
               if (typeAnnotation) {
                 const propType = script.slice(typeAnnotation.start, typeAnnotation.end)
-                props.push({ name: propName, type: propType })
+                props.push({
+                  name: propName,
+                  type: propType,
+                  optional: member.optional,
+                  start: member.start,
+                  end: member.end,
+                  comment: '',
+                  default: '',
+                })
               }
             }
           })
         }
+        // props default value 处理
+        if (
+          node.type === 'CallExpression' &&
+          node.callee.type === 'Identifier' &&
+          node.callee.name === 'withDefaults' &&
+          node.arguments.length === 2
+        ) {
+          const obj = node.arguments[1]!
+          if (obj.type === 'ObjectExpression') {
+            obj.properties.forEach(prop => {
+              if (prop.type === 'Property' && prop.key.type === 'Identifier' && prop.value.type === 'Literal') {
+                const propName = prop.key.name
+                const value = prop.value.value
+                const foundProp = props.find(p => p.name === propName)
+                if (foundProp) {
+                  foundProp.default = `${value ?? ''}`
+                }
+              }
+            })
+          }
+        }
       })
-      console.log(props)
+      // console.log(props, ast)
+      for (const prop of props) {
+        const comment = ast.comments.find(comment => {
+          return comment.end + 3 === prop.start
+        })
+        if (comment) {
+          // 去除首尾空格和换行符
+          // 这里的 comment.value 是包含 /** 和 */ 的注释内容
+          // 需要去除首尾的 /** 和 */
+          // 以及首尾的空格和换行符
+          // 例如 /** 这是一个注释 */ -> 这是一个注释
+          // 变成 这是一个注释
+          prop.comment = comment.value.replace(/^[\s|*]*|\s*$/g, '')
+        }
+      }
       // props to markdown table
       if (props.length > 0) {
-        const tableHeader = '| Prop | Type |\n| --- | --- |\n'
-        const tableRows = props.map(prop => `| ${prop.name} | ${prop.type.replace(/\|/g, '\\|')} |`).join('\n')
+        const tableHeader = '| Prop | 描述 | 默认值 | 类型 | \n| --- | --- | --- | --- |\n'
+        const tableRows = props
+          .map(
+            prop => `| ${prop.name} | ${prop.comment} | ${prop.default || '\/'} | ${prop.type.replace(/\|/g, '\\|')} |`
+          )
+          .join('\n')
         content = content.replace(/\\\[\\\[doc\]\]/g, `${tableHeader}${tableRows}`)
       }
       // return content.replace(/\\\[\\\[doc\]\]/g, `doc:${name?.toUpperCase()}`)

@@ -6,12 +6,30 @@ import { computed } from 'vue'
 import { cn, type ThemeSize } from '../lib/utils'
 
 export type ButtonProps = {
+  /**
+   * 类型变体
+   */
   variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'
-  size?: ThemeSize
+  /**
+   * 大小
+   */
+  size?: 'default' | 'sm' | 'lg'
+  /**
+   * 是否圆角
+   */
   pill?: boolean
+  /**
+   * 是否方形
+   */
   square?: boolean
-  disabled?: boolean
+  /**
+   * 加载中
+   */
   loading?: boolean
+  /**
+   * 是否禁用
+   */
+  disabled?: boolean
 }
 
 const emit = defineEmits<{ click: [event: MouseEvent] }>()
