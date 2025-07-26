@@ -11,10 +11,8 @@ import {
   SelectLabel,
   SelectPortal,
   SelectRoot,
-  type SelectRootProps,
   SelectScrollDownButton,
   SelectScrollUpButton,
-  SelectSeparator,
   SelectTrigger,
   SelectValue,
   SelectViewport,
@@ -35,13 +33,17 @@ export type SelectGroupOption = {
 }
 
 export type SelectProps = {
-  /** The value of the select when initially rendered. Use when you do not need to control the state of the Select */
+  /** 默认值 */
   defaultValue?: AcceptableValue | Array<AcceptableValue>
-  /** Whether multiple options can be selected or not. */
+  /** 是否允许选择多个选项 */
   multiple?: boolean
-  /** When `true`, prevents the user from interacting with Select */
+  /** 禁用 */
   disabled?: boolean
+  /**
+   * 占位符
+   */
   placeholder?: string
+  /** 选项 */
   options?: SelectOption[]
 }
 

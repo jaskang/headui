@@ -27,7 +27,7 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
         start: number
         end: number
         comment: string
-        default: string
+        default?: string
       }[] = []
       const ast = await parseAndWalk(script, `${name}.ts`, (node, parent, ctx) => {
         if (
@@ -48,7 +48,6 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
                   start: member.start,
                   end: member.end,
                   comment: '',
-                  default: '',
                 })
               }
             }
@@ -64,12 +63,12 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
           const obj = node.arguments[1]!
           if (obj.type === 'ObjectExpression') {
             obj.properties.forEach(prop => {
-              if (prop.type === 'Property' && prop.key.type === 'Identifier' && prop.value.type === 'Literal') {
+              if (prop.type === 'Property' && prop.key.type === 'Identifier') {
                 const propName = prop.key.name
-                const value = prop.value.value
                 const foundProp = props.find(p => p.name === propName)
                 if (foundProp) {
-                  foundProp.default = `${value ?? ''}`
+                  foundProp.default = script.slice(prop.value.start, prop.value.end)
+                  // console.log('default props:', propName, foundProp.default)
                 }
               }
             })
@@ -95,13 +94,16 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
       if (props.length > 0) {
         const tableHeader = '| Prop | 描述 | 默认值 | 类型 | \n| --- | --- | --- | --- |\n'
         const tableRows = props
+          // .filter(prop => prop.name !== 'defaultValue')
           .map(
-            prop => `| ${prop.name} | ${prop.comment} | ${prop.default || '\/'} | ${prop.type.replace(/\|/g, '\\|')} |`
+            prop =>
+              `| ${prop.name} | ${prop.comment} | ${prop.default ?? '/'} | ${prop.type.replace(/\|/g, '\\|').replace(/</g, '\\<').replace(/>/g, '\\>')} |`
           )
           .join('\n')
         content = content.replace(/\\\[\\\[doc\]\]/g, `${tableHeader}${tableRows}`)
       }
       // return content.replace(/\\\[\\\[doc\]\]/g, `doc:${name?.toUpperCase()}`)
+      console.log(content)
       return content
     } catch (error) {
       console.error(`Error reading component file: ${error}`)

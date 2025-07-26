@@ -81,7 +81,7 @@ import { Select } from 'headui'
 
 ```vue demo
 <script setup>
-import { Select } from 'headui'
+import { Select, Avatar } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
@@ -95,7 +95,7 @@ import { Select } from 'headui'
       ]"
     >
       <template #label="{ item }">
-        <HAvatar class="-ml-1" rounded border size="sm" :src="item.src" />
+        <Avatar class="-ml-1" rounded border size="sm" :src="item.src" />
         <span class="ml-1 flex-1 overflow-hidden text-nowrap text-ellipsis">
           {{ item.label }}
         </span>
