@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { parseAndWalk, walk } from 'oxc-walker'
+import { parseAndWalk } from 'oxc-walker'
 import type { Plugin } from 'vite'
 import { parse as parseVue } from 'vue/compiler-sfc'
 
@@ -20,7 +20,6 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
       const vueCode = await readFile(join(__dirname, `../../../src/components/${name}.vue`), 'utf-8')
       const vueSFC = await parseVue(vueCode)
       const script = vueSFC.descriptor.scriptSetup?.content || ''
-      console.log(script)
       const props: {
         name: string
         type: string
@@ -117,7 +116,6 @@ export function doc(): Plugin {
     async transform(code, id, options) {
       if (id.endsWith('.md')) {
         const ret = await replaceDoc(id, code)
-        console.log(id)
         return ret
       }
     },
