@@ -65,7 +65,7 @@ const emit = defineEmits<{
 
   clear: []
 }>()
-const slots = defineSlots<{ prefix?: (_: {}) => any; suffix?: (_: {}) => any }>()
+const slots = defineSlots<{ prefix?(_: {}): void; suffix?(_: {}): void }>()
 const props = withDefaults(defineProps<InputProps>(), {
   size: 'default',
 })

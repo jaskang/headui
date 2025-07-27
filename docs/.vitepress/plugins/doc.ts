@@ -11,16 +11,36 @@ function encodeMarkdown(val: string): string {
   return val.replace(/\|/g, '\\|').replace(/</g, '\\<').replace(/>/g, '\\>')
 }
 
+type Docs = {
+  models: {
+    name: string
+    type: string
+    required: boolean
+    default?: string
+  }[]
+  props: {
+    name: string
+    type: string
+    optional: boolean
+    start: number
+    end: number
+    comment: string
+    default?: string
+  }[]
+  emits: { name: string; args: string }[]
+  slots: { name: string; props: string }[]
+}
+
 async function replaceDoc(id: string, content: string): Promise<string | undefined> {
   // id: /Users/jaskang/Documents/codes/headui/docs/components/button.md
   // 只匹配 components/xxx.md，不匹配多层目录
   const matchVal = id.match(/components\/([^/]+)\.md$/)
   if (matchVal && matchVal.length === 2) {
-    const doc = {
-      props: '',
-      models: '',
-      slots: '',
-      emits: '',
+    const doc: Docs = {
+      props: [],
+      models: [],
+      slots: [],
+      emits: [],
     }
     // matchVal[1] 首字母大写的组件名
     const n = matchVal[1] as string
@@ -30,15 +50,6 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
       const vueCode = await readFile(join(__dirname, `../../../src/components/${name}.vue`), 'utf-8')
       const vueSFC = await parseVue(vueCode)
       const script = vueSFC.descriptor.scriptSetup?.content || ''
-      const props: {
-        name: string
-        type: string
-        optional: boolean
-        start: number
-        end: number
-        comment: string
-        default?: string
-      }[] = []
       const ast = await parseAndWalk(script, `${name}.ts`, (node, parent, ctx) => {
         if (
           node.type === 'TSTypeAliasDeclaration' &&
@@ -51,7 +62,7 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
               const typeAnnotation = member.typeAnnotation?.typeAnnotation
               if (typeAnnotation) {
                 const propType = script.slice(typeAnnotation.start, typeAnnotation.end)
-                props.push({
+                doc.props.push({
                   name: propName,
                   type: propType,
                   optional: member.optional,
@@ -75,7 +86,7 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
             obj.properties.forEach(prop => {
               if (prop.type === 'Property' && prop.key.type === 'Identifier') {
                 const propName = prop.key.name
-                const foundProp = props.find(p => p.name === propName)
+                const foundProp = doc.props.find(p => p.name === propName)
                 if (foundProp) {
                   foundProp.default = script.slice(prop.value.start, prop.value.end)
                   // console.log('default props:', propName, foundProp.default)
@@ -87,12 +98,7 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
 
         // 处理 defineModel
         if (node.type === 'CallExpression' && node.callee.type === 'Identifier' && node.callee.name === 'defineModel') {
-          const model: {
-            name: string
-            type: string
-            required: boolean
-            default?: string
-          } = {
+          const model: Docs['models'][number] = {
             name: 'modelValue',
             type: 'any',
             required: false,
@@ -122,13 +128,10 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
             const typeParam = node.typeArguments.params[0]!
             model.type = script.slice(typeParam.start, typeParam.end)
           }
-          doc.models += `\n## Models\n`
-          doc.models += `| name | 类型 | 默认值 |\n| --- | --- | --- |\n`
-          doc.models += `| ${model.name} | ${encodeMarkdown(model.type)} | ${encodeMarkdown(model.default ?? '/')} |\n`
+          doc.models.push(model)
         }
 
         if (node.type === 'CallExpression' && node.callee.type === 'Identifier' && node.callee.name === 'defineEmits') {
-          const emits: { name: string; args: string }[] = []
           if (
             node.typeArguments &&
             node.typeArguments.type === 'TSTypeParameterInstantiation' &&
@@ -138,7 +141,7 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
             const typeLiteral = node.typeArguments.params[0]!
             typeLiteral.members.forEach(member => {
               if (member.type === 'TSPropertySignature' && member.key.type === 'Identifier' && member.typeAnnotation) {
-                emits.push({
+                doc.emits.push({
                   name: member.key.name,
                   args: script.slice(
                     member.typeAnnotation.typeAnnotation.start,
@@ -148,17 +151,37 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
               }
             })
           }
-          if (emits.length > 0) {
-            doc.emits += `\n## Emits\n`
-            doc.emits += `| 事件名 | 参数 |\n| --- | --- |\n`
-            emits.forEach(emit => {
-              doc.emits += `| ${emit.name} | ${encodeMarkdown(emit.args)} |\n`
+        }
+
+        if (node.type === 'CallExpression' && node.callee.type === 'Identifier' && node.callee.name === 'defineSlots') {
+          if (
+            node.typeArguments &&
+            node.typeArguments.type === 'TSTypeParameterInstantiation' &&
+            node.typeArguments.params.length > 0 &&
+            node.typeArguments.params[0]!.type === 'TSTypeLiteral'
+          ) {
+            const typeLiteral = node.typeArguments.params[0]!
+            console.log('defineSlots typeLiteral:', typeLiteral)
+            typeLiteral.members.forEach(member => {
+              if (member.type === 'TSMethodSignature' && member.key.type === 'Identifier' && member.params.length > 0) {
+                const _props = member.params[0]!
+                console.log('defineSlots _props:', _props)
+                const typeAnnotation = _props.typeAnnotation?.typeAnnotation || null
+                let propsType = 'any'
+                if (typeAnnotation) {
+                  propsType = script.slice(typeAnnotation.start, typeAnnotation.end)
+                }
+                doc.slots.push({
+                  name: member.key.name,
+                  props: propsType,
+                })
+              }
             })
           }
         }
       })
       // console.log(props, ast)
-      for (const prop of props) {
+      for (const prop of doc.props) {
         const comment = ast.comments.find(comment => {
           return comment.end + 3 === prop.start
         })
@@ -172,21 +195,39 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
           prop.comment = comment.value.replace(/^[\s|*]*|\s*$/g, '')
         }
       }
-      // props to markdown table
-      if (props.length > 0) {
-        const tableHeader = '| Prop | 描述 | 默认值 | 类型 | \n| --- | --- | --- | --- |\n'
-        const tableRows = props
-          // .filter(prop => prop.name !== 'defaultValue')
-          .map(
-            prop =>
-              `| ${prop.name} | ${prop.comment} | ${encodeMarkdown(prop.default ?? '/')} | ${encodeMarkdown(prop.type)} |`
-          )
-          .join('\n')
-        doc.props += `\n## Props\n${tableHeader}${tableRows}\n`
+
+      let docContent = ''
+      if (doc.models.length > 0) {
+        docContent += `\n## Models\n`
+        docContent += `| 名称 | 类型 | 默认值 |\n| --- | --- | --- |\n`
+        doc.models.forEach(model => {
+          docContent += `| ${model.name} | ${encodeMarkdown(model.type)} | ${encodeMarkdown(model.default ?? '/')} |\n`
+        })
       }
-      content = content.replace(/\\\[\\\[doc\]\]/g, doc.models + doc.props + doc.emits + doc.slots)
+      if (doc.props.length > 0) {
+        docContent += `\n## Props\n`
+        docContent += `| Prop | 描述 | 默认值 | 类型 |\n| --- | --- | --- | --- |\n`
+        doc.props.forEach(prop => {
+          docContent += `| ${prop.name} | ${prop.comment} | ${encodeMarkdown(prop.default ?? '/')} | ${encodeMarkdown(prop.type)} |\n`
+        })
+      }
+      if (doc.emits.length > 0) {
+        docContent += `\n## Emits\n`
+        docContent += `| 事件名 | 参数 |\n| --- | --- |\n`
+        doc.emits.forEach(emit => {
+          docContent += `| ${emit.name} | ${encodeMarkdown(emit.args)} |\n`
+        })
+      }
+      if (doc.slots.length > 0) {
+        docContent += `\n## Slots\n`
+        docContent += `| 名称 | Props |\n| --- | --- |\n`
+        doc.slots.forEach(slot => {
+          docContent += `| ${slot.name} | ${encodeMarkdown(slot.props)} |\n`
+        })
+      }
+      content = content.replace(/\\\[\\\[doc\]\]/g, docContent)
       // return content.replace(/\\\[\\\[doc\]\]/g, `doc:${name?.toUpperCase()}`)
-      console.log(content)
+      // console.log(content)
       return content
     } catch (error) {
       console.error(`Error reading component file: ${error}`)
