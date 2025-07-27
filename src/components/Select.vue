@@ -47,7 +47,9 @@ export type SelectProps = {
   options?: SelectOption[]
 }
 
-const emit = defineEmits(['change'])
+const emit = defineEmits<{
+  change: [value: AcceptableValue | AcceptableValue[]]
+}>()
 const props = withDefaults(defineProps<SelectProps>(), {
   options: () => [],
 })

@@ -7,11 +7,16 @@ import { parse as parseVue } from 'vue/compiler-sfc'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+function encodeMarkdown(val: string): string {
+  return val.replace(/\|/g, '\\|').replace(/</g, '\\<').replace(/>/g, '\\>')
+}
+
 async function replaceDoc(id: string, content: string): Promise<string | undefined> {
   // id: /Users/jaskang/Documents/codes/headui/docs/components/button.md
   // 只匹配 components/xxx.md，不匹配多层目录
   const matchVal = id.match(/components\/([^/]+)\.md$/)
   if (matchVal && matchVal.length === 2) {
+    let docString = ''
     // matchVal[1] 首字母大写的组件名
     const n = matchVal[1] as string
     // 读取组件文件，获取文档注释
@@ -74,6 +79,49 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
             })
           }
         }
+
+        // props default value 处理
+        if (node.type === 'CallExpression' && node.callee.type === 'Identifier' && node.callee.name === 'defineModel') {
+          const model: {
+            name: string
+            type: string
+            required: boolean
+            default?: string
+          } = {
+            name: 'modelValue',
+            type: 'any',
+            required: false,
+          }
+          console.log('defineModel:', node)
+          if (node.arguments.length >= 1) {
+            const modelName = node.arguments[0]!
+            if (modelName.type === 'Literal') {
+              model.name = modelName.value as string
+            }
+            if (node.arguments.length >= 2) {
+              const modelOptions = node.arguments[1]!
+              if (modelOptions.type === 'ObjectExpression') {
+                modelOptions.properties.forEach(prop => {
+                  if (prop.type === 'Property' && prop.key.type === 'Identifier') {
+                    if (prop.key.name === 'required' && prop.value.type === 'Literal') {
+                      model.required = Boolean(prop.value.value)
+                    }
+                    if (prop.key.name === 'default') {
+                      model.default = script.slice(prop.value.start, prop.value.end)
+                    }
+                  }
+                })
+              }
+            }
+          }
+          if (node.typeArguments && node.typeArguments.params.length > 0) {
+            const typeParam = node.typeArguments.params[0]!
+            model.type = script.slice(typeParam.start, typeParam.end)
+          }
+          docString += `\n## Models\n`
+          docString += `| name | 类型 | 默认值 |\n| --- | --- | --- |\n`
+          docString += `| ${model.name} | ${encodeMarkdown(model.type)} | ${encodeMarkdown(model.default ?? '/')} |\n`
+        }
       })
       // console.log(props, ast)
       for (const prop of props) {
@@ -97,11 +145,12 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
           // .filter(prop => prop.name !== 'defaultValue')
           .map(
             prop =>
-              `| ${prop.name} | ${prop.comment} | ${prop.default ?? '/'} | ${prop.type.replace(/\|/g, '\\|').replace(/</g, '\\<').replace(/>/g, '\\>')} |`
+              `| ${prop.name} | ${prop.comment} | ${encodeMarkdown(prop.default ?? '/')} | ${encodeMarkdown(prop.type)} |`
           )
           .join('\n')
-        content = content.replace(/\\\[\\\[doc\]\]/g, `${tableHeader}${tableRows}`)
+        docString += `\n## Props\n${tableHeader}${tableRows}\n`
       }
+      content = content.replace(/\\\[\\\[doc\]\]/g, docString)
       // return content.replace(/\\\[\\\[doc\]\]/g, `doc:${name?.toUpperCase()}`)
       console.log(content)
       return content

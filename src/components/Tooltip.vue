@@ -13,12 +13,39 @@ import {
 import { computed, ref } from 'vue'
 
 export type TooltipProps = {
+  /**
+   * 默认打开状态
+   */
+  defaultOpen?: boolean
+  /**
+   * 打开状态
+   */
+  open?: boolean
+  /**
+   * 打开延迟
+   */
+  delayDuration?: number
+  /**
+   * 当设置为 true 时，点击触发器不会关闭内容。
+   */
+  disableClosingTrigger?: boolean
+  /**
+   * 禁用
+   */
+  disabled?: boolean
+  /**
+   * 防止工具提示在非键盘焦点时打开
+   */
+  ignoreNonKeyboardFocus?: boolean
+
   content?: string
 }
 defineOptions({ name: 'Tooltip' })
 
-const props = defineProps<TooltipRootProps & TooltipProps>()
-const emits = defineEmits<TooltipRootEmits>()
+const props = defineProps<TooltipProps>()
+const emits = defineEmits<{
+  'update:open': [value: boolean]
+}>()
 
 const forward = useForwardPropsEmits(props, emits)
 </script>
