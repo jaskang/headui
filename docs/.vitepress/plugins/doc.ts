@@ -16,7 +16,12 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
   // 只匹配 components/xxx.md，不匹配多层目录
   const matchVal = id.match(/components\/([^/]+)\.md$/)
   if (matchVal && matchVal.length === 2) {
-    let docString = ''
+    const doc = {
+      props: '',
+      models: '',
+      slots: '',
+      emits: '',
+    }
     // matchVal[1] 首字母大写的组件名
     const n = matchVal[1] as string
     // 读取组件文件，获取文档注释
@@ -80,7 +85,7 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
           }
         }
 
-        // props default value 处理
+        // 处理 defineModel
         if (node.type === 'CallExpression' && node.callee.type === 'Identifier' && node.callee.name === 'defineModel') {
           const model: {
             name: string
@@ -92,7 +97,6 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
             type: 'any',
             required: false,
           }
-          console.log('defineModel:', node)
           if (node.arguments.length >= 1) {
             const modelName = node.arguments[0]!
             if (modelName.type === 'Literal') {
@@ -118,9 +122,39 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
             const typeParam = node.typeArguments.params[0]!
             model.type = script.slice(typeParam.start, typeParam.end)
           }
-          docString += `\n## Models\n`
-          docString += `| name | 类型 | 默认值 |\n| --- | --- | --- |\n`
-          docString += `| ${model.name} | ${encodeMarkdown(model.type)} | ${encodeMarkdown(model.default ?? '/')} |\n`
+          doc.models += `\n## Models\n`
+          doc.models += `| name | 类型 | 默认值 |\n| --- | --- | --- |\n`
+          doc.models += `| ${model.name} | ${encodeMarkdown(model.type)} | ${encodeMarkdown(model.default ?? '/')} |\n`
+        }
+
+        if (node.type === 'CallExpression' && node.callee.type === 'Identifier' && node.callee.name === 'defineEmits') {
+          const emits: { name: string; args: string }[] = []
+          if (
+            node.typeArguments &&
+            node.typeArguments.type === 'TSTypeParameterInstantiation' &&
+            node.typeArguments.params.length > 0 &&
+            node.typeArguments.params[0]!.type === 'TSTypeLiteral'
+          ) {
+            const typeLiteral = node.typeArguments.params[0]!
+            typeLiteral.members.forEach(member => {
+              if (member.type === 'TSPropertySignature' && member.key.type === 'Identifier' && member.typeAnnotation) {
+                emits.push({
+                  name: member.key.name,
+                  args: script.slice(
+                    member.typeAnnotation.typeAnnotation.start,
+                    member.typeAnnotation.typeAnnotation.end
+                  ),
+                })
+              }
+            })
+          }
+          if (emits.length > 0) {
+            doc.emits += `\n## Emits\n`
+            doc.emits += `| 事件名 | 参数 |\n| --- | --- |\n`
+            emits.forEach(emit => {
+              doc.emits += `| ${emit.name} | ${encodeMarkdown(emit.args)} |\n`
+            })
+          }
         }
       })
       // console.log(props, ast)
@@ -148,9 +182,9 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
               `| ${prop.name} | ${prop.comment} | ${encodeMarkdown(prop.default ?? '/')} | ${encodeMarkdown(prop.type)} |`
           )
           .join('\n')
-        docString += `\n## Props\n${tableHeader}${tableRows}\n`
+        doc.props += `\n## Props\n${tableHeader}${tableRows}\n`
       }
-      content = content.replace(/\\\[\\\[doc\]\]/g, docString)
+      content = content.replace(/\\\[\\\[doc\]\]/g, doc.models + doc.props + doc.emits + doc.slots)
       // return content.replace(/\\\[\\\[doc\]\]/g, `doc:${name?.toUpperCase()}`)
       console.log(content)
       return content

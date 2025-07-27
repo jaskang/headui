@@ -37,7 +37,9 @@ export type TooltipProps = {
    * 防止工具提示在非键盘焦点时打开
    */
   ignoreNonKeyboardFocus?: boolean
-
+  /**
+   * tooltip 内容
+   */
   content?: string
 }
 defineOptions({ name: 'Tooltip' })
