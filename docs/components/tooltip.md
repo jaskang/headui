@@ -31,4 +31,4 @@ import { Tooltip, Button } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Tooltip.vue -->

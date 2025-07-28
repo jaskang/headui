@@ -147,4 +147,4 @@ import { Input, Button, InputGroup, Select } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Input.vue -->

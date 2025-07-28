@@ -57,4 +57,4 @@ import { Textarea } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Textarea.vue -->

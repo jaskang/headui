@@ -15,4 +15,4 @@ import { ScrollArea } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/ScrollArea.vue -->

@@ -98,4 +98,6 @@ import { Radio, RadioGroup } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/RadioGroup.vue -->
+
+<!-- @doc: ../../src/components/Radio.vue -->

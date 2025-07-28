@@ -38,4 +38,4 @@ const open = ref(false)
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Popover.vue -->

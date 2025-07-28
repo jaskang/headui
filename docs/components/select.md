@@ -105,4 +105,4 @@ import { Select, Avatar } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Select.vue -->

@@ -42,4 +42,4 @@ const items = [
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Tabs.vue -->

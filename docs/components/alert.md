@@ -39,4 +39,4 @@ import { CheckIcon, SearchIcon, TrashIcon } from 'lucide-vue-next'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Alert.vue -->

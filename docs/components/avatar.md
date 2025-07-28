@@ -52,4 +52,4 @@ import { Avatar } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Avatar.vue -->

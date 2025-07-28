@@ -183,4 +183,4 @@ import { Button, InputGroup, Tooltip } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Button.vue -->

@@ -36,4 +36,4 @@ import { Badge } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Badge.vue -->

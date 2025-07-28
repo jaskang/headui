@@ -56,4 +56,4 @@ import { Switch } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Switch.vue -->

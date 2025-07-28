@@ -14,4 +14,4 @@ import { ref } from 'vue'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/Sheet.vue -->

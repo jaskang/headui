@@ -49,4 +49,6 @@ import { Checkbox, CheckboxGroup } from 'headui'
 </template>
 ```
 
-[[doc]]
+<!-- @doc: ../../src/components/CheckboxGroup.vue -->
+
+<!-- @doc: ../../src/components/Checkbox.vue -->
