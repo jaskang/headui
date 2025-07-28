@@ -1,14 +1,6 @@
-.prose {
-  --vp-code-padding-x: 0.875rem;
-  --vp-code-padding-y: 0.875rem;
-  --vp-code-copy-color: var(--color-gray-500);
-  --vp-code-copy-code-bg: var(--color-white);
-  --vp-code-copy-code-border-color: var(--color-gray-200);
+.vp-doc {
   --vp-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgb(100, 116, 139)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3C/svg%3E");
   --vp-icon-copied: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgb(100, 116, 139)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3Cpath d='m9 14 2 2 4-4'/%3E%3C/svg%3E");
-
-  font-size: 0.875rem;
-  line-height: 1.7142857;
 }
 
 /**
@@ -23,92 +15,12 @@ html:not(.dark) .vp-code span {
   color: var(--shiki-light, inherit);
 }
 
-/* inline code */
-.vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
-  font-size: var(--vp-code-font-size);
-  color: var(--vp-code-color);
-}
-
-.vp-doc :not(pre) > code {
-  border-radius: 4px;
-  padding: 3px 6px;
-  background-color: var(--vp-code-bg);
-  transition:
-    color 0.25s,
-    background-color 0.5s;
-}
-
-.vp-doc a > code {
-  color: var(--vp-code-link-color);
-}
-
-.vp-doc a:hover > code {
-  color: var(--vp-code-link-hover-color);
-}
-
-.vp-doc h1 > code,
-.vp-doc h2 > code,
-.vp-doc h3 > code,
-.vp-doc h4 > code {
-  font-size: 0.9em;
-}
-
-.vp-doc div[class*='language-'] {
-  position: relative;
-  background-color: var(--vp-code-block-bg);
-  overflow-x: auto;
-  transition: background-color 0.5s;
-}
-
-@media (max-width: 639px) {
-  .vp-doc li div[class*='language-'] {
-    border-radius: 8px 0 0 8px;
-  }
-}
-
-.vp-doc div[class*='language-'] + div[class*='language-'],
-.vp-doc div[class$='-api'] + div[class*='language-'],
-.vp-doc div[class*='language-'] + div[class$='-api'] > div[class*='language-'] {
-  margin-top: -8px;
-}
-
-.vp-doc [class*='language-'] pre,
-.vp-doc [class*='language-'] code {
-  /*rtl:ignore*/
-  direction: ltr;
-  /*rtl:ignore*/
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
 .vp-doc [class*='language-'] pre {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  padding: 20px 0;
-  background: transparent;
-  overflow-x: auto;
+  @apply relative overflow-x-auto bg-transparent py-5;
 }
 
 .vp-doc [class*='language-'] code {
-  display: block;
-  padding: 0 24px;
-  width: fit-content;
-  min-width: 100%;
-  line-height: var(--vp-code-line-height);
-  font-size: var(--vp-code-font-size);
-  color: var(--vp-code-block-color);
-  transition: color 0.5s;
+  @apply block w-fit min-w-full px-6 transition-colors;
 }
 
 .vp-doc [class*='language-'] code .highlighted {
@@ -121,11 +33,11 @@ html:not(.dark) .vp-code span {
 }
 
 .vp-doc [class*='language-'] code .highlighted.error {
-  background-color: var(--vp-code-line-error-color);
+  @apply bg-rose-500;
 }
 
 .vp-doc [class*='language-'] code .highlighted.warning {
-  background-color: var(--vp-code-line-warning-color);
+  @apply bg-amber-500;
 }
 
 .vp-doc [class*='language-'] code .diff {
@@ -207,91 +119,33 @@ html:not(.dark) .vp-code span {
 }
 
 .vp-doc [class*='language-'] > button.copy {
-  /*rtl:ignore*/
-  direction: ltr;
-  position: absolute;
-  top: 12px;
-  /*rtl:ignore*/
-  right: 12px;
-  z-index: 3;
-  border: 1px solid var(--vp-code-copy-code-border-color);
-  border-radius: 4px;
-  width: 40px;
-  height: 40px;
-  background-color: var(--vp-code-copy-code-bg);
-  opacity: 0;
-  cursor: pointer;
-  background-image: var(--vp-icon-copy);
-  background-position: 50%;
-  background-size: 20px;
-  background-repeat: no-repeat;
-  transition:
-    border-color 0.25s,
-    background-color 0.25s,
-    opacity 0.25s;
+  @apply absolute top-3 right-3 z-2 size-10 cursor-pointer rounded border bg-(image:--vp-icon-copy) bg-size-[20px] bg-[50%] bg-no-repeat opacity-0 transition-all;
 }
 
 .vp-doc [class*='language-']:hover > button.copy,
 .vp-doc [class*='language-'] > button.copy:focus {
-  opacity: 1;
+  @apply bg-background opacity-100;
 }
 
 .vp-doc [class*='language-'] > button.copy:hover,
 .vp-doc [class*='language-'] > button.copy.copied {
-  border-color: var(--vp-code-copy-code-hover-border-color);
-  background-color: var(--vp-code-copy-code-hover-bg);
+  /* @apply bg-accent; */
 }
 
 .vp-doc [class*='language-'] > button.copy.copied,
 .vp-doc [class*='language-'] > button.copy:hover.copied {
-  /*rtl:ignore*/
-  border-radius: 0 4px 4px 0;
-  background-color: var(--vp-code-copy-code-hover-bg);
-  background-image: var(--vp-icon-copied);
+  @apply bg-(image:--vp-icon-copied);
 }
 
 .vp-doc [class*='language-'] > button.copy.copied::before,
 .vp-doc [class*='language-'] > button.copy:hover.copied::before {
-  position: relative;
-  top: -1px;
-  /*rtl:ignore*/
-  transform: translateX(calc(-100% - 1px));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--vp-code-copy-code-hover-border-color);
-  /*rtl:ignore*/
-  border-right: 0;
-  /*rtl:ignore*/
-  border-radius: 4px 0 0 4px;
-  padding: 0 10px;
-  width: fit-content;
-  height: 40px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--vp-code-copy-code-active-text);
-  background-color: var(--vp-code-copy-code-hover-bg);
-  white-space: nowrap;
-  content: var(--vp-code-copy-copied-text-content);
 }
 
 .vp-doc [class*='language-'] > span.lang {
-  position: absolute;
-  top: 2px;
-  /*rtl:ignore*/
-  right: 8px;
-  z-index: 2;
-  font-size: 12px;
-  font-weight: 500;
-  user-select: none;
-  color: var(--vp-code-lang-color);
-  transition:
-    color 0.4s,
-    opacity 0.4s;
+  @apply text-accent-foreground absolute top-2 right-4 z-2 size-4 cursor-default opacity-100 transition-all;
 }
 
 .vp-doc [class*='language-']:hover > button.copy + span.lang,
 .vp-doc [class*='language-'] > button.copy:focus + span.lang {
-  opacity: 0;
+  @apply opacity-0;
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { CodeIcon } from 'lucide-vue-next'
 import { Switch } from 'headui'
+import { CodeIcon } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 
 defineOptions({ name: 'DemoWrapper' })
@@ -26,7 +26,7 @@ const showCode = ref(false)
 </script>
 <template>
   <div
-    class="demo-wrapper ring-line divide-line divide-border ring-border flex flex-col divide-y overflow-hidden rounded shadow ring-1 [&+.demo-wrapper]:mt-8"
+    class="demo-wrapper bg-accent divide-border ring-border flex flex-col divide-y overflow-hidden rounded shadow ring-1 [&+.demo-wrapper]:mt-8"
     :style="{
       '--tw-prose-pre-bg': 'transparent',
     }"
@@ -46,32 +46,13 @@ const showCode = ref(false)
         </Switch>
       </div>
     </div>
-    <div class="not-prose demo-wrapper-svg-bg p-4">
+    <div class="not-prose demo-wrapper-svg-bg bg-background p-4">
       <slot />
     </div>
 
-    <div v-if="showCode">
+    <div v-if="showCode" class="vp-code [&>div]:relative">
       <slot name="code" />
     </div>
   </div>
 </template>
-<style>
-.demo-wrapper {
-  background: var(--color-slate-50);
-}
-.dark .demo-wrapper {
-  background: var(--color-slate-900);
-}
-.demo-wrapper-svg-bg {
-  background-position: 8px 8px;
-  background-size: 16px 16px;
-  background-color: var(--color-white);
-  /* default-100 */
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23f1f5f9'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
-}
-.dark .demo-wrapper-svg-bg {
-  background-color: var(--color-gray-950);
-  /* default-100 */
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(51 65 85 / 0.25)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
-}
-</style>
+<style></style>

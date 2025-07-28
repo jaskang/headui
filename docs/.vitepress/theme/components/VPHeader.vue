@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { Button } from 'headui'
+import { Button, Switch } from 'headui'
+import { MoonIcon, SunIcon } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { useData } from 'vitepress'
 import { ref } from 'vue'
@@ -136,28 +137,14 @@ const { isDark } = useData()
             data-slot="separator"
             class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px"
           ></div>
-          <Button variant="ghost">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="size-4.5"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-              <path d="M12 3l0 18"></path>
-              <path d="M12 9l4.65 -4.65"></path>
-              <path d="M12 14.3l7.37 -7.37"></path>
-              <path d="M12 19.6l8.85 -8.85"></path>
-            </svg>
-            <span class="sr-only">Toggle theme</span>
-          </Button>
+          <Switch v-model:value="isDark">
+            <template #icon-on>
+              <MoonIcon />
+            </template>
+            <template #icon-off>
+              <SunIcon />
+            </template>
+          </Switch>
         </div>
       </div>
     </div>
