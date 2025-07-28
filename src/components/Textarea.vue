@@ -3,6 +3,21 @@ import { useVModel } from '@vueuse/core'
 
 import { type PropType } from 'vue'
 
+export type TextareaProps = {
+  defaultValue?: string
+  placeholder?: string
+  readonly?: boolean
+  /**
+   * 行数
+   */
+  rows?: number
+  /**
+   * 调整大小
+   */
+  resize?: 'none' | 'all' | 'vertical' | 'horizontal'
+  disabled?: boolean
+}
+
 const emit = defineEmits<{
   'update:value': [value: string]
   change: [value: string]
@@ -13,24 +28,13 @@ const emit = defineEmits<{
   keyup: [event: KeyboardEvent]
   keypress: [event: KeyboardEvent]
 }>()
-
-export type TextareaProps = {
-  placeholder?: string
-  readonly?: boolean
-  disabled?: boolean
-  rows?: number
-  resize?: 'none' | 'all' | 'vertical' | 'horizontal'
-  defaultValue?: string
-  value?: string
-}
-
 const props = withDefaults(defineProps<TextareaProps>(), {
   rows: 3,
   resize: 'vertical',
 })
-const value = useVModel(props, 'value', emit, {
-  defaultValue: props.defaultValue,
-  passive: (props.value === undefined) as false,
+
+const value = defineModel<string>('value', {
+  default: p => p.defaultValue,
 })
 </script>
 <template>

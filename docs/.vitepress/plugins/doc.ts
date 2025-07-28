@@ -161,11 +161,9 @@ async function replaceDoc(id: string, content: string): Promise<string | undefin
             node.typeArguments.params[0]!.type === 'TSTypeLiteral'
           ) {
             const typeLiteral = node.typeArguments.params[0]!
-            console.log('defineSlots typeLiteral:', typeLiteral)
             typeLiteral.members.forEach(member => {
               if (member.type === 'TSMethodSignature' && member.key.type === 'Identifier' && member.params.length > 0) {
                 const _props = member.params[0]!
-                console.log('defineSlots _props:', _props)
                 const typeAnnotation = _props.typeAnnotation?.typeAnnotation || null
                 let propsType = 'any'
                 if (typeAnnotation) {
