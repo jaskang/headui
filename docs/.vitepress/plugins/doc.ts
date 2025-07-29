@@ -1,5 +1,6 @@
+import { stat } from 'node:fs'
 import { readFile } from 'node:fs/promises'
-import { dirname, join } from 'node:path'
+import { basename, dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { pathExists } from 'fs-extra/esm'
 import { parseAndWalk } from 'oxc-walker'
@@ -44,6 +45,7 @@ async function getVueDocs(id: string): Promise<string> {
       console.warn(`doc file not found: ${id}`)
       return ''
     }
+    const name = basename(id).replace(/.vue$/, '')
     const vueCode = await readFile(id, 'utf-8')
     const vueSFC = await parseVue(vueCode)
     const script = vueSFC.descriptor.scriptSetup?.content || ''
@@ -193,32 +195,35 @@ async function getVueDocs(id: string): Promise<string> {
 
     let result = ''
     if (doc.models.length > 0) {
-      result += `\n## Models\n`
+      result += `\n### Models\n`
       result += `| 名称 | 类型 | 默认值 |\n| --- | --- | --- |\n`
       doc.models.forEach(model => {
         result += `| ${model.name} | ${encodeMarkdown(model.type)} | ${encodeMarkdown(model.default ?? '/')} |\n`
       })
     }
     if (doc.props.length > 0) {
-      result += `\n## Props\n`
+      result += `\n### Props\n`
       result += `| Prop | 描述 | 默认值 | 类型 |\n| --- | --- | --- | --- |\n`
       doc.props.forEach(prop => {
         result += `| ${prop.name} | ${prop.comment} | ${encodeMarkdown(prop.default ?? '/')} | ${encodeMarkdown(prop.type)} |\n`
       })
     }
     if (doc.emits.length > 0) {
-      result += `\n## Emits\n`
+      result += `\n### Emits\n`
       result += `| 事件名 | 参数 |\n| --- | --- |\n`
       doc.emits.forEach(emit => {
         result += `| ${emit.name} | ${encodeMarkdown(emit.args)} |\n`
       })
     }
     if (doc.slots.length > 0) {
-      result += `\n## Slots\n`
+      result += `\n### Slots\n`
       result += `| 名称 | Props |\n| --- | --- |\n`
       doc.slots.forEach(slot => {
         result += `| ${slot.name} | ${encodeMarkdown(slot.props)} |\n`
       })
+    }
+    if (result.length > 0) {
+      result = `## ${name} API\n ${result}`
     }
     return result
   } catch (error) {
