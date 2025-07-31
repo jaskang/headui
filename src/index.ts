@@ -11,6 +11,8 @@ import { default as Radio } from './components/Radio.vue'
 import { default as RadioGroup } from './components/RadioGroup.vue'
 import { default as ScrollArea } from './components/ScrollArea.vue'
 import { default as Select } from './components/Select.vue'
+import { default as SelectGroup } from './components/SelectGroup.vue'
+import { default as SelectItem } from './components/SelectItem.vue'
 import { default as Sheet } from './components/Sheet.vue'
 import { default as Sidebar } from './components/Sidebar.vue'
 import { default as SidebarMenu } from './components/SidebarMenu.vue'
@@ -35,6 +37,8 @@ export {
   RadioGroup,
   ScrollArea,
   Select,
+  SelectGroup,
+  SelectItem,
   Sheet,
   Sidebar,
   SidebarMenu,

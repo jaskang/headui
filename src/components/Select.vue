@@ -98,50 +98,8 @@ const onSelect = (event: SelectItemSelectEvent<AcceptableValue | AcceptableValue
         <SelectViewport
           class="h-[var(--reka-select-trigger-height)] w-full min-w-[var(--reka-select-trigger-width)] scroll-my-1 p-1"
         >
-          <template v-for="(option, index) in options">
-            <template v-if="isGroupOption(option)">
-              <SelectGroup data-slot="select-group" :key="'group-' + option.label">
-                <SelectLabel data-slot="select-label" class="text-muted-foreground px-2 py-1.5 text-xs">
-                  {{ option.label }}
-                </SelectLabel>
-                <SelectItem
-                  v-for="(item, index) in option.children"
-                  data-slot="select-item"
-                  class="focus:bg-accent focus:text-accent-foreground [&_svg:not([class*=text-])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2"
-                  :key="index"
-                  :disabled="item.disabled"
-                  :value="item.value"
-                  @select="onSelect"
-                >
-                  <SelectItemIndicator class="absolute right-2 flex size-3.5 items-center justify-center">
-                    <CheckIcon class="text-muted-foreground pointer-events-none size-4 shrink-0" />
-                  </SelectItemIndicator>
-                  <SelectItemText>
-                    {{ item.label || item.value }}
-                  </SelectItemText>
-                </SelectItem>
-              </SelectGroup>
-            </template>
-            <template v-else>
-              <SelectItem
-                data-slot="select-item"
-                class="focus:bg-accent focus:text-accent-foreground [&_svg:not([class*=text-])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2"
-                :key="index"
-                :disabled="option.disabled"
-                :value="option.value"
-                @select="onSelect"
-              >
-                <SelectItemIndicator class="absolute right-2 flex size-4 items-center justify-center">
-                  <CheckIcon class="text-muted-foreground pointer-events-none size-4 shrink-0" />
-                </SelectItemIndicator>
-                <SelectItemText>
-                  {{ option.label || option.value }}
-                </SelectItemText>
-              </SelectItem>
-            </template>
-          </template>
+          <slot />
         </SelectViewport>
-
         <SelectScrollDownButton
           data-slot="select-scroll-down-button"
           class="flex cursor-default items-center justify-center py-1"

@@ -4,57 +4,43 @@
 
 ```vue demo
 <script setup>
-import { Select } from 'headui'
+import { Select, SelectItem, SelectGroup } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <Select
-      class="w-60"
-      placeholder="选择框"
-      :options="[
-        { value: 1, label: 'Wade Cooper' },
-        { value: 2, label: 'Arlene Mccoy' },
-        { value: 3, label: 'Devon Webb' },
-        { value: 4, label: 'Tom Cook' },
-        { value: 5, label: 'Tanya Fox', disabled: true },
-        { value: 6, label: 'Hellen Schmvaluet' },
-        { value: 7, label: 'Caroline Schultz' },
-        { value: 8, label: 'Mason Heaney' },
-        { value: 9, label: 'Claudie Smitham' },
-        { value: 10, label: 'Emil Schaefer' },
-      ]"
-    />
-    <Select
-      class="w-60"
-      placeholder="选择框"
-      :options="[
-        {
-          label: 'Fruit',
-          children: [
-            { value: 'Apple' },
-            { value: 'Banana' },
-            { value: 'Blueberry' },
-            { value: 'Grapes' },
-            { value: 'Pineapple' },
-          ],
-        },
-        {
-          label: 'Vegetables',
-          children: [
-            { value: 'Aubergine' },
-            { value: 'Broccoli' },
-            { value: 'Carrot' },
-            { value: 'Courgette' },
-            { value: 'Leek' },
-          ],
-        },
-      ]"
-    />
+    <Select class="w-60" placeholder="选择框">
+      <SelectItem value="1">Wade Cooper</SelectItem>
+      <SelectItem value="2">Arlene Mccoy</SelectItem>
+      <SelectItem value="3">Devon Webb</SelectItem>
+      <SelectItem value="4">Tom Cook</SelectItem>
+      <SelectItem value="5" disabled>Tanya Fox</SelectItem>
+      <SelectItem value="6">Hellen Schmvaluet</SelectItem>
+      <SelectItem value="7">Caroline Schultz</SelectItem>
+      <SelectItem value="8">Mason Heaney</SelectItem>
+      <SelectItem value="9">Claudie Smitham</SelectItem>
+      <SelectItem value="10">Emil Schaefer</SelectItem>
+    </Select>
+    <Select class="w-60" placeholder="选择框">
+      <SelectGroup label="Fruit">
+        <SelectItem value="Apple">Apple</SelectItem>
+        <SelectItem value="Banana">Banana</SelectItem>
+        <SelectItem value="Blueberry">Blueberry</SelectItem>
+        <SelectItem value="Grapes">Grapes</SelectItem>
+        <SelectItem value="Pineapple">Pineapple</SelectItem>
+      </SelectGroup>
+      <SelectGroup label="Vegetables">
+        <SelectItem value="Aubergine">Aubergine</SelectItem>
+        <SelectItem value="Broccoli">Broccoli</SelectItem>
+        <SelectItem value="Carrot">Carrot</SelectItem>
+        <SelectItem value="Courgette">Courgette</SelectItem>
+        <SelectItem value="Leek">Leek</SelectItem>
+      </SelectGroup>
+    </Select>
   </div>
 </template>
 ```
 
-## default
+## disabled
 
 ```vue demo
 <script setup>
@@ -62,17 +48,7 @@ import { Select } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <Select
-      class="w-60"
-      placeholder="选择框"
-      value="2"
-      disabled
-      :options="[
-        { value: '1', label: 'Wade Cooper' },
-        { value: '2', label: 'Arlene Mccoy' },
-        { value: '3', label: 'Devon Webb' },
-      ]"
-    />
+    <Select class="w-60" placeholder="选择框" value="2" disabled />
   </div>
 </template>
 ```
@@ -81,25 +57,23 @@ import { Select } from 'headui'
 
 ```vue demo
 <script setup>
-import { Select, Avatar } from 'headui'
+import { Select, SelectItem, Avatar } from 'headui'
 </script>
 <template>
   <div class="flex flex-wrap gap-2">
-    <Select
-      class="w-60"
-      placeholder="选择框"
-      :options="[
-        { value: '1', label: 'Wade Coopcoopcoopcoopcoopcoocoopcoocoopcoer', src: 'https://i.pravatar.cc/150?u=1' },
-        { value: '2', label: 'Arlene Mcccococococccocococcccocococcccccoy', src: 'https://i.pravatar.cc/150?u=2' },
-        { value: '3', label: 'Devon Weeeecococeecococoeeeecococoeeoeeeeeebb', src: 'https://i.pravatar.cc/150?u=3' },
-      ]"
-    >
-      <template #label="{ item }">
-        <Avatar class="-ml-1" rounded border size="sm" :src="item.src" />
-        <span class="ml-1 flex-1 overflow-hidden text-nowrap text-ellipsis">
-          {{ item.label }}
-        </span>
-      </template>
+    <Select class="w-60" placeholder="选择框">
+      <SelectItem value="1">
+        <Avatar class="-ml-1" rounded border size="sm" src="https://i.pravatar.cc/150?u=1" />
+        <span class="ml-1 flex-1 overflow-hidden text-nowrap text-ellipsis"> Wade Cooper </span>
+      </SelectItem>
+      <SelectItem value="2">
+        <Avatar class="-ml-1" rounded border size="sm" src="https://i.pravatar.cc/150?u=2" />
+        <span class="ml-1 flex-1 overflow-hidden text-nowrap text-ellipsis"> Arlene Mccoy </span>
+      </SelectItem>
+      <SelectItem value="3">
+        <Avatar class="-ml-1" rounded border size="sm" src="https://i.pravatar.cc/150?u=3" />
+        <span class="ml-1 flex-1 overflow-hidden text-nowrap text-ellipsis"> Devon Webb </span>
+      </SelectItem>
     </Select>
   </div>
 </template>
