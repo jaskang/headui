@@ -31,12 +31,12 @@ const props = defineProps<SelectItemProps & { class?: ClassValue }>()
     :text-value="props.textValue"
     :class="
       cn(
-        'focus:bg-accent focus:text-accent-foreground [&_svg:not([class*=text-])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4',
+        'focus:bg-accent focus:text-accent-foreground [&_svg:not([class*=text-])]:text-muted-foreground relative flex w-full cursor-default items-center rounded-sm pr-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4',
         props.class
       )
     "
   >
-    <SelectItemText class="flex shrink-0 items-center">
+    <SelectItemText class="flex min-h-8 shrink-0 items-center pl-2">
       <slot>
         {{ props.textValue || props.value }}
       </slot>

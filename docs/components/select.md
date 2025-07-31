@@ -63,15 +63,15 @@ import { Select, SelectItem, Avatar } from 'headui'
   <div class="flex flex-wrap gap-2">
     <Select class="w-60" placeholder="选择框">
       <SelectItem value="1">
-        <Avatar class="-ml-1" rounded border size="sm" src="https://i.pravatar.cc/150?u=1" />
+        <Avatar class="size-5" rounded border size="sm" src="https://i.pravatar.cc/150?u=1" />
         <span class="ml-1 flex-1 overflow-hidden text-nowrap text-ellipsis"> Wade Cooper </span>
       </SelectItem>
       <SelectItem value="2">
-        <Avatar class="-ml-1" rounded border size="sm" src="https://i.pravatar.cc/150?u=2" />
+        <Avatar class="size-5" rounded border size="sm" src="https://i.pravatar.cc/150?u=2" />
         <span class="ml-1 flex-1 overflow-hidden text-nowrap text-ellipsis"> Arlene Mccoy </span>
       </SelectItem>
       <SelectItem value="3">
-        <Avatar class="-ml-1" rounded border size="sm" src="https://i.pravatar.cc/150?u=3" />
+        <Avatar class="size-5" rounded border size="sm" src="https://i.pravatar.cc/150?u=3" />
         <span class="ml-1 flex-1 overflow-hidden text-nowrap text-ellipsis"> Devon Webb </span>
       </SelectItem>
     </Select>
