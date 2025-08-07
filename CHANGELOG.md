@@ -1,5 +1,11 @@
 # headui
 
+## 0.1.14
+
+### Patch Changes
+
+- adde42b: style
+
 ## 0.1.13
 
 ### Patch Changes
