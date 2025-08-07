@@ -1,1 +1,1 @@
-declare module 'postcss-import'
+/// <reference types="vite/client" />
