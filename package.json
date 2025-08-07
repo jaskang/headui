@@ -10,15 +10,17 @@
   },
   "files": [
     "dist",
-    "src/style.css",
-    "src/theme.css"
+    "style.css",
+    "theme.css"
   ],
   "main": "dist/index.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./style.css": "./style.css",
+    "./theme.css": "./theme.css"
   },
   "scripts": {
     "dev": "npm-run-all --parallel docs:dev",
