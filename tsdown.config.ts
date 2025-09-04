@@ -10,6 +10,7 @@ export default defineConfig([
     entry: ['./src/index.ts'],
     platform: 'neutral',
     fromVite: true,
+    tsconfig: resolve(__dirname, 'tsconfig.app.json'),
     dts: {
       vue: true,
     },

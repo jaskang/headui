@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
-
-import { type PropType } from 'vue'
-
 export type TextareaProps = {
   defaultValue?: string
   placeholder?: string

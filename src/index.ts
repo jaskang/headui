@@ -1,4 +1,4 @@
-import { default as Alert, type AlertProps } from './components/Alert.vue'
+import { default as Alert } from './components/Alert.vue'
 import { default as Avatar } from './components/Avatar.vue'
 import { default as Badge } from './components/Badge.vue'
 import { default as Button } from './components/Button.vue'
